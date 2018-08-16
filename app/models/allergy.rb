@@ -2,6 +2,8 @@ require 'open-uri'
 require 'nokogiri'
 
 class Allergy < ApplicationRecord
+    mount_uploader :image, S3Uploader
+
     validates :menu_name, :uniqueness => true
 
     def self.Subway
@@ -325,65 +327,77 @@ class Allergy < ApplicationRecord
         
     end
 
-    def self.Baskinrobbins
-        for pageNum in range (1,4)
-            url = "https://www.baskinrobbins.co.kr/menu/nutrition_new.php?Page="+pageNum+"&ScProd=&ScNutri=&ScAmount="
-            data = Nokogiri::HTML(open(url))
-            rows = data.css('.table_allergy tbody tr')
+    # def self.Baskinrobbins
+    #     for pageNum in range (1,4)
+    #         url = "https://www.baskinrobbins.co.kr/menu/nutrition_new.php?Page="+pageNum+"&ScProd=&ScNutri=&ScAmount="
+    #         data = Nokogiri::HTML(open(url))
+    #         rows = data.css('.table_allergy tbody tr')
 
-            rows.each do |r|
-                m_name = r.css(':nth-child(1)').text
-            end
-        end
-    end
+    #         rows.each do |r|
+    #             m_name = r.css(':nth-child(1)').text
+    #         end
+    #     end
+    # end
 
-    def self.DunkinDonuts
-        for pageNum in range (1,9)
-            url = "https://www.dunkindonuts.co.kr/info/nutrient.php?Page="+ pageNum +"&searchword=&skey=&sdic="
-            data = Nokogiri::HTML(open(url))
-            rows = data.css('.table_allergy tbody tr')
+    # def self.DunkinDonuts
+    #     for pageNum in range (1,9)
+    #         url = "https://www.dunkindonuts.co.kr/info/nutrient.php?Page="+ pageNum +"&searchword=&skey=&sdic="
+    #         data = Nokogiri::HTML(open(url))
+    #         rows = data.css('.table_allergy tbody tr')
 
-            rows.each do |r|
-                m_name = r.css(':nth-child(1)').text
-            end
-        end
-    end
+    #         rows.each do |r|
+    #             m_name = r.css(':nth-child(1)').text
+    #         end
+    #     end
+    # end
 
-    def self.PizzanaraCG
+    # def self.PizzanaraCG
        
-        url = "http://pncg.co.kr/nutrition/main.html"
-        data = Nokogiri::HTML(open(url))
-        rows = data.css('.table_allergy tbody tr')
+    #     url = "http://pncg.co.kr/nutrition/main.html"
+    #     data = Nokogiri::HTML(open(url))
+    #     rows = data.css('.table_allergy tbody tr')
 
-        rows.each do |r|
-            m_name = r.css(':nth-child(1)').text
-        end
+    #     rows.each do |r|
+    #         m_name = r.css(':nth-child(1)').text
+    #     end
     
-    end
+    # end
 
-    def self.PizzaEttang
+    # def self.PizzaEttang
        
-        url = "https://m.pizzaetang.com/menu/nutrient.html"
-        data = Nokogiri::HTML(open(url))
-        rows = data.css('.table_allergy tbody tr')
+    #     url = "https://m.pizzaetang.com/menu/nutrient.html"
+    #     data = Nokogiri::HTML(open(url))
+    #     rows = data.css('.table_allergy tbody tr')
 
-        rows.each do |r|
-            m_name = r.css(':nth-child(1)').text
-        end
+    #     rows.each do |r|
+    #         m_name = r.css(':nth-child(1)').text
+    #     end
         
-    end
+    # end
 
-    def self.PizzaAlvolo
+    # def self.PizzaAlvolo
        
-        url = "https://m.pizzaalvolo.co.kr/menu/menu_sideView.asp?class_id=40&cate_id=02&base_id=4055"
-        data = Nokogiri::HTML(open(url))
-        rows = data.css('.table_allergy tbody tr')
+    #     url = "https://m.pizzaalvolo.co.kr/menu/menu_sideView.asp?class_id=40&cate_id=02&base_id=4055"
+    #     data = Nokogiri::HTML(open(url))
+    #     rows = data.css('.table_allergy tbody tr')
 
-        rows.each do |r|
-            m_name = r.css(':nth-child(1)').text
-        end
+    #     rows.each do |r|
+    #         m_name = r.css(':nth-child(1)').text
+    #     end
         
-    end
+    # end
+
+    # def self.CoffeeBean
+       
+    #     url = "http://www.coffeebeankorea.com/menu/list.asp?category=4"
+    #     data = Nokogiri::HTML(open(url))
+    #     rows = data.css('.table_allergy tbody tr')
+
+    #     rows.each do |r|
+    #         m_name = r.css(':nth-child(1)').text
+    #     end
+        
+    # end
 
     #담김쌈http://www.damgimssam.com/?page_id=1420
 
