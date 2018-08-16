@@ -4,6 +4,8 @@ require 'nokogiri'
 class Allergy < ApplicationRecord
     mount_uploader :image, S3Uploader
 
+    belongs_to :restaurant
+
     validates :menu_name, :uniqueness => true
 
     def self.Subway
