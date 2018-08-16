@@ -6,18 +6,8 @@
 </p>
 
 <p>
-  <strong>String:</strong>
-  <%= @restaurant.string %>
-</p>
-
-<p>
   <strong>Sido:</strong>
   <%= @restaurant.sido %>
-</p>
-
-<p>
-  <strong>String:</strong>
-  <%= @restaurant.string %>
 </p>
 
 <p>
@@ -26,19 +16,10 @@
 </p>
 
 <p>
-  <strong>String:</strong>
-  <%= @restaurant.string %>
-</p>
-
-<p>
   <strong>Doromyeong:</strong>
   <%= @restaurant.doromyeong %>
 </p>
 
-<p>
-  <strong>String:</strong>
-  <%= @restaurant.string %>
-</p>
 
 <p>
   <strong>Gunmul bunho1:</strong>
@@ -46,29 +27,42 @@
 </p>
 
 <p>
-  <strong>Integer:</strong>
-  <%= @restaurant.integer %>
-</p>
-
-<p>
   <strong>Gunmul bunho2:</strong>
   <%= @restaurant.gunmul_bunho2 %>
 </p>
 
-<p>
-  <strong>Integer:</strong>
-  <%= @restaurant.integer %>
-</p>
 
 <p>
   <strong>Phone number:</strong>
   <%= @restaurant.phone_number %>
 </p>
 
-<p>
-  <strong>String:</strong>
-  <%= @restaurant.string %>
-</p>
+
+<!--#############################################################################################-->
+<p>메뉴</p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurant.allergies.each do |allergy| %>
+      <tr>
+        <td><%= allergy.id%></td>
+        <td><%= allergy.menu_name%></td>
+        <td><%= link_to '메뉴 보기', restaurant_allergy_path(@restaurant.id, allergy) %></td>
+        <td><%= link_to '메뉴 수정', edit_restaurant_allergy_path(@restaurant.id, allergy) %></td>
+        <td><%= link_to '메뉴 삭제', restaurant_allergy_path(@restaurant.id, allergy), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '메뉴 추가', new_restaurant_allergy_path(@restaurant.id) %>
+<!--#############################################################################################-->
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

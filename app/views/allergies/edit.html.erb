@@ -2,5 +2,5 @@
 
 <%= render 'form', allergy: @allergy %>
 
-<%= link_to 'Show', @allergy %> |
-<%= link_to 'Back', allergies_path %>
+<%= link_to 'Show', restaurant_allergy_path(@allergy.restaurant_id, @allergy.id) %> |
+<%= link_to 'Back', restaurant_allergies_path(@allergy.restaurant_id) %>

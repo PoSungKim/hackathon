@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_allergy_path(@allergy) %> |
-<%= link_to 'Back', allergies_path %>
+<p>
+  <strong>메뉴 이름:</strong>
+  <%= @allergy.menu_name%>
+</p>
+
+
+<p>
+<%= link_to 'Destroy', restaurant_allergy_path(@allergy.restaurant_id, @allergy), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+
+<p>
+<%= link_to 'Edit', edit_restaurant_allergy_path(@allergy.restaurant_id, @allergy) %> |
+<%= link_to 'Back', restaurant_allergies_path(@allergy.restaurant_id) %>
+</p>

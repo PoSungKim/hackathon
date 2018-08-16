@@ -23,7 +23,7 @@ class Allergy < ApplicationRecord
                 a_info = Allergy.where(menu_name: m_name)[0]
             end
 
-            a_info.restaurant_id = 1
+            a_info.restaurant_id = Restaurant.where(restaurant_name: "서브웨이")[0].id
             a_info.restaurant_name = "서브웨이"
 
             #메뉴 이름
@@ -163,7 +163,7 @@ class Allergy < ApplicationRecord
                 a_info = Allergy.where(menu_name: m_name)[0]
             end
 
-            a_info.restaurant_id = 2
+            a_info.restaurant_id = Restaurant.where(restaurant_name: "맘스터치")[0].id
             a_info.restaurant_name = "맘스터치"
 
             #메뉴 이름

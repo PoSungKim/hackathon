@@ -56,7 +56,7 @@ class AllergiesController < ApplicationController
   def destroy
     @allergy.destroy
     respond_to do |format|
-      format.html { redirect_to allergies_url, notice: 'Allergy was successfully destroyed.' }
+      format.html { redirect_to restaurant_allergies(@allergy.restaurant_id), notice: 'Allergy was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
