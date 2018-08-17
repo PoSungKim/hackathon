@@ -1,0 +1,68 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class = "field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, class: "form-control", :required => true %>
+  </div>
+
+  <hr>
+
+  <div class="btn-group" data-toggle="buttons">
+    <p style="margin-bottom:0;"><%= f.label "성별" %></p>
+    <label class="radio_button"> 남자
+       <%= f.radio_button :gender, "male", checked: true %>
+    </label>
+    <label class="radio_button active"> 여자
+       <%= f.radio_button :gender, "female", checked: true %>
+    </label>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "알러지정보" %></p>
+    <input type="checkbox" name="allergy[]" value="고등어" />고등어
+  </div>
+
+    <div class="btn-group" data-toggle="buttons">
+    <label class="radio_button active"> 고등어
+       <%= f.radio_button :allergy, "고등어"%>
+    </label>
+  </div>
+
+
+   <div class = "field">
+   <%= label_tag  '고등어' %>
+    <%= check_box_tag 'user[allergy][]', '고등어' %>
+     <%= label_tag '계란' %>
+    <%= check_box_tag 'user[allergy][]', '계란' %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

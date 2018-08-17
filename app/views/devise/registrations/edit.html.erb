@@ -1,0 +1,44 @@
+<h2>세부정보를 입력해주세요 </h2>
+<%# <%= resource_name.to_s.humanize %> 
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+<%# 추가 %>
+  <div class = "field">
+    <%= f.label "이름" %><br/>
+    <%= f.text_field :name, class: "form-control", :required => true %>
+  </div>
+
+  <div class="btn-group" data-toggle="buttons">
+    <p style="margin-bottom:0;"><%= f.label "성별" %></p>
+    <label class="radio_button"> 남자
+       <%= f.radio_button :gender, "male", checked: true %>
+    </label>
+    <label class="radio_button active"> 여자
+       <%= f.radio_button :gender, "female", checked: true %>
+    </label>
+  </div>
+
+   <div class = "field">
+   <%= label_tag  '고등어' %>
+    <%= check_box_tag 'user[allergy][]', '고등어' %>
+     <%= label_tag '계란' %>
+    <%= check_box_tag 'user[allergy][]', '계란' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%# <h3>Cancel my account</h3> %>
+
+<%# <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+
+<%= link_to "Back", :back %>
