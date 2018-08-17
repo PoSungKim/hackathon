@@ -30,8 +30,7 @@
       <%= check_box_tag 'user[allergy][]', '우유', current_user.allergy.include?('우유') %> 우유 
  </div><br/>
     <div> 과채류 및 곡류:
-     <%= check_box_tag 'user[allergy][]', '고등어', current_user.allergy.include?('고등어') %> 복숭아 
-      <%= check_box_tag 'user[allergy][]', '토마토', current_user.allergy.include?('토마토') %>토마토 
+     <%= check_box_tag 'user[allergy][]', '복숭아/토마토', current_user.allergy.include?('복숭아/토마토') %> 복숭아/토마토
      <%= check_box_tag 'user[allergy][]', '대두(콩)', current_user.allergy.include?('대두(콩)') %> 대두(콩) 
      <%= check_box_tag 'user[allergy][]', '밀/메밀', current_user.allergy.include?('밀/메밀') %> 밀/메밀 
   </div><br/>
