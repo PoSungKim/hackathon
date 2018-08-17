@@ -2,54 +2,50 @@
 
 <p id="notice"><%= notice %></p>
 <h1>Restaurants</h1>
-
-
+<p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
 <div class="d-flex justify-content-around">
-  <div>
+  <div class="shops">
     <table>
       <tbody>
         <% @restaurants.each do |restaurant| %>
           <br>
-          <h3><%= restaurant.restaurant_name %></h3>
+          <h3 class="seeMenu"><%= restaurant.restaurant_name %></h3> 
+          <div class="hi">
             <% @allergies.where(:restaurant_id => restaurant.id).each do |allergy|%>
-              <%= allergy.menu_name%><br>
+              <%=allergy.menu_name%>
             <% end%>
+          </div>
         <% end %>
       </tbody>
     </table>
   </div>
 
-  <div class="box">
+  <div id="menuBox">
     해당 메뉴가 뜰 자리.
   </div>
 </div>
 
-
-
-<%# //-----------------수정 전 -------------------------- %>
-
-<h1>=========수정 전 Allergies=====</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @allergies.each do |allergy| %>
-      <tr>
-        <td><%= allergy.id%></td>
-        <td><%= allergy.menu_name%></td>
-        <td><%= link_to 'Show', restaurant_allergy_path(allergy.restaurant_id, allergy) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_allergy_path(allergy.restaurant_id, allergy) %></td>
-        <td><%= link_to 'Destroy', restaurant_allergy_path(allergy.restaurant_id, allergy), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%#= link_to 'New Allergy', new_allergy_path %>
+
+<script>
+   $(".seeMenu").click(function() {
+      
+      var res_nameIn = $(this).html();
+      var menus = $(this).next('.hi').html();
+
+      $.ajax({
+        async : true,
+        data : {res_name : res_nameIn, res_menu : menus},
+        type : "GET",
+        url : "getMenu",
+        success :  function(data){
+            console.log(data);
+            //split 필요.
+            $("#menuBox").html(data["allergies"]);
+
+        }
+
+      })
+    });
+
+</script>

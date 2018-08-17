@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #----------resouces :restaurants do resouces:allergies 보다 위에 가게 해야 함! --------------------
   get 'restaurants/search' => "restaurants#search"
   get 'allergies/search' => "allergies#search"
-
+  get 'allergies/getMenu' => "allergies#getMenu"
   
   get 'allergies/index' => "allergies#index", as: 'allergies' 
   #-------------------------------------------------------------------------------------------------

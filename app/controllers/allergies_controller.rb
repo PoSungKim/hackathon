@@ -1,3 +1,4 @@
+require 'json'
 class AllergiesController < ApplicationController
   before_action :set_allergy, only: [:show, :edit, :update, :destroy]
 
@@ -33,27 +34,27 @@ class AllergiesController < ApplicationController
      a21=0
  
      # ----------------search 시에 체크-----------------------
-     a1 = 1 if params[:a1_maemil] != "true" # 체크 안했을 경우-알러지 없다. / check 하면 true(알러지없다). a1, a2 등은 알러지 없다고 표시 되면 1 
-     a2 = 1 if params[:a2_mil] != "true"
-     a3 = 1 if params[:a3_daedu] != "true"
-     a4 = 1 if params[:a4_hodu] != "true"
-     a5 = 1 if params[:a5_ddangkong] != "true"
-     a6 = 1 if params[:a6_peach] != "true"
-     a7 = 1 if params[:a7_tomato] != "true"
-     a8 = 1 if params[:a8_piggogi] != "true"
-     a9 = 1 if params[:a9_nanryu] != "true" 
-     a10 = 1 if params[:a10_milk] != "true"
-     a11 = 1 if params[:a11_ddakgogi] != "true"
-     a12 = 1 if params[:a12_shoigogi] != "true"
-     a13 = 1 if params[:a13_saewoo] != "true"
-     a14 = 1 if params[:a14_godeungeoh] != "true"
-     a15 = 1 if params[:a15_honghap] != "true"
-     a16 = 1 if params[:a16_junbok] != "true"
-     a17 = 1 if params[:a17_gul] != "true"
-     a18 = 1 if params[:a18_jogaeryu] != "true"
-     a19 = 1 if params[:a19_gye] != "true"
-     a20 = 1 if params[:a20_ohjingeoh] != "true"
-     a21 = 1 if params[:a21_ahwangsan] != "true"
+     a1 = 2 if params[:a1_maemil] != "true" # 체크 안했을 경우-알러지 없다. / check 하면 true(알러지없다). a1, a2 등은 알러지 없다고 표시 되면 1 
+     a2 = 2 if params[:a2_mil] != "true"
+     a3 = 2 if params[:a3_daedu] != "true"
+     a4 = 2 if params[:a4_hodu] != "true"
+     a5 = 2 if params[:a5_ddangkong] != "true"
+     a6 = 2 if params[:a6_peach] != "true"
+     a7 = 2 if params[:a7_tomato] != "true"
+     a8 = 2 if params[:a8_piggogi] != "true"
+     a9 = 2 if params[:a9_nanryu] != "true" 
+     a10 = 2 if params[:a10_milk] != "true"
+     a11 = 2 if params[:a11_ddakgogi] != "true"
+     a12 = 2 if params[:a12_shoigogi] != "true"
+     a13 = 2 if params[:a13_saewoo] != "true"
+     a14 = 2 if params[:a14_godeungeoh] != "true"
+     a15 = 2 if params[:a15_honghap] != "true"
+     a16 = 2 if params[:a16_junbok] != "true"
+     a17 = 2 if params[:a17_gul] != "true"
+     a18 = 2 if params[:a18_jogaeryu] != "true"
+     a19 = 2 if params[:a19_gye] != "true"
+     a20 = 2 if params[:a20_ohjingeoh] != "true"
+     a21 = 2 if params[:a21_ahwangsan] != "true"
  
      #---------------------------------------------------------
  
@@ -64,13 +65,37 @@ class AllergiesController < ApplicationController
  
      @allergies = Allergy.where("#{:a1_maemil} <= ? AND #{:a2_mil} <= ? AND #{:a3_daedu} <= ? AND #{:a4_hodu} <= ? AND #{:a5_ddangkong} <= ? AND #{:a6_peach} <= ? AND #{:a7_tomato} <= ? AND #{:a8_piggogi} <= ? AND #{:a9_nanryu} <= ? AND #{:a10_milk} <= ? AND #{:a11_ddakgogi} <= ? AND #{:a12_shoigogi} <= ? AND #{:a13_saewoo} <= ? AND #{:a14_godeungeoh} <= ? AND #{:a15_honghap} <= ? AND #{:a16_junbok} <= ? AND #{:a17_gul} <= ? AND #{:a18_jogaeryu} <= ? AND #{:a19_gye} <= ? AND #{:a20_ohjingeoh} <= ? AND #{:a21_ahwangsan} <= ?", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21)
      
- 
      # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
      @restaurants = Restaurant.find(@allergies.map(&:restaurant_id).uniq)
  
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)
-     
- 
+
+     #------------json-------------------------
+
+    #  puts "22222실험실험실험============================================="
+    #  @allergies.where(:restaurant_name => "맘스터치").each do |allergy|
+    #   puts allergy.menu_name
+    #  end
+    #  puts "2222싫끝====================================================="
+      
+  end
+
+  def getMenu
+    #받아오기
+       @restaurant_name = params[:res_name]
+       @allergies = params[:res_menu]
+       $result = {"restaurant_name" => 0, "allergies" => nil}
+
+       $result[:restaurant_name] = @restaurant_name
+       $result[:allergies] = @allergies
+       $result = $result.to_json
+       puts "실험실험실험============================================="
+       puts $result
+       puts "싫끝====================================================="
+
+       respond_to do |format|
+        format.json {render json: $result}
+      end
   end
 
   # GET /allergies/1
