@@ -3,8 +3,13 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants
   # GET /restaurants.json
+  
+  # 식당으로 검색
+  def serach
+  end
+
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
   end
 
   # GET /restaurants/1

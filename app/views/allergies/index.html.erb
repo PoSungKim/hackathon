@@ -1,6 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%# ------------검색결과가 뜨는 페이지------------------ %>
 
-<h1>Allergies</h1>
+<p id="notice"><%= notice %></p>
+<h1>Restaurants</h1>
+
+
+<div class="d-flex justify-content-around">
+  <div>
+    <table>
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+          <br>
+          <h3><%= restaurant.restaurant_name %></h3>
+            <% @allergies.where(:restaurant_id => restaurant.id).each do |allergy|%>
+              <%= allergy.menu_name%><br>
+            <% end%>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    해당 메뉴가 뜰 자리.
+  </div>
+</div>
+
+
+
+<%# //-----------------수정 전 -------------------------- %>
+
+<h1>=========수정 전 Allergies=====</h1>
 
 <table>
   <thead>
@@ -24,4 +52,4 @@
 
 <br>
 
-<%= link_to 'New Allergy', new_allergy_path %>
+<%#= link_to 'New Allergy', new_allergy_path %>
