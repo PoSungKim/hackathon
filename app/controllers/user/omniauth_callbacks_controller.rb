@@ -18,16 +18,15 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   [:kakao, :facebook, :google_oauth2].each do |provider|
     provides_callback_for provider
   end
-  
+ 
   def after_sign_in_path_for(resource)
     auth = request.env['omniauth.auth']
     @identity = Identity.find_for_oauth(auth)
     @user = User.find(current_user.id)
     if @user.persisted?
-      # if @identity.provider == "kakao"
-      if @user.sign_in_count == 1 #첫가입때만 세부정보입력창으로
-        edit_user_registration_path
-      else
+      if @identity.provider == "kakao" || "facebook" || "google_oauth2" and @user.sign_in_count == 1 #소셜로 첫가입하면 editsns페이지로/맨첫수정페이지
+        editsns_path
+      else #로그인/일반회원가입은 home_index페이지
         home_index_path
       end  
     else

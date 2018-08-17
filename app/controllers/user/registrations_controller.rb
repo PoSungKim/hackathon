@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   #before_action :configure_account_update_params, only: [:update]
 
-  # for current password문제 
+  ## for current password문제 
   def update
 
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
@@ -19,6 +19,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
        end
     
     end
+
+  ## for editsns 
+  def edit
+    render :edit
+  end   
+
+  def editsns
+    render :editsns
+  end
+
   # GET /resource/sign_up
   # def new
   #   super

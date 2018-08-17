@@ -6,9 +6,9 @@
       <p> 현재 로그인된 유저의 이름: <%= current_user.name %> </p>    
       <p> 현재 로그인된 유저의 이메일: <%= current_user.email %> </p>
       <p> 현재 로그인된 유저의 성별: <%= current_user.gender %> </p>      
-      <p> 현재 로그인된 유저의 알러지정보: <%= current_user.allergy %> </p>      
+      <p> 현재 로그인된 유저의 알러지정보: <%= current_user.allergy.to_s.gsub(',', '') %> </p>      
      
-
+      <p><%= link_to('정보수정', edit_user_registration_path) %></p>
       <p> <%= link_to "로그아웃", destroy_user_session_path, 
               method: :delete, data: {confirm: "로그아웃 하시겠습니까?"},
               class: 'btn btn-default' %> </p>
