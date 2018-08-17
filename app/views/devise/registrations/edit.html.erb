@@ -27,9 +27,12 @@
 
    <div class = "field">
    <%= label_tag  '고등어' %>
-    <%= check_box_tag 'user[allergy][]', '고등어' %>
+    <%= check_box_tag 'user[allergy][]', '고등어', current_user.allergy.include?('고등어') %>
      <%= label_tag '계란' %>
-    <%= check_box_tag 'user[allergy][]', '계란' %>
+    <%= check_box_tag 'user[allergy][]', '계란' , current_user.allergy.include?('계란') %>
+    <%# check_box_tag "ratings[#{rating}]",rating,params[:ratings].include?(rating) %>
+     <%= label_tag '기타' %>
+     <input id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
   </div>
 
   <div class="actions">
@@ -42,3 +45,10 @@
 <%# <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
 <%= link_to "Back", :back %>
+
+<script>
+var $userInput;
+$(".input_gpm").on("change", function(){
+    $userInput = $(".input_gpm").val();
+});
+</script>

@@ -41,24 +41,13 @@
 
 
   <div class="field">
-    <%= f.label "알러지정보" %></p>
-    <input type="checkbox" name="allergy[]" value="고등어" />고등어
-  </div>
-
-    <div class="btn-group" data-toggle="buttons">
-    <label class="radio_button active"> 고등어
-       <%= f.radio_button :allergy, "고등어"%>
-    </label>
-  </div>
-
-
    <div class = "field">
    <%= label_tag  '고등어' %>
     <%= check_box_tag 'user[allergy][]', '고등어' %>
      <%= label_tag '계란' %>
     <%= check_box_tag 'user[allergy][]', '계란' %>
   </div>
-
+     <input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
 
   <div class="actions">
     <%= f.submit "Sign up" %>
@@ -66,3 +55,10 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+var $userInput;
+$(".input_gpm").on("change", function(){
+    $userInput = $(".input_gpm").val();
+});
+</script>
