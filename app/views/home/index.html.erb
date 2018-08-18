@@ -7,7 +7,7 @@
       <p> 현재 로그인된 유저의 이메일: <%= current_user.email %> </p>
       <p> 현재 로그인된 유저의 성별: <%= current_user.gender %> </p>
       <p> 현재 로그인된 유저의 연령대: <%= current_user.ages %> </p>      
-      <p> 현재 로그인된 유저의 알러지정보: <%= current_user.allergy.to_s.gsub('[','').gsub(', ]','').gsub(']','')%> </p>      
+      <p> 현재 로그인된 유저의 알러지정보: <%= current_user.allergy.gsub(',','') %> </p>      
       <p><%= link_to('정보수정', edit_user_registration_path) %></p>
       <%# <p><%= link_to('정보업데이트', editsns_path) %>
       

@@ -13,4 +13,14 @@
   <body>
     <%= yield %>
   </body>
+
+<script>
+jQuery(function(){
+    $(".edit").keypress(function() {
+      var value = $(".edit").val(); 
+      $(".edit").text(value);
+    });
+});
+</script>
+
 </html>

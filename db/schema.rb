@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 20180817032317) do
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: "",    null: false
     t.string   "gender",                 default: ""
-    t.string   "allergy"
     t.string   "ages"
+    t.string   "allergy"
     t.boolean  "is_Brand",               default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180817032317) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "etc"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true

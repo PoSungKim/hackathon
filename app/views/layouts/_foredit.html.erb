@@ -36,7 +36,7 @@
       <%= check_box_tag 'user[allergy][]', '우유' %> 우유 
     </div><br/>
     <div> 과채류 및 곡류:
-     <%= check_box_tag 'user[allergy][]', '복숭아'%> 복숭아/토마토
+     <%= check_box_tag 'user[allergy][]', '복숭아/토마토'%> 복숭아/토마토
      <%= check_box_tag 'user[allergy][]', '대두(콩)' %> 대두(콩) 
      <%= check_box_tag 'user[allergy][]', '밀/메밀'%> 밀/메밀 
     </div><br/>
@@ -55,7 +55,8 @@
       <%= check_box_tag 'user[allergy][]', '아황산류 ' %> 아황산류 
     </div><br/>
     <div>
-      기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
+      기타:<%= f.text_field :etc, class: "form-control" %>    
+      <%# 기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" /> %>
    </div>
   </div><br/>
   

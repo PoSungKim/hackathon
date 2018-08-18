@@ -30,6 +30,7 @@
  
   <div class="field">
     <h4> 알레르기정보 </h4>
+    <input id="user[allergy][]" name="user[allergy][]"  class="edit" type="hidden"/>    
     <div> 유제품 및 난류:
       <%= check_box_tag 'user[allergy][]', '난류', current_user.allergy.include?('난류') %>난류
       <%= check_box_tag 'user[allergy][]', '우유', current_user.allergy.include?('우유') %> 우유 
@@ -45,7 +46,7 @@
       <%= check_box_tag 'user[allergy][]', '쇠고기', current_user.allergy.include?('쇠고기') %>쇠고기
     </div><br/> 
     <div> 어패류:
-      <%= check_box_tag 'user[allergy][]', '고등어/오징어/게', current_user.allergy.include?('고등어/오징어/게') %>고등어/오징어/게
+      <%= check_box_tag 'user[allergy][]', '고등어/오징어/게', current_user.allergy.include?('고등어/오징어') %>고등어/오징어
       <%= check_box_tag 'user[allergy][]', '게/새우', current_user.allergy.include?('게/새우') %> 게/새우 
       <%= check_box_tag 'user[allergy][]', '조개류/홍합/전복/굴', current_user.allergy.include?('조개류/홍합/전복/굴') %>조개류/홍합/전복/굴
     </div><br/>
@@ -54,7 +55,7 @@
       <%= check_box_tag 'user[allergy][]', '아황산류', current_user.allergy.include?('아황산류') %> 아황산류 
     </div><br/>
     <div>
-      기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
+      기타:<%= f.text_field :etc, class: "form-control" %>
     </div>
   </div><br/>
   
@@ -69,3 +70,9 @@
 <% else %>
   <%= render partial: 'layouts/foredit'%>
 <% end %>
+
+<script>
+ // var mine = document.getElementByClass("mytext").value ;
+ // document.getElementByClass("mytext").value = mine;
+
+</script>

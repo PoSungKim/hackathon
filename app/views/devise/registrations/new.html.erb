@@ -69,7 +69,9 @@
       <%= check_box_tag 'user[allergy][]', '아황산류 ' %> 아황산류 
     </div><br/>
     <div>
-      기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
+      기타:<%= f.text_field :etc, class: "form-control" %>    
+      <%# 기타:<%= f.text_field :etc, class: "form-control" %> %>
+      <%# <input  id="user[allergy][]" name="user[allergy][]" type="text" /> %>
     </div>
   </div><br/>
   <div class="actions">
@@ -77,4 +79,8 @@
   </div>
 <% end %>
 <%= render "devise/shared/links" %>
+
+<script>
+
+</script>
 

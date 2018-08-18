@@ -103,7 +103,10 @@ class User < ActiveRecord::Base
   end
 
   before_save do
-    self.allergy.gsub!(/[\"]/, "") if attribute_present?("allergy")
+    self.allergy.gsub!(/[\[\]\"]/, '') if attribute_present?("allergy")
+    # self.allergy = "#{allergy}, #{etc}"    
   end
-
+  before_update do
+    self.allergy = "#{allergy} #{etc}"    
+  end  
 end

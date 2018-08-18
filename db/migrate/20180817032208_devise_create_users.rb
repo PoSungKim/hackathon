@@ -10,8 +10,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # 닉네임/연령/성별/알러지/소비자
       t.string :name, null:false, default: ""
       t.string :gender, default: ""
+      t.string :ages, null:true
       t.string :allergy
-      t.string :ages
       t.boolean :is_Brand, default:false
       
       ## Recoverable
@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
+      t.string :etc
       t.timestamps null: false
     end
 
