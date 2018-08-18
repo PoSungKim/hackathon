@@ -15,6 +15,7 @@ class Restaurant < ApplicationRecord
     r.restaurant_name = "맘스터치"
     r.save
 
-  
-    
+    r = Restaurant.new
+    r.restaurant_name = "한솥"
+    r.save
 end

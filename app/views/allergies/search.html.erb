@@ -1,0 +1,25 @@
+<h3>검색하기(알레르기 있다면 체크)</h3>
+<%= form_tag(allergies_path, method: :get) do %>
+    메밀: <%= check_box_tag :a1_maemil, checked = true%><br>
+    밀: <%= check_box_tag :a2_mil, checked = true%><br>
+    대두: <%= check_box_tag :a3_daedu, checked = true%><br>
+    호두: <%= check_box_tag :a4_hodu, checked = true%><br>
+    땅콩: <%= check_box_tag :a5_ddangkong, checked = true%><br>
+    복숭아: <%= check_box_tag :a6_peach, checked = true%><br>
+    토마토: <%= check_box_tag :a7_tomato, checked = true%><br>
+    돼지고기: <%= check_box_tag :a8_piggogi, checked = true%><br>
+    난류: <%= check_box_tag :a9_nanryu, checked = true%><br>
+    우유: <%= check_box_tag :a10_milk, checked = true%><br>
+    닭고기: <%= check_box_tag :a11_ddakgogi, checked = true%><br>
+    쇠고기: <%= check_box_tag :a12_shoigogi, checked = true%><br>
+    새우: <%= check_box_tag :a13_saewoo, checked = true%><br>
+    고등어: <%= check_box_tag :a14_godeungeoh, checked = true%><br>
+    홍합: <%= check_box_tag :a15_honghap, checked = true%><br>
+    전복: <%= check_box_tag :a16_junbok, checked = true%><br>
+    굴: <%= check_box_tag :a17_gul, checked = true%><br>
+    조개류: <%= check_box_tag :a18_jogaeryu, checked = true%><br>
+    게: <%= check_box_tag :a19_gye, checked = true%><br>
+    오징어: <%= check_box_tag :a20_ohjingeoh, checked = true%><br>
+    아황산: <%= check_box_tag :a21_ahwangsan, checked = true%><br>
+    <%= submit_tag 'Search'%>
+<% end %>
