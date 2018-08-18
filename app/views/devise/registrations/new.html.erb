@@ -39,73 +39,39 @@
     </label>
   </div> 
 
-<div class="field">
+  <div class="field">
     <h4> 알레르기정보 </h4>
   
     <div> 유제품 및 난류:
       <%= check_box_tag 'user[allergy][]', '난류' %>난류
       <%= check_box_tag 'user[allergy][]', '우유' %> 우유 
- </div><br/>
+    </div><br/>
     <div> 과채류 및 곡류:
      <%= check_box_tag 'user[allergy][]', '복숭아/토마토'%> 복숭아/토마토
      <%= check_box_tag 'user[allergy][]', '대두(콩)' %> 대두(콩) 
      <%= check_box_tag 'user[allergy][]', '밀/메밀'%> 밀/메밀 
-  </div><br/>
-      <div> 육류:
-     <%= check_box_tag 'user[allergy][]', '닭고기' %> 닭고기 
+    </div><br/>
+    <div> 육류:
+      <%= check_box_tag 'user[allergy][]', '닭고기' %> 닭고기 
       <%= check_box_tag 'user[allergy][]', '돼지고기'%>돼지고기 
-       <%= check_box_tag 'user[allergy][]', '쇠고기'%>쇠고기
-  </div><br/> 
-      
-      <div> 어패류:
-       <%= check_box_tag 'user[allergy][]', '고등어/오징어' %>고등어/오징어
-     <%= check_box_tag 'user[allergy][]', '게/새우 ' %> 게/새우 
-       <%= check_box_tag 'user[allergy][]', '조개류/홍합/전복/굴' %>조개류/홍합/전복/굴
-  </div><br/>
-
-      <div> 견과류,아황산:
+      <%= check_box_tag 'user[allergy][]', '쇠고기'%>쇠고기
+    </div><br/> 
+    <div> 어패류:
+      <%= check_box_tag 'user[allergy][]', '고등어/오징어' %>고등어/오징어
+      <%= check_box_tag 'user[allergy][]', '게/새우 ' %> 게/새우 
+      <%= check_box_tag 'user[allergy][]', '조개류/홍합/전복/굴' %>조개류/홍합/전복/굴
+    </div><br/>
+    <div> 견과류,아황산:
       <%= check_box_tag 'user[allergy][]', '땅콩/호두 ' %> 땅콩/호두 
       <%= check_box_tag 'user[allergy][]', '아황산류 ' %> 아황산류 
-  </div><br/>
-  <div>
+    </div><br/>
+    <div>
       기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" />
-</div>
-</div><br/>
-  
+    </div>
+  </div><br/>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-
-<input type="button" onClick="return((confSubmit(this.form) & path()) == 1)" value="Submit Form">
-
 <% end %>
-
 <%= render "devise/shared/links" %>
 
-
-<button onclick="myFunction()">Try it</button>
-
-
-<script>
-function myFunction() {
-  
-    alert("I am an alert box!");
-}
-
-function confSubmit(form) {
-  form.submit();
-}
-
-function path() {
-if (confirm("Are you sure you want to submit the form?")) {
-window.location="edit"
-}
-
-else {
-window.location="/home/index";
-}
-}
-
-
-
-</script>
