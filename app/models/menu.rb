@@ -1,10 +1,11 @@
 require 'open-uri'
 require 'nokogiri'
 
-class Allergy < ApplicationRecord
+class Menu < ApplicationRecord
     mount_uploader :image, S3Uploader
 
-    belongs_to :restaurant
+    has_many :menumatches
+    has_many :restaurants, through: :menumatches, source: :restaurant
 
     validates :menu_name, :uniqueness => true
 
@@ -15,22 +16,38 @@ class Allergy < ApplicationRecord
         rows = data.css('tbody tr')
 
         rows.each do |r|
-            m_name = r.css('th').text
+            @m_name = r.css('th').text
             
-            if Allergy.where(menu_name: m_name)[0].nil?
-                a_info = Allergy.new
+            if Menu.where(menu_name: @m_name)[0].nil?
+                a_info = Menu.new
             else
-                a_info = Allergy.where(menu_name: m_name)[0]
+                a_info = Menu.where(menu_name: @m_name)[0]
             end
 
-            a_info.restaurant_id = Restaurant.where(restaurant_name: "서브웨이")[0].id
-            a_info.restaurant_name = "서브웨이"
+            #가게이름
+            @r_name = "서브웨이"
+            a_info.restaurant_name = @r_name
 
             #메뉴 이름
-            a_info.menu_name = m_name
-            #계란 / 생선 / 우유,락토스 / 땅콩 / 참깨 / 조개류 / 대두,콩 / 견과류 / 밀,글루텐 / 아황산류 / 아질산염,질산염
+            a_info.menu_name = @m_name
+
+            #menumatch와 연동
+            match = Menumatch.where(menu_name: @m_name)[0]
+        
+            if match.nil?
+                match = Menumatch.new
+            end
+    
+            #메뉴
+            match.menu_id = a_info.id
+            match.menu_name = @m_name
+            #레스토랑
+            match.restaurant_name = a_info.restaurant_name
+            match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
             
-            
+            match.save            
+
+            #계란 / 생선 / 우유,락토스 / 땅콩 / 참깨 / 조개류 / 대두,콩 / 견과류 / 밀,글루텐 / 아황산류 / 아질산염,질산염            
             #계란 9
             a = r.css(':nth-child(2)')
             if a.css('span').empty?
@@ -157,17 +174,35 @@ class Allergy < ApplicationRecord
         rows.each do |r|
             m_name = r.css(':nth-child(1)').text
             
-            if Allergy.where(menu_name: m_name)[0].nil?
-                a_info = Allergy.new
+            if Menu.where(menu_name: m_name)[0].nil?
+                a_info = Menu.new
             else
-                a_info = Allergy.where(menu_name: m_name)[0]
+                a_info = Menu.where(menu_name: m_name)[0]
             end
 
-            a_info.restaurant_id = Restaurant.where(restaurant_name: "맘스터치")[0].id
-            a_info.restaurant_name = "맘스터치"
+            #가게이름
+            r_name = "맘스터치"
+            a_info.restaurant_name = r_name
 
             #메뉴 이름
             a_info.menu_name = m_name
+
+            ###############menumatch와 연동########################3
+            match = Menumatch.where(menu_name: @m_name)[0]
+        
+            if match.nil?
+                match = Menumatch.new
+            end
+    
+            #메뉴
+            match.menu_id = a_info.id
+            match.menu_name = @m_name
+            #레스토랑
+            match.restaurant_name = a_info.restaurant_name
+            match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
+            
+            match.save           
+            ####################연동 끝#############################
 
             #메밀 1
             a = r.css(':nth-child(4)').text
@@ -404,13 +439,13 @@ class Allergy < ApplicationRecord
     #담김쌈http://www.damgimssam.com/?page_id=1420
 
     #####################################################################
-    if !Allergy.exists?(restaurant_name: "서브웨이") 
-        self.Subway
-    end
+    # if !Menu.exists?(restaurant_name: "서브웨이") 
+         self.Subway
+    # end
 
-    if !Allergy.exists?(restaurant_name: "맘스터치") 
-        self.Momstouch
-    end
+    # if !Menu.exists?(restaurant_name: "맘스터치") 
+         self.Momstouch
+    # end
 
 
 end

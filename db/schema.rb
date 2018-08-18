@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180816154107) do
+ActiveRecord::Schema.define(version: 20180818160531) do
 
-  create_table "allergies", force: :cascade do |t|
+  create_table "menumatches", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.string   "restaurant_name"
+    t.integer  "menu_id"
+    t.string   "menu_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["menu_id"], name: "index_menumatches_on_menu_id"
+    t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
     t.string   "menu_name"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
@@ -36,15 +47,14 @@ ActiveRecord::Schema.define(version: 20180816154107) do
     t.integer  "a20_ohjingeoh"
     t.integer  "a21_ahwangsan"
     t.string   "restaurant_name"
-    t.integer  "restaurant_id"
+    t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "image"
-    t.index ["restaurant_id"], name: "index_allergies_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "restaurant_name"
+    t.string   "zizum"
     t.string   "sido"
     t.string   "sigungu"
     t.string   "doromyeong"
