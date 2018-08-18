@@ -2,8 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <%= devise_error_messages! %>
-
+  <%= devise_error_messages! %> 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -38,6 +37,10 @@
        <%= f.radio_button :gender, "female" %>
     </label>
   </div> 
+
+  <div> <h4> 나이 </h4>
+    <%= f.select :ages, options_for_select([["10대이하", "10대이하"], ["20대-30대","20-30대"], ["40-50대","40-50대"],["60대이상","60대이상"]]), { prompt: '나이를 선택해주세요' } %>  
+  </div>
 
   <div class="field">
     <h4> 알레르기정보 </h4>

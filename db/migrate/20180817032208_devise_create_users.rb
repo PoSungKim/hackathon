@@ -7,10 +7,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
             
-      # 닉네임/생년월일/성별
+      # 닉네임/연령/성별/알러지/소비자
       t.string :name, null:false, default: ""
       t.string :gender, default: ""
       t.string :allergy
+      t.string :ages
+      t.boolean :is_Brand, default:false
       
       ## Recoverable
       t.string   :reset_password_token

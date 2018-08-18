@@ -22,7 +22,11 @@
     <label class="radio_button active"> 여자
        <%= f.radio_button :gender, "female" %>
     </label>
-  </div> 
+  </div>
+
+  <div> <h4> 나이 </h4>
+    <%= f.select :ages, options_for_select([["10대이하", "10대이하"], ["20대-30대","20-30대"], ["40-50대","40-50대"],["60대이상","60대이상"]]),{ prompt: '나이를 선택해주세요' } %>  
+  </div>
 
   <div class="field">
     <h4> 알레르기정보 </h4>
@@ -69,7 +73,7 @@
     <span class="close">&times;</span>
     <p>회원가입을 축하합니다! 원활한 사용을 위해 세부정보를 입력해주세요! </p>
     <button id="yes">수정하기</button>
-    <button id="no"><a href="/">나중에 할게요!</a><button>
+    <button id="no"><a href="/">나중에 할게요!</a></button>
   </div>
 </div>
 

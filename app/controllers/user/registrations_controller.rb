@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def editsns
     render :editsns
   end
-  
+
   # GET /resource/sign_up
   # def new
   #   super
