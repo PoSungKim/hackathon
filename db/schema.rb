@@ -99,13 +99,13 @@ ActiveRecord::Schema.define(version: 20180818185349) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin",                  default: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: "",    null: false
+    t.string   "allergy"
     t.string   "gender",                 default: ""
     t.string   "ages"
-    t.string   "allergy"
+    t.boolean  "admin",                  default: false
     t.boolean  "is_Brand",               default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
