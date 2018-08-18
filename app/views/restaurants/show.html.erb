@@ -49,19 +49,19 @@
   </thead>
 
   <tbody>
-    <% @restaurant.allergies.each do |allergy| %>
+    <% @restaurant.menus.each do |menu| %>
       <tr>
-        <td><%= allergy.id%></td>
-        <td><%= allergy.menu_name%></td>
-        <td><%= link_to '메뉴 보기', restaurant_allergy_path(@restaurant.id, allergy) %></td>
-        <td><%= link_to '메뉴 수정', edit_restaurant_allergy_path(@restaurant.id, allergy) %></td>
-        <td><%= link_to '메뉴 삭제', restaurant_allergy_path(@restaurant.id, allergy), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= menu.id%></td>
+        <td><%= menu.menu_name%></td>
+        <td><%= link_to '메뉴 보기', menu %></td>
+        <td><%= link_to '메뉴 수정', edit_menu_path(menu) %></td>
+        <td><%= link_to '메뉴 삭제', menu, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '메뉴 추가', new_restaurant_allergy_path(@restaurant.id) %>
+<%= link_to '메뉴 추가', new_menu_path %>
 <!--#############################################################################################-->
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |

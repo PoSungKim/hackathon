@@ -1,6 +1,6 @@
-class CreateAllergies < ActiveRecord::Migration[5.0]
+class CreateMenus < ActiveRecord::Migration[5.0]
   def change
-    create_table :allergies do |t|
+    create_table :menus do |t|
       t.string :menu_name
 
       t.integer :a1_maemil
@@ -27,8 +27,9 @@ class CreateAllergies < ActiveRecord::Migration[5.0]
 
 
       t.string :restaurant_name
-      t.belongs_to :restaurant
-      
+
+      t.string :image
+
       t.timestamps
     end
   end

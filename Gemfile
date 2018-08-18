@@ -11,6 +11,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'figaro'
 gem 'nokogiri'
+gem 'bootstrap', '~> 4.1.3'
 
 # for login
 gem 'devise'

@@ -6,7 +6,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control"%>
   </div>
 
   <div class = "field">
@@ -14,20 +14,23 @@
     <%= f.text_field :name, class: "form-control", :required => true %>
   </div>
 
-  <hr>
-  <div class="btn-group" data-toggle="buttons">
-   <h4> 성별 </h4>
-    <label class="radio_button"> 남자
-       <%= f.radio_button :gender, "male" %>
-    </label>
-    <label class="radio_button active"> 여자
+ <hr>
+  <div class="field">
+    <h5> 성별 </h5> 
+    <div class="btn-group" data-toggle="buttons">
+      <label class="radio_button"> 남자
+      <%= f.radio_button :gender, "male" %>
+      </label>
+      <label class="radio_button active"> 여자
        <%= f.radio_button :gender, "female" %>
-    </label>
+      </label></p>
+    </div>
   </div><br/>
 
-  <div> <h4> 나이 </h4>
-    <%= f.select :ages, options_for_select([["10대이하", "10대이하"], ["20-30대","20-30대"], ["40-50대","40-50대"],["60대이상","60대이상"]]),{ prompt: '나이를 선택해주세요' } %>  
-  </div>
+  <div class="field">
+    <h5> 나이 </h5> 
+    <%= f.select :ages, options_for_select([["10대이하", "10대이하"], ["20-30대","20-30대"], ["40-50대","40-50대"],["60대이상","60대이상"]]), { prompt: '나이를 선택해주세요' } %>  
+  </div><br/><br/>
 
   <div class="field">
     <h4> 알레르기정보 </h4>
@@ -55,7 +58,7 @@
       <%= check_box_tag 'user[allergy][]', '아황산류 ' %> 아황산류 
     </div><br/>
     <div>
-      기타:<%= f.text_field :etc, class: "form-control" %>    
+      기타:<%= f.text_field :etc %>    
       <%# 기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" /> %>
    </div>
   </div><br/>
