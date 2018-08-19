@@ -3,18 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
     create_table :restaurants do |t|
       #레스토랑 이름
       t.string :restaurant_name
-      #레스토랑 지점 이름(서브웨이 용산아이파크몰점...)
-      t.string :zizum
-      
-      #도로명 주소 기준 시도 시군구 도로명주소 건물번호1-건물번호2
-      t.string :sido
-      t.string :sigungu
-      t.string :doromyeong
-      t.integer :gunmul_bunho1
-      t.integer :gunmul_bunho2
-
-      t.string :phone_number
-
+   
       #식당 전체 알레르기 정보
       t.integer :a1_maemil
       t.integer :a2_mil

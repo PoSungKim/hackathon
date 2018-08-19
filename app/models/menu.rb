@@ -33,7 +33,7 @@ class Menu < ApplicationRecord
 
             #menumatch와 연동
             match = Menumatch.where(menu_name: @m_name)[0]
-        
+           
             if match.nil?
                 match = Menumatch.new
             end
@@ -41,10 +41,10 @@ class Menu < ApplicationRecord
             #메뉴
             match.menu_id = a_info.id
             match.menu_name = @m_name
+          
             #레스토랑
             match.restaurant_name = a_info.restaurant_name
             match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
-            
             match.save            
 
             #계란 / 생선 / 우유,락토스 / 땅콩 / 참깨 / 조개류 / 대두,콩 / 견과류 / 밀,글루텐 / 아황산류 / 아질산염,질산염            
@@ -187,8 +187,8 @@ class Menu < ApplicationRecord
             #메뉴 이름
             a_info.menu_name = m_name
 
-            ###############menumatch와 연동########################3
-            match = Menumatch.where(menu_name: @m_name)[0]
+            ###############menumatch와 연동########################
+            match = Menumatch.where(menu_name: m_name)[0]
         
             if match.nil?
                 match = Menumatch.new
@@ -196,7 +196,7 @@ class Menu < ApplicationRecord
     
             #메뉴
             match.menu_id = a_info.id
-            match.menu_name = @m_name
+            match.menu_name = m_name
             #레스토랑
             match.restaurant_name = a_info.restaurant_name
             match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
@@ -464,17 +464,34 @@ class Menu < ApplicationRecord
                 rows.each do |r|
                     m_name = r.css(".he_tit//.dp2").inner_text
 
-                    if Allergy.where(menu_name: m_name)[0].nil?
-                        a_info = Allergy.new
+                    if Menu.where(menu_name: m_name)[0].nil?
+                        a_info = Menu.new
                     else
-                        a_info = Allergy.where(menu_name: m_name)[0]
+                        a_info = Menu.where(menu_name: m_name)[0]
                     end
                 
-                    a_info.restaurant_id = 3
                     a_info.restaurant_name = "한솥"
         
                     #메뉴 이름
                     a_info.menu_name = m_name
+
+                    #menumatch와 연동
+                    match = Menumatch.where(menu_name: m_name)[0]
+                
+                    if match.nil?
+                        match = Menumatch.new
+                    end
+            
+                    #메뉴
+                    match.menu_id = a_info.id
+                    match.menu_name = m_name
+                    #레스토랑
+                    match.restaurant_name = a_info.restaurant_name
+                    match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
+                    
+                    match.save 
+
+
                     #list_01 난류, 우유, 메밀 + list_02 땅콩, 대두, 밀 + list_03 고등어, 게, 돼지고기 + list_04 복숭아, 토마토, 새우 + list_05 아황산류, 호두, 닭고기 + list_06 쇠고기, 오징어, 조개류
     
                     a_info.a9_nanryu = -1
@@ -532,17 +549,34 @@ class Menu < ApplicationRecord
             rows.each do |r|
                 m_name = r.css(".he_tit//.dp2").inner_text # .he_tit
             
-                if Allergy.where(menu_name: m_name)[0].nil?
-                    a_info = Allergy.new
+                if Menu.where(menu_name: m_name)[0].nil?
+                    a_info = Menu.new
                 else
-                    a_info = Allergy.where(menu_name: m_name)[0]
+                    a_info = Menu.where(menu_name: m_name)[0]
                 end
     
-                a_info.restaurant_id = 3
                 a_info.restaurant_name = "한솥"
     
                 #메뉴 이름
                 a_info.menu_name = m_name
+
+                #menumatch와 연동
+                match = Menumatch.where(menu_name: m_name)[0]
+            
+                if match.nil?
+                    match = Menumatch.new
+                end
+        
+                #메뉴
+                match.menu_id = a_info.id
+                match.menu_name = m_name
+                #레스토랑
+                match.restaurant_name = a_info.restaurant_name
+                match.restaurant_id = Restaurant.where(restaurant_name: a_info.restaurant_name)[0].id
+                
+                match.save 
+
+
                 #list_01 난류, 우유, 메밀 + list_02 땅콩, 대두, 밀 + list_03 고등어, 게, 돼지고기 + list_04 복숭아, 토마토, 새우 + list_05 아황산류, 호두, 닭고기 + list_06 쇠고기, 오징어, 조개류
 
                 #list_01 난류, 우유, 메밀
@@ -837,15 +871,15 @@ class Menu < ApplicationRecord
 
     
     #####################################################################
-    # if !Menu.exists?(restaurant_name: "서브웨이") 
-         self.Subway
-    # end
+    if !Menu.exists?(restaurant_name: "서브웨이") 
+        self.Subway
+    end
 
-    # if !Menu.exists?(restaurant_name: "맘스터치") 
-         self.Momstouch
-    # end
+    if !Menu.exists?(restaurant_name: "맘스터치") 
+        self.Momstouch
+    end
 
-    if !Allergy.exists?(restaurant_name: "한솥") 
+    if !Menu.exists?(restaurant_name: "한솥") 
         self.Hansot
     end
 

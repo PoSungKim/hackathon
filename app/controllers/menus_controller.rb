@@ -28,6 +28,27 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
+        ###################레스토랑, 메뉴 연동###################################3
+        @match = Menumatch.new
+        @match.menu_id = @menu.id
+        @match.menu_name = @menu.menu_name
+
+        #식당 이름이 restaurant에 없는 경우 제어, 레스토랑 이름에서 앞뒤 띄어쓰기 없애기
+        @r_match = Restaurant.where(restaurant_name: @menu.restaurant_name)[0]
+
+        if !@r_match.nil?
+          @match.restaurant_id = @r_match.id
+          @match.restaurant_name = @menu.restaurant_name
+          puts "matching sucess!"
+        else      
+          puts "restaurant name should be made"
+        end
+        byebug
+        @match.save
+        ##############################연동끝####################################
+
+
+
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
@@ -39,7 +60,7 @@ class MenusController < ApplicationController
 
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
-  def update
+  def update    
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
@@ -55,6 +76,8 @@ class MenusController < ApplicationController
   # DELETE /menus/1.json
   def destroy
     @menu.destroy
+    Menumatch.where(menu: @menu.id)[0].destroy
+
     respond_to do |format|
       format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }

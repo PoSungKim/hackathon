@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180818160531) do
+ActiveRecord::Schema.define(version: 20180819075248) do
 
   create_table "menumatches", force: :cascade do |t|
     t.integer  "restaurant_id"
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20180818160531) do
     t.string   "sido"
     t.string   "sigungu"
     t.string   "doromyeong"
-    t.integer  "gunmul_bunho1"
-    t.integer  "gunmul_bunho2"
+    t.integer  "gunmul_bunho"
+    t.integer  "sangse_juso"
     t.string   "phone_number"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
@@ -85,6 +85,21 @@ ActiveRecord::Schema.define(version: 20180818160531) do
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "zizuminfos", force: :cascade do |t|
+    t.string   "zizum_name"
+    t.string   "sido"
+    t.string   "sigungu"
+    t.string   "doromyeong"
+    t.integer  "gunmul_bunho"
+    t.integer  "sangse_juso"
+    t.string   "phone_number"
+    t.string   "image"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_zizuminfos_on_restaurant_id"
   end
 
 end
