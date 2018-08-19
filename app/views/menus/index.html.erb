@@ -1,27 +1,51 @@
+<%# ------------검색결과가 뜨는 페이지------------------ %>
+
 <p id="notice"><%= notice %></p>
+<h1>Restaurants</h1>
+<p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
+<div class="d-flex justify-content-around">
+  <div class="shops">
+    <table>
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+          <br>
+          <h3 class="seeMenu"><%= restaurant.restaurant_name %></h3> 
+          <div class="hi">
+            <% @menus.where(:restaurant_name => restaurant.restaurant_name).each do |menu|%>
+              <%=menu.menu_name%><br>
+            <% end%>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<h1>Menus</h1>
+  <div id="menuBox">
+    해당 메뉴가 뜰 자리.
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%#= link_to 'New Allergy', new_allergy_path %>
 
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td><%=menu.menu_name%></td>
-        <td><%=menu.restaurant_name%></td>
-        <td><%= link_to 'Show', menu %></td>
-        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<script>
+   $(".seeMenu").click(function() {
+      
+      var res_nameIn = $(this).html();
+      var menus = $(this).next('.hi').html();
 
-<br>
+      $.ajax({
+        async : true,
+        data : {res_name : res_nameIn, res_menu : menus},
+        type : "GET",
+        url : "getMenu",
+        success :  function(data){
+            console.log(data);
+            //split 필요.
+            $("#menuBox").html(data["menus"]);
 
-<%= link_to 'New Menu', new_menu_path %>
+        }
+
+      })
+    });
+
+</script>

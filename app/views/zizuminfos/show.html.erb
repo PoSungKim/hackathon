@@ -1,13 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Restaurant name:</strong>
-  <%= @restaurant.restaurant_name %>
+  <strong>restaurant_name:</strong>
+  <%= @zizuminfo.restaurant_name %>
 </p>
+
+<p>
+  <strong>zizum name:</strong>
+  <%= @zizuminfo.zizum_name%>
+</p>
+
+<p>
+  <strong>Sido:</strong>
+  <%= @zizuminfo.sido %>
+</p>
+
+<p>
+  <strong>Sigungu:</strong>
+  <%= @zizuminfo.sigungu %>
+</p>
+
+<p>
+  <strong>sangse_juso</strong>
+  <%= @zizuminfo.sangse_juso %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @zizuminfo.phone_number %>
+</p>
+
 
 <!--#############################################################################################-->
 <p>메뉴</p>
-
 <table>
   <thead>
     <tr>
@@ -16,7 +41,7 @@
   </thead>
 
   <tbody>
-    <% @restaurant.menus.each do |menu| %>
+    <% @zizuminfo.restaurant.menus.each do |menu| %>
       <tr>
         <td><%= menu.id%></td>
         <td><%= menu.menu_name%></td>
@@ -31,5 +56,6 @@
 <%= link_to '메뉴 추가', new_menu_path %>
 <!--#############################################################################################-->
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+
+<%= link_to 'Edit', edit_zizuminfo_path(@zizuminfo) %> |
+<%= link_to 'Back', zizuminfos_path %>

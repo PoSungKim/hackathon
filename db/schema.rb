@@ -162,4 +162,18 @@ ActiveRecord::Schema.define(version: 20180819105533) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "zizuminfos", force: :cascade do |t|
+    t.string   "zizum_name"
+    t.string   "sido"
+    t.string   "sigungu"
+    t.string   "sangse_juso"
+    t.string   "phone_number"
+    t.string   "image"
+    t.integer  "restaurant_id"
+    t.string   "restaurant_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["restaurant_id"], name: "index_zizuminfos_on_restaurant_id"
+  end
+
 end
