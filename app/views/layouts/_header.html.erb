@@ -21,9 +21,9 @@
             <!-- 나만의 페이지 버튼 -->
             <% if user_signed_in? %> 
                 <% if current_user.profile.nil? %>
-                    <%= link_to "나만의 페이지를 만들어 보세여!", new_profile_path(@profile), class: "nav-item nav-link active" %>
+                    <%= link_to "나만의 페이지", new_profile_path(@profile), class: "nav-item nav-link active" %>
                 <% elsif !current_user.profile.nil? %>
-                    <%= link_to "나만의 페이지가 이미 만들어져 있습니다!", profile_path(current_user.profile.id), class: "nav-item nav-link active" %>
+                    <%= link_to "나만의 페이지", profile_path(current_user.profile.id), class: "nav-item nav-link active" %>
                 <% end %>
             <% end %>
 
