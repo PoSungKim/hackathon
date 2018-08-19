@@ -12,7 +12,7 @@
           <h3 class="seeMenu"><%= restaurant.restaurant_name %></h3> 
           <div class="hi">
             <% @allergies.where(:restaurant_id => restaurant.id).each do |allergy|%>
-              <%=allergy.menu_name%>
+              <%=allergy.menu_name%><br>
             <% end%>
           </div>
         <% end %>

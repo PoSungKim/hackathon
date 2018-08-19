@@ -70,13 +70,7 @@ class AllergiesController < ApplicationController
  
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)
 
-     #------------json-------------------------
 
-    #  puts "22222실험실험실험============================================="
-    #  @allergies.where(:restaurant_name => "맘스터치").each do |allergy|
-    #   puts allergy.menu_name
-    #  end
-    #  puts "2222싫끝====================================================="
       
   end
 
@@ -89,9 +83,9 @@ class AllergiesController < ApplicationController
        $result[:restaurant_name] = @restaurant_name
        $result[:allergies] = @allergies
        $result = $result.to_json
-       puts "실험실험실험============================================="
-       puts $result
-       puts "싫끝====================================================="
+      #  puts "실험실험실험============================================="
+      #  puts $result
+      #  puts "싫끝====================================================="
 
        respond_to do |format|
         format.json {render json: $result}
