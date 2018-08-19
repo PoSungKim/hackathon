@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :zizuminfos
   get 'home/index'
   root 'home#index'
@@ -17,6 +18,17 @@ Rails.application.routes.draw do
 
   #메뉴
   resources :menus
+
+  ### 나만의 페이지 ###
+  resources :profiles
+  post '/profiles/:id/follow', to: 'follows#profile_follow_toggle', as: 'profile_follow'
+
+  ### Public Market ###
+  resources :articles
+  post '/articles/:id/follow', to: 'follows#article_follow_toggle', as: 'article_follow'
+  
+  ### 회원가입 Devise ###
+  devise_for :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
