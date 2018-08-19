@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
-  #----------resouces :restaurants do resouces:allergies 보다 위에 가게 해야 함! --------------------
+  #----------resouces :restaurants 보다 위에 가게 해야 함! --------------------
   get 'restaurants/search' => "restaurants#search"
-  get 'allergies/search' => "allergies#search"
-  get 'allergies/getMenu' => "allergies#getMenu"
+  get 'menus/search' => "menus#search"
+  get 'menus/getMenu' => "menus#getMenu"
   
-  get 'allergies/index' => "allergies#index", as: 'allergies' 
+  get 'menus/index' => "menus#index", as: 'menus' 
   #-------------------------------------------------------------------------------------------------
   
   resources :restaurants do
