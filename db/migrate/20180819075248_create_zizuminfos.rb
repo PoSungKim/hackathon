@@ -7,14 +7,14 @@ class CreateZizuminfos < ActiveRecord::Migration[5.0]
       #도로명 주소 기준 시도 시군구 도로명주소 건물번호1-건물번호2
       t.string :sido
       t.string :sigungu
-      t.string :doromyeong
-      t.integer :gunmul_bunho
-      t.integer :sangse_juso
+      t.string :sangse_juso
+      
 
       t.string :phone_number
       t.string :image
 
       t.belongs_to :restaurant
+      t.string :restaurant_name
       
       t.timestamps
     end

@@ -12,6 +12,8 @@
   <tbody>
     <% @zizuminfos.each do |zizuminfo| %>
       <tr>
+        <td><%= zizuminfo.restaurant_name %></td>
+        <td><%= zizuminfo.zizum_name %></td>
         <td><%= link_to 'Show', zizuminfo %></td>
         <td><%= link_to 'Edit', edit_zizuminfo_path(zizuminfo) %></td>
         <td><%= link_to 'Destroy', zizuminfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

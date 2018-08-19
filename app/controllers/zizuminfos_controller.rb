@@ -69,6 +69,6 @@ class ZizuminfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zizuminfo_params
-      params.require(:zizuminfo).permit(:zizum_name, :sido, :sigungu, :doromyeong, :gunmul_bunho, :sangse_juso, :phone_number, :image, :restaurant)
+      params.require(:zizuminfo).permit(:zizum_name, :sido, :sigungu, :sangse_juso, :phone_number, :image, :restaurant)
     end
 end

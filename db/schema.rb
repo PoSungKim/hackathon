@@ -54,13 +54,6 @@ ActiveRecord::Schema.define(version: 20180819075248) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "restaurant_name"
-    t.string   "zizum"
-    t.string   "sido"
-    t.string   "sigungu"
-    t.string   "doromyeong"
-    t.integer  "gunmul_bunho"
-    t.integer  "sangse_juso"
-    t.string   "phone_number"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
     t.integer  "a3_daedu"
@@ -91,14 +84,13 @@ ActiveRecord::Schema.define(version: 20180819075248) do
     t.string   "zizum_name"
     t.string   "sido"
     t.string   "sigungu"
-    t.string   "doromyeong"
-    t.integer  "gunmul_bunho"
-    t.integer  "sangse_juso"
+    t.string   "sangse_juso"
     t.string   "phone_number"
     t.string   "image"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "restaurant_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["restaurant_id"], name: "index_zizuminfos_on_restaurant_id"
   end
 
