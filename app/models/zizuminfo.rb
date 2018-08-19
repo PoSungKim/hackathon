@@ -65,11 +65,12 @@ class Zizuminfo < ApplicationRecord
         #restaurant table 상 본점 id
         r_id = Restaurant.where(restaurant_name: "맘스터치")[0].id
 
-        for pageNum in 1..34
-            url = "http://subway.co.kr/storeSearch?page="+"#{pageNum}"+"&rgn1Nm=&rgn2Nm=#storeList"
+        for pageNum in 1..115
+            url = "http://www.momstouch.co.kr/sub/store/store_01_list.html?pg="+"#{pageNum}"+"&area=&ss="
             data = Nokogiri::HTML(open(url))
-            rows = data.css('tbody tr')
-
+            #rows = data.css('table')[2].css('tbody tr :not(:nth-child(1))'.)
+            rows = data.css('.store_List tr:not(:nth-of-type(1))')
+        
             rows.each do |r|
                 #매장이름
                 zizum_name = r.css(':nth-child(2)').text
@@ -82,7 +83,7 @@ class Zizuminfo < ApplicationRecord
                 end
 
                 #본점이름
-                zizum.restaurant_name = "서브웨이"
+                zizum.restaurant_name = "맘스터치"
                 zizum.restaurant_id = r_id
 
                 #매장이름
@@ -103,20 +104,20 @@ class Zizuminfo < ApplicationRecord
                 end
                 
                 #전화번호
-                phone_number = r.css(':nth-child(5)').text
-                if zizum.phone_number != "Coming Soon"
-                    zizum.phone_number = phone_number
-                else
-                    zizum.phone_number = "전화번호가 없습니다"
-                end
+                zizum.phone_number = r.css(':nth-child(4)').text
                 
                 zizum.save
             end
         end
     end
+
     #한솥
 
     if !Zizuminfo.exists?(restaurant_name: "서브웨이")
         self.Subway
+    end
+
+    if !Zizuminfo.exists?(restaurant_name: "맘스터치")
+        self.Momstouch
     end
 end
