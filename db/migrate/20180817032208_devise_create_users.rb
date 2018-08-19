@@ -15,6 +15,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :admin, default:false      
       t.boolean :is_Brand, default:false
 
+      #profileimg
+      t.string :profileimage
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819105533) do
+ActiveRecord::Schema.define(version: 20180819153435) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20180819105533) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "articleimage"
+    t.integer  "user_id"
+    t.boolean  "notice",       default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
   create_table "boards", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -32,6 +43,18 @@ ActiveRecord::Schema.define(version: 20180819105533) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.string   "followable_type",                 null: false
+    t.integer  "followable_id",                   null: false
+    t.string   "follower_type",                   null: false
+    t.integer  "follower_id",                     null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["follower_id", "follower_type"], name: "fk_follows"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -92,6 +115,13 @@ ActiveRecord::Schema.define(version: 20180819105533) do
     t.index ["user_id"], name: "index_new_alarms_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "read_marks", force: :cascade do |t|
     t.string   "readable_type"
     t.integer  "readable_id"
@@ -105,13 +135,6 @@ ActiveRecord::Schema.define(version: 20180819105533) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "restaurant_name"
-    t.string   "zizum"
-    t.string   "sido"
-    t.string   "sigungu"
-    t.string   "doromyeong"
-    t.integer  "gunmul_bunho1"
-    t.integer  "gunmul_bunho2"
-    t.string   "phone_number"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
     t.integer  "a3_daedu"
@@ -147,6 +170,7 @@ ActiveRecord::Schema.define(version: 20180819105533) do
     t.string   "ages"
     t.boolean  "admin",                  default: false
     t.boolean  "is_Brand",               default: false
+    t.string   "profileimage"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -1,6 +1,7 @@
 if Object.const_defined?('RailsDb')
   RailsDb.setup do |config|
-      config.verify_access_proc = proc { |controller| controller.current_user && controller.current_user.admin? }
+    ## 관리자권한설정
+      # config.verify_access_proc = proc { |controller| controller.current_user && controller.current_user.admin? }
   end
     # # enabled or not
     # config.enabled = Rails.env.development?

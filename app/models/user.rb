@@ -1,7 +1,14 @@
  
 class User < ActiveRecord::Base
-  acts_as_reader
-  has_many :new_alarms
+  has_one :profile
+  has_many :articles
+  mount_uploader :profileimage, S3Uploader
+  acts_as_follower
+  acts_as_followable
+
+  acts_as_reader #알림기능
+  has_many :new_alarms #알림기능
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,9 +34,9 @@ class User < ActiveRecord::Base
           # 카카오는 email을 제공하지 않음 
             if auth.provider == "kakao"
               user = User.new(
-              # profile_img: auth.info.image,
+                profileimage: auth.info.image,
                 ## AWS S3와 연동할 때 프로필 이미지를 저장하기 위해 필요한 부분
-                # remote_profile_img_url: auth.info.image.gsub('http://','https://'),
+                # remote_profileimage_url: auth.info.image.gsub('http://','https://'),
                 name: auth.info.name,
                 password: Devise.friendly_token[0,20]
               )
@@ -38,8 +45,9 @@ class User < ActiveRecord::Base
                 email: auth.info.email,
                 name: auth.info.name,                
                 gender: auth.extra.raw_info.gender,
-              # is_female: auth.extra.raw_info.gender == "female" ? false : true,              
-              # profile_img: auth.info.image,
+                # is_female: auth.extra.raw_info.gender == "female" ? false : true,              
+                profileimage: auth.info.image,
+                # remote_profileimage_url: auth.info.image.gsub('http://','https://'),
                 password: Devise.friendly_token[0,20]
               )
             end

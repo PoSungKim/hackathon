@@ -10,18 +10,18 @@
   </head>
 
   <body class="container">
-  
-  <%# 알림창  %>
-  <% if user_signed_in? %>
-      <a onclick="showHide('info_html')" onfocus="this.blur()"><b>알림(<%= current_user.new_alarms.unread_by(current_user).count %>)</b></a>
-      <div id="info_html" style="display:none; margin-top: 10px;">
-        <%= render partial: "new_alarms/new_alarm", collection: current_user.new_alarms.unread_by(current_user) %>
-        <%= link_to '<b>모든 알림 지우기</b>'.html_safe, new_alarms_read_all_path %>
-      </div>
-  <% end %>
+    <%= render 'layouts/header'%>
 
-  <%= yield %>
+    <!-- 회원가입 devise (4): 요구사항 -->
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <div>
+
+    <%= yield %>
+
   </body>
+
   <script>
     function showHide(id) {
     var obj = document.getElementById(id);

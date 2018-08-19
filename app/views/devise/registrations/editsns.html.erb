@@ -16,14 +16,8 @@
   <hr>
   <div class="field">
     <h5> 성별 </h5> 
-    <div class="btn-group" data-toggle="buttons">
-      <label class="radio_button"> 남자
-      <%= f.radio_button :gender, "male" %>
-      </label>
-      <label class="radio_button active"> 여자
-       <%= f.radio_button :gender, "female" %>
-      </label></p>
-    </div>
+      <%= f.radio_button :gender, "male" %> 남자<br/>
+      <%= f.radio_button :gender, "female" %> 여자 <br/>
   </div><br/>
 
   <div class="field">
@@ -61,6 +55,11 @@
       <%# 기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" /> %>
     </div>
   </div><br/>
+  
+  <div class="field">
+    <%= f.label :profileimage, "프로필 사진" %><br />
+    <%= f.file_field :profileimage, accept: 'image/png, image/gif, image/jpeg' %>
+  </div>
   
   <div class="actions">
     <%= f.submit "Sign up" %>
