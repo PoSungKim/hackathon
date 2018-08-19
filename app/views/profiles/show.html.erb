@@ -2,55 +2,66 @@
 
 <h1 style="text-align: center;">나만의 페이지</h1>
 
-<p>
-  <%= image_tag @profile.user.profileimage.url %> <br>
-  <%= link_to '개인정보 변경', edit_user_registration_path(current_user) %> 
-</p>
+<div class="row">
 
-<p>
-  <strong>회원님: </strong>
-  <%= @profile.user.name %> 
-  (<%= @profile.user.nickname%>)
-</p>
+  <div class="col-6">
+    <p>
+      <%= image_tag @profile.user.profileimage.url %> <br>
+      <%= link_to '개인정보 변경', edit_user_registration_path(current_user) %> 
+    </p>
+  </div>
 
-<p>
-  <strong>생일: </strong>
-  <%= @profile.user.birthday %> 
-</p>
+  <div class="col-6">
+    <p>
+      <strong>회원님: </strong>
+      <%= @profile.user.name %> 
+      (<%= @profile.user.nickname%>)
+    </p>
+
+    <p>
+      <strong>생일: </strong>
+      <%= @profile.user.birthday %> 
+    </p>
 
 
-<p>
-  <strong>핸드폰: </strong>
-  <%= @profile.user.mobile %>
-</p>
+    <p>
+      <strong>핸드폰: </strong>
+      <%= @profile.user.mobile %>
+    </p>
 
-<p>
-  <strong>주소: </strong>
-  <%= @profile.user.address %>
-</p>
+    <p>
+      <strong>주소: </strong>
+      <%= @profile.user.address %>
+    </p>
+  </div>
 
-<hr />
-
-<h3>라이크한 게시글</h3>
-
-<ul>
-  <% current_user.following_by_type('Article').each do |article| %>
-    <li>
-      <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br>
-      <%= article.title %> 
-    </li>
-  <% end %>
-</ul>
+</div>
 
 <hr />
 
-<h3>자신이 쓴 게시글</h3>
+<div class="row">
 
-<ul>
-  <% current_user.articles.each do |article| %>
-    <li>
-      <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br>
-      <%= article.title %> 
-    </li>
-  <% end %>
-</ul>
+  <div class="col-6">
+    <h3>라이크한 게시글</h3>
+      <ul>
+        <% current_user.following_by_type('Article').each do |article| %>
+          <li>
+            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br>
+            <%= article.title %> 
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+  <div class="col-6">
+    <h3>자신이 쓴 게시글</h3>
+      <ul>
+        <% current_user.articles.each do |article| %>
+          <li>
+            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br>
+            <%= article.title %> 
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>
