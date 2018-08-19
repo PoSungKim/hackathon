@@ -60,16 +60,20 @@ class MenusController < ApplicationController
  
      #!!만약 교차가능성이랑 모르겠음 부분 처리하려면 수정해야함.---------
  
-     #--------------------search 에 맞게 메뉴 찾기---------------------(이 밑에꺼도 줄 정리하려니까 오류났다.ㅠㅠ 테러 죄송)
+     #--------------------search 에 맞게 메뉴 찾기---------------------
  
      @menus = Menu.where("#{:a1_maemil} <= ? AND #{:a2_mil} <= ? AND #{:a3_daedu} <= ? AND #{:a4_hodu} <= ? AND #{:a5_ddangkong} <= ? AND #{:a6_peach} <= ? AND #{:a7_tomato} <= ? AND #{:a8_piggogi} <= ? AND #{:a9_nanryu} <= ? AND #{:a10_milk} <= ? AND #{:a11_ddakgogi} <= ? AND #{:a12_shoigogi} <= ? AND #{:a13_saewoo} <= ? AND #{:a14_godeungeoh} <= ? AND #{:a15_honghap} <= ? AND #{:a16_junbok} <= ? AND #{:a17_gul} <= ? AND #{:a18_jogaeryu} <= ? AND #{:a19_gye} <= ? AND #{:a20_ohjingeoh} <= ? AND #{:a21_ahwangsan} <= ?", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21)
      
      # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
-     puts "==============실험시작================="
-     puts Menu.restaurants
-     puts "==============실험끝================="
-     #@restaurants = @menus.restaurants
-     #@restaurants = Restaurant.find(@menus.map(&:restaurant_id).uniq)
+    
+    #  puts "==============실험시작================="
+    #  puts @menus.map(&:restaurant_name).uniq
+    #  puts "**************************************"
+    #  puts Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
+    #  puts "==============실험끝================="
+     
+
+     @restaurants = Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
  
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)
 
@@ -81,7 +85,7 @@ class MenusController < ApplicationController
     #받아오기
        @restaurant_name = params[:res_name]
        @menus = params[:res_menu]
-       $result = {"restaurant_name" => 0, "menus" => nil}
+       $result = {"restaurant_name" => nil, "menus" => nil}
 
        $result[:restaurant_name] = @restaurant_name
        $result[:menus] = @menus
