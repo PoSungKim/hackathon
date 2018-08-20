@@ -25,7 +25,7 @@ class CreateMenus < ActiveRecord::Migration[5.0]
       t.integer :a20_ohjingeoh
       t.integer :a21_ahwangsan
 
-
+      t.belongs_to :restaurant
       t.string :restaurant_name
 
       t.string :image

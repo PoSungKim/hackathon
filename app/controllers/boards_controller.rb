@@ -1,10 +1,31 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-
+  require 'open-uri'
+  require 'json'
+  
   # GET /boards
   # GET /boards.json
   def index
     @boards = Board.all
+    # @rt_name = params[:rt_name]
+    # @rt_num = params[:rt_num]
+    # @restaurants = Restaurant.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
+     
+    url ="http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?ldong_addr_mgpl_dg_cd=41&ldong_addr_mgpl_sggu_cd=117&ldong_addr_mgpl_sggu_emd_cd=101&wkpl_nm=#{@rt_name}&bzowr_rgst_no=#{@rt_num}&pageNo=10&startPage=10&numOfRows=1&pageSize=1&serviceKey=IoGcqdatXH1xSmopMvIleCtd7ZJELW2kJg9d2WvfZdbxvH1stcbh8Gvdui/iNUG28Wcq/uppkV0YZqU4Bd3BOA==&&_type=json"
+    isBrand= JSON.load(open(url))
+    puts isBrand
+
+    # @name= isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"]
+
+    # if isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] != nil
+    @result= if params[:rt_num] && isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] ==1
+      "운영중"
+    elsif  params[:rt_num] && isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] == 2
+      "탈퇴"
+    else
+    end  
+    # end
+
   end
 
   # GET /boards/1
@@ -25,14 +46,6 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
-    #$array=[]
-    #for n in 1 .. User.count
-    #  $array.append(n)
-    #end
-    #원래는 commentcreate에서 user: commentable user, 댓글달수있는 사용자 즉 post작성자
-    @new_alarm = NewAlarm.create! user: current_user , #알림이 가는 사용자
-      content: "#{current_user.name.truncate(15, omission: '...')} 님이 글을 달았습니다.", 
-      link: request.referrer
 
     respond_to do |format|
       if @board.save

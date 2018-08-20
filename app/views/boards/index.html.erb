@@ -1,51 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%= form_tag(boards_path, method: :get) do %>
+    <%= text_field_tag :rt_num, params[:rt_num] %>
+    <%= submit_tag 'Search'%>
+<% end %>
 
-<h1>Boards</h1>
+<%= @result%>
+<%=  @name %>
 
-<table>
-  <thead>
-    <tr>
-      <th>/</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>  <%# 공지사항맨위에%>
-    <% @boards.each do |board| %>
-    <% if board.notice == true %> 
-      <tr>
-        <td>공지</td>
-        <td><%= board.title %></td>
-        <td><%= board.content %></td>
-        <td><%#= board.user.name %>관리자</td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-   <% end %> 
-      </tbody>
-      
- <tbody>
-    <% @boards.each do |board| %>
-    <% if board.notice == false %> 
-     <tr>
-        <td> </td>
-        <td><%= board.title %></td>
-        <td><%= board.content %></td>
-        <td><%= board.user.name %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr> 
-  <% end %>
-   <% end %> 
-  </tbody>
-</table>
+    <div class="form-group row">
+        <div class="col-md-4 col-md-offset-3">
+            <input type="text" name="rt_num" class="form-control text-center" placeholder="검색어">
+        </div>
+        <div class="col-md-2">
+              <button type="submit" class="btn btn-success form-control"><a href='/result/<%=@rt_num%>'>검색하기</button>
+        </div>
+    </div>
 
-<br>
-
-<%= link_to 'New Board', new_board_path %>
+  <%# <%= link_to '에 대한 다음(kakao) 검색 결과 확인하기', "/result/"+@rt_num%> 
+  
