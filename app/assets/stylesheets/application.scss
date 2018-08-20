@@ -1,5 +1,24 @@
 @import 'bootstrap';
 
+//-- font 정리
+//나눔고딕 
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+//Kopub돋움
+@font-face { font-family: 'KoPubDotumMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff'); font-weight: normal; font-style: normal; }
+//제주명조
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
+//이롭게바탕
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
+
+
+
+//------------nav바 및 전체홈페이지 관련
+.wholebackground {
+    background-color: #F2F1F0;
+}
+
+
+//------
 #menuBox{
     width: 300px;
     height: 500px;
