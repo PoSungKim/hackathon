@@ -72,7 +72,6 @@ class MenusController < ApplicationController
     #  puts Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
     #  puts "==============실험끝================="
      
-
      @restaurants = Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
  
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)
