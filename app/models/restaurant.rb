@@ -2,8 +2,7 @@ class Restaurant < ApplicationRecord
     mount_uploader :image, S3Uploader
    
     has_many :zizuminfos
-    has_many :menumatches
-    has_many :menus, through: :menumatches, source: :menu
+    has_many :menus
 
     validates :restaurant_name, :uniqueness => true
 
@@ -24,5 +23,6 @@ class Restaurant < ApplicationRecord
         r.restaurant_name = "한솥"
         r.save
     end
+
 end
 

@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180819075248) do
 
-  create_table "menumatches", force: :cascade do |t|
-    t.integer  "restaurant_id"
-    t.string   "restaurant_name"
-    t.integer  "menu_id"
-    t.string   "menu_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["menu_id"], name: "index_menumatches_on_menu_id"
-    t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
-  end
-
   create_table "menus", force: :cascade do |t|
     t.string   "menu_name"
     t.integer  "a1_maemil"
@@ -46,10 +35,12 @@ ActiveRecord::Schema.define(version: 20180819075248) do
     t.integer  "a19_gye"
     t.integer  "a20_ohjingeoh"
     t.integer  "a21_ahwangsan"
+    t.integer  "restaurant_id"
     t.string   "restaurant_name"
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
