@@ -3,21 +3,23 @@
 <p id="notice"><%= notice %></p>
 <h1>Restaurants</h1>
 <p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
+<h3><%=params[:sido]%>에 있는 해당 식당-<%=@zizums.length%>개</h3>
 
 <div class="d-flex justify-content-around">
   <div class="shops" >
-    <% @restaurants.each do |restaurant| %>
+    <% @zizums.each do |zizum| %>
       <div class="card" style="width: 20rem;">
         <div class="card-body">
           <%# ajax로 전송할 레스토랑 이름%>
-          <h3 class="seeMenu"><%= restaurant.restaurant_name %></h3>
+          <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
+          <h3><%=zizum.zizum_name%></h3>
           <%# display:none 하고 옆으로 메뉴 띄울 것임%>
           <div class="hideMenu">
-            <% @menus.where(:restaurant_name => restaurant.restaurant_name).each do |menu|%>
+            <% @menus.where(:restaurant_name => zizum.restaurant_name).each do |menu|%>
               <%=menu.menu_name%><br>
             <% end%>
           </div>
-          <p class="card-text">음식점 설명(ex.위치).여기에 하트 들어갈 자리. (좋아요 누르는 것)</p>
+          <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
         </div>
       </div>
     <% end %>
@@ -35,7 +37,7 @@
    $(".card-body").click(function() {
       
       var res_nameIn = $(this).children(".seeMenu").html();
-      var menus = $(this).children(".seeMenu").next('.hideMenu').html();
+      var menus = $(this).children(".seeMenu").siblings('.hideMenu').html();
 
       $.ajax({
         async : true,

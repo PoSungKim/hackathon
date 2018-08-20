@@ -1,16 +1,21 @@
 @import 'bootstrap';
 
 #menuBox{
+    margin: 10px;
     width: 300px;
     height: 500px;
     overflow-y: scroll;
     border-style: solid;
-    border-color: rgb(0, 49, 0);
+    border-color: black;
 }
 
-
 .shops{
-    width: 500px;
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+    width: 600px;
+    height: 700px;
+    overflow-y: scroll;
 }
 
 .hideMenu{
@@ -22,5 +27,9 @@
 }
 
 .allergy{
-    width: 100px;
+    width: 180px;
+}
+
+.allergy-check{
+    visibility:hidden;
 }
