@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :boards #임시
 
   ### api테스트 ###
-  get 'result/:rt_num' => 'boards#result' 
+  get 'result2/:keyword' => 'boards#result2' 
 
   ### 나만의 페이지 ###
   resources :profiles
