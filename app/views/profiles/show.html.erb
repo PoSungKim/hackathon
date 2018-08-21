@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center;">나만의 페이지</h1>
+
+<div class="row">
+
+  <div class="col-6">
+    <p>
+      <% if @profile.user.profileimage.url != nil %>
+      <%= image_tag @profile.user.profileimage.url %> <br> <%end %>
+      <%= link_to '개인정보 변경', edit_user_registration_path %> 
+    </p>
+  </div>
+
+  <div class="col-6">
+    <p>
+      <strong>회원님: </strong>
+      <%= @profile.user.name %> 
+      <%# (<%= @profile.user.nickname%>
+    </p>
+
+    <p>
+      <strong>나이: </strong>
+      <%= @profile.user.ages %> 
+    </p>
+
+    <p>
+      <strong>알레르기정보 </strong>
+      <%= @profile.user.allergy.gsub(',','') %> 
+    </p>
+  </div>
+
+</div>
+
+<hr />
+
+<div class="row">
+
+  <div class="col-6">
+    <h3>라이크한 게시글</h3>
+      <ul>
+        <% current_user.following_by_type('Article').each do |article| %>
+          <li> <% if article.articleimage.thumb.url != nil %>
+            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
+            <%= link_to article.title, article_path(article.id) %> 
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+  <div class="col-6">
+    <h3>자신이 쓴 게시글</h3>
+      <ul>
+        <% current_user.articles.each do |article| %>
+          <li>  <% if article.articleimage.thumb.url != nil %>
+            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
+            <%= link_to article.title, article_path(article.id) %> 
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>

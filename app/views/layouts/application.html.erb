@@ -6,14 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   </head>
 
   <body class="container wholebackground">
-    <%= render "layouts/header" %>
+    <%= render 'layouts/header2'%>
+    <!-- 회원가입 devise (4): 요구사항 -->
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <div>
+
     <%= yield %>
+
   </body>
+
+  <script>
+    function showHide(id) {
+    var obj = document.getElementById(id);
+      if (obj.style.display == 'none')
+       obj.style.display = 'block';
+      else
+       obj.style.display = 'none';  
+    }
+  </script>
 </html>
 
 
