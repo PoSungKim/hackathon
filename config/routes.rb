@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resources :new_alarms  #알림 삭제보다아래위치
   resources :boards #임시
 
+  ### api테스트 ###
+  get 'result2/:keyword' => 'boards#result2' 
+
   ### 나만의 페이지 ###
   resources :profiles
   post '/profiles/:id/follow', to: 'follows#profile_follow_toggle', as: 'profile_follow'

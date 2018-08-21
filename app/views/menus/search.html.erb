@@ -47,11 +47,74 @@
                 <%= check_box_tag :a4_hodu, checked = true%> 호두<br>
                 <%= check_box_tag :a5_ddangkong, checked = true%> 땅콩<br>
                 <%= check_box_tag :a21_ahwangsan, checked = true%> 아황산류<br>
+<div id="default"> 
+    <%= form_tag(menus_path, method: :get) do %>
+        <%= text_field_tag :sido, params[:sido]%>
+        <br>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류</button></div>
+                <div class="allergy-check">
+                    난류: <%= check_box_tag :a9_nanryu, checked = true%><br>
+                    우유: <%= check_box_tag :a10_milk, checked = true%><br>
+                </div>
+            </div>
+            <div>
+                <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류</button></div>
+                <div class="allergy-check">
+                    복숭아: <%= check_box_tag :a6_peach, checked = true%><br>
+                    토마토: <%= check_box_tag :a7_tomato, checked = true%><br>
+                    메밀: <%= check_box_tag :a1_maemil, checked = true%><br>
+                    밀: <%= check_box_tag :a2_mil, checked = true%><br>
+                    대두(콩): <%= check_box_tag :a3_daedu, checked = true%><br>
+                </div>
+            </div>
+            <div>
+                <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류</button></div>
+                <div class="allergy-check">
+                    닭고기: <%= check_box_tag :a11_ddakgogi, checked = true%><br>
+                    쇠고기: <%= check_box_tag :a12_shoigogi, checked = true%><br>
+                    돼지고기: <%= check_box_tag :a8_piggogi, checked = true%><br>
+                </div>
+            </div>
+            <div>
+                <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류</button></div>
+                <div class="allergy-check">
+                    새우: <%= check_box_tag :a13_saewoo, checked = true%><br>
+                    고등어: <%= check_box_tag :a14_godeungeoh, checked = true%><br>
+                    홍합: <%= check_box_tag :a15_honghap, checked = true%><br>
+                    전복: <%= check_box_tag :a16_junbok, checked = true%><br>
+                    굴: <%= check_box_tag :a17_gul, checked = true%><br>
+                    조개류: <%= check_box_tag :a18_jogaeryu, checked = true%><br>
+                    게: <%= check_box_tag :a19_gye, checked = true%><br>
+                    오징어: <%= check_box_tag :a20_ohjingeoh, checked = true%><br>
+                </div>
+            </div>
+            <div>
+                <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타</button></div>
+                <div class="allergy-check">
+                    호두: <%= check_box_tag :a4_hodu, checked = true%><br>
+                    땅콩: <%= check_box_tag :a5_ddangkong, checked = true%><br>
+                    아황산류: <%= check_box_tag :a21_ahwangsan, checked = true%><br>
+                </div>
             </div>
         </div>
-    </div>
-    <%= submit_tag 'Search'%>
-<% end %>
+        <%= submit_tag 'Search'%>
+    <%end%>    
+</div>
+
+<!--- custom 검색옵션 -->
+<% if user_signed_in? %> 
+    <div id="myinfo" style="display:none;">
+        <%= render partial: 'layouts/custom' %>
+    </div>    
+<%else%>
+<%end%>
+
+<button id="custom">내 알러지정보 불러오기</button>
+<%# <button id="reset" onClick="funcreset()">초기화</button> %>
+<%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
+
 
 <script>
     $('.a-type').click(function() {
@@ -70,5 +133,15 @@
             
         }
     });
-</script>
 
+    var myinfo = document.getElementById("myinfo");
+    var btn = document.getElementById('custom');
+    var basic = document.getElementById("default");
+
+    btn.onclick = function(){
+        myinfo.style.display="block";
+        basic.style.display="none";
+    }
+
+    // function funcreset(){}
+</script>

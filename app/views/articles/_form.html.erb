@@ -15,10 +15,10 @@
     <%= f.text_field :user_id, type: "hidden" %>
   </div>
 
-  <% if current_user && current_user.admin? %> 
+  <%# <% if current_user && current_user.admin? %>  
   <font color="red">어드민 전용 : 해당 게시글 공지사항 설정 </font>
   <%= f.check_box :notice, id: :post_notice %>
-  <% end %> 
+  <%# <% end %>  
 
   <div class="field">
     <%= f.label :title %>
