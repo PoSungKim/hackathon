@@ -12,8 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180819153435) do
 
-<<<<<<< HEAD
-=======
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -68,18 +66,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "menumatches", force: :cascade do |t|
-    t.integer  "restaurant_id"
-    t.string   "restaurant_name"
-    t.integer  "menu_id"
-    t.string   "menu_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["menu_id"], name: "index_menumatches_on_menu_id"
-    t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
-  end
-
->>>>>>> a167a49f48c8fddc3498a51c761effcb95f34bd7
   create_table "menus", force: :cascade do |t|
     t.string   "menu_name"
     t.integer  "a1_maemil"
@@ -109,8 +95,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
-<<<<<<< HEAD
-=======
   end
 
   create_table "new_alarms", force: :cascade do |t|
@@ -138,7 +122,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
     t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
     t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
->>>>>>> a167a49f48c8fddc3498a51c761effcb95f34bd7
   end
 
   create_table "restaurants", force: :cascade do |t|
