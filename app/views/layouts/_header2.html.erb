@@ -1,0 +1,26 @@
+<div class="navbarstyle" >
+    <div>걱정없식로고</div>
+    <div class="navbarcontent">
+        <div><%= link_to "About", home_about_path, :style=>'color:#20201b' %></div>
+        <div><%= link_to "Restaurant", restaurants_search_path, :style=>'color:#20201b' %></div>
+        <div>Filtering</div>
+        <div>
+        <% if user_signed_in? %> 
+            <% if current_user.profile.nil? %>
+                <%= link_to "My Page", new_profile_path(@profile), :style=>'color:#20201b' %>
+            <% elsif !current_user.profile.nil? %>
+                <%= link_to "My Page", profile_path(current_user.profile.id), :style=>'color:#20201b'  %>
+            <% end %>
+        <% end %>
+        </div>
+        <!-- 로그인 버튼 -->
+        <div>
+            <% if !user_signed_in? %> 
+                <%= link_to "Log In", new_user_session_path, :style=>'color:#20201b' %>
+            <% elsif user_signed_in?%>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>'color:#20201b' %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
