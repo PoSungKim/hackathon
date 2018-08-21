@@ -20,6 +20,7 @@
 .navbarstyle {
     background-color: white;
     position: fixed;
+    display:flex;
     top:0;
     left:0;
     z-index: 999;
@@ -29,12 +30,13 @@
     opacity: 0.5;
     font-family: 'Jeju Myeongjo', serif;
     color: #454338;
+    justify-content: space-between;
 }
 
 .navbarcontent{
     display: flex;
     justify-content: space-around;
-    width: 67%;
+    width: 40em;
 }
 
 
