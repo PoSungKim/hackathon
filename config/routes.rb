@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_scope :owner do
+    get 'owners/search' => 'owners/sessions#search' , as: 'search_path'
+  end
+ 
+  devise_for :owners, path: 'owners', controllers: { sessions: "owners/sessions", registraions: 'owners/registrations'}
   resources :zizuminfos
   get 'home/index'
   root 'home#index'
@@ -22,7 +27,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
-  devise_for :admins
+  # devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #devise보다 아래위치
 
   ### 알림 ###

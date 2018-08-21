@@ -18,22 +18,8 @@
       <p><%= link_to('정보수정', edit_user_registration_path) %></p>
       <%# <p><%= link_to('정보업데이트', editsns_path) %>
       
-      <p> <%= link_to "로그아웃", destroy_user_session_path, 
-              method: :delete, data: {confirm: "로그아웃 하시겠습니까?"},
-              class: 'btn btn-default' %> </p>
-    <% else %>
-      <p> <%= link_to "로그인", new_user_session_path, class: 'btn btn-default' %> </p>
-    <% end %>
+<%end%>
   </div>
 
-
-  <div class= "field"> 식당을 등록하시려면 사업자 번호를 확인해주세요. ===임시
-    <%= form_tag(root_path, method: :get) do %>
-      <%= text_field_tag :rt_num, params[:rt_num], placeholder: '사업자번호 앞6자리' %>
-      <%= submit_tag 'Search'%>
-    <% end %>
-    <%= @result%>
-  </div> 
-</div>
 
 

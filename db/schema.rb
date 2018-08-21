@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819153435) do
+ActiveRecord::Schema.define(version: 20180821022743) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,17 +66,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "menumatches", force: :cascade do |t|
-    t.integer  "restaurant_id"
-    t.string   "restaurant_name"
-    t.integer  "menu_id"
-    t.string   "menu_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["menu_id"], name: "index_menumatches_on_menu_id"
-    t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
-  end
-
   create_table "menus", force: :cascade do |t|
     t.string   "menu_name"
     t.integer  "a1_maemil"
@@ -115,6 +104,24 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_new_alarms_on_user_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "name",                   default: "",    null: false
+    t.integer  "phonenum",                               null: false
+    t.string   "shop_name"
+    t.integer  "shop_num"
+    t.text     "shop_info"
+    t.boolean  "is_Shop",                default: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.index ["email"], name: "index_owners_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
   create_table "profiles", force: :cascade do |t|

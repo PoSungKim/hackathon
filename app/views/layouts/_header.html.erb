@@ -28,10 +28,12 @@
             <% end %>
 
             <!-- 로그인 버튼 -->
-            <% if !user_signed_in? %> 
+            <% if !user_signed_in? && !owner_signed_in? %> 
                 <%= link_to "로그인", new_user_session_path, class: "nav-item nav-link active" %>
             <% elsif user_signed_in?%>
                 <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "nav-item nav-link active" %>
+            <% elsif owner_signed_in?%>
+                <%= link_to "로그아웃", destroy_owneer_session_path, method: :delete, class: "nav-item nav-link active" %>            
             <% end %>
 
         <!-- 알림창 -->

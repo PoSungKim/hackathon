@@ -1,5 +1,5 @@
 <h2>Log in</h2>
-  <%= devise_error_messages! %>
+
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -17,7 +17,16 @@
   </div>
 <% end %>
 
-<%= link_to '사업자로 접속하기',  new_owner_session_path %>
-<br>
+  <div class="form-inputs">
+    <div class= "field"> 식당을 등록하시려면 사업자 번호를 확인해주세요. ===임시<br>
+    <%= form_tag(home_index_path, method: :get) do %>
+      <%= text_field_tag :rt_num, params[:rt_num], placeholder: '되는거예시 124815ㅋㅋㅋ사업자번호 앞6자리 ' %>
+      <%= submit_tag 'Search'%>
+    <% end %>
+    <%= @result%>
+    <% if $success.present? %>
+      <p class="alert alert-success"><%= success %></p>
+  <% end %>
+  </div> 
 
-<%= render "devise/shared/links" %>
+<%= render "owners/shared/links" %>

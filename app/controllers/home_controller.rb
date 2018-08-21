@@ -15,6 +15,17 @@ class HomeController < ApplicationController
         else
            @result = "탈퇴자입니다. 챗봇으로 문의주세요!"    
         end
-      end  
+      
+      if isBrand["response"]["body"]["totalCount"] == 0
+        redirect_to new_owner_session_path
+      elsif isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] == 1
+        redirect_to new_owner_registration_path
+      end 
+      
+    end  
+
+   
   end
+
+
 end
