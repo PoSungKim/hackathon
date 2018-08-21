@@ -809,13 +809,13 @@ class Menu < ApplicationRecord
     
     #https://stackoverflow.com/questions/30746397/can-nokogiri-interpret-javascript-web-scraping
     #####################################################################
-    if !Menu.exists?(restaurant_name: "서브웨이") 
-        self.Subway
-    end
+    # if !Menu.exists?(restaurant_name: "서브웨이") 
+    #     self.Subway
+    # end
 
-    if !Menu.exists?(restaurant_name: "맘스터치") 
-        self.Momstouch
-    end
+    # if !Menu.exists?(restaurant_name: "맘스터치") 
+    #     self.Momstouch
+    # end
 
     #if !Allergy.exists?(restaurant_name: "한솥") 
         #self.Hansot

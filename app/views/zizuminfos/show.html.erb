@@ -48,12 +48,13 @@
         <td><%= link_to '메뉴 보기', menu %></td>
         <td><%= link_to '메뉴 수정', edit_menu_path(menu) %></td>
         <td><%= link_to '메뉴 삭제', menu, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <!--<td><%#= link_to '수정 요청', %></td>-->
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '메뉴 추가', new_menu_path %>
+<%= link_to '메뉴 추가', new_menu_path(restaurant_id: @zizuminfo.restaurant.id) %>
 <!--#############################################################################################-->
 
 

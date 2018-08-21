@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'edit_asks/index'
+
+  get 'edit_asks/ask'
+
   resources :zizuminfos
   get 'home/index'
   root 'home#index'
@@ -44,5 +48,7 @@ Rails.application.routes.draw do
   ### 회원가입 Devise ###
   # devise_for :users
 
+  ### 크롤링 ###
+  get '/crawling' => 'restaurants#crawling'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
