@@ -24,11 +24,11 @@
     시/군/구 입력(ex. 용산구):
     <button type="button" class="jikjup">직접 입력</button>
     <button type="button" class="all">전체 선택</button>
-    <br>
-
-    <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
-    <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter",:id => "location", :placeholder => "시군구 직접 입력"%>
     
+    <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
+    <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
+    
+    <br>
     <br>
     <div class="d-flex justify-content-between">
         <div>
