@@ -17,32 +17,23 @@
   <body class="container wholebackground">
     <%= render 'layouts/header2'%>
     <%= yield %>
-
   </body>
 
   <script>
-    function showHide(id) {
-    var obj = document.getElementById(id);
-      if (obj.style.display == 'none')
-       obj.style.display = 'block';
-      else
-       obj.style.display = 'none';  
+    jQuery(function($) {
+    $("body").css("display", "none");
+    $("body").fadeIn(1000);
+    $("a.transition").click(function(event){
+    event.preventDefault();
+    linkLocation = this.href;
+    $("body").fadeOut(500, redirectPage);
+    });
+    function redirectPage() {
+    window.location = linkLocation;
     }
+    });
   </script>
 </html>
 
 
-<script>
-jQuery(function($) {
-$("body").css("display", "none");
-$("body").fadeIn(1000);
-$("a.transition").click(function(event){
-event.preventDefault();
-linkLocation = this.href;
-$("body").fadeOut(500, redirectPage);
-});
-function redirectPage() {
-window.location = linkLocation;
-}
-});
-</script>
+
