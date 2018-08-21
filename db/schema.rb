@@ -24,6 +24,37 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "allergies", force: :cascade do |t|
+    t.string   "menu_name"
+    t.integer  "a1_maemil"
+    t.integer  "a2_mil"
+    t.integer  "a3_daedu"
+    t.integer  "a4_hodu"
+    t.integer  "a5_ddangkong"
+    t.integer  "a6_peach"
+    t.integer  "a7_tomato"
+    t.integer  "a8_piggogi"
+    t.integer  "a9_nanryu"
+    t.integer  "a10_milk"
+    t.integer  "a11_ddakgogi"
+    t.integer  "a12_shoigogi"
+    t.integer  "a13_saewoo"
+    t.integer  "a14_godeungeoh"
+    t.integer  "a15_honghap"
+    t.integer  "a16_junbok"
+    t.integer  "a17_gul"
+    t.integer  "a18_jogaeryu"
+    t.integer  "a19_gye"
+    t.integer  "a20_ohjingeoh"
+    t.integer  "a21_ahwangsan"
+    t.string   "restaurant_name"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "image"
+    t.index ["restaurant_id"], name: "index_allergies_on_restaurant_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -89,12 +120,10 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.integer  "a19_gye"
     t.integer  "a20_ohjingeoh"
     t.integer  "a21_ahwangsan"
-    t.integer  "restaurant_id"
     t.string   "restaurant_name"
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
   create_table "new_alarms", force: :cascade do |t|
@@ -126,6 +155,12 @@ ActiveRecord::Schema.define(version: 20180819153435) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "restaurant_name"
+    t.string   "sido"
+    t.string   "sigungu"
+    t.string   "doromyeong"
+    t.integer  "gunmul_bunho1"
+    t.integer  "gunmul_bunho2"
+    t.string   "phone_number"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
     t.integer  "a3_daedu"

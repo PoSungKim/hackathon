@@ -23,6 +23,7 @@ gem 'figaro'
 
 ### 크롤링 ###
 gem 'nokogiri'
+gem 'whenever', require: false
 
 ### 디자인 ###
 gem 'bootstrap', '~> 4.1.3'

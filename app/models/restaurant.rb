@@ -6,22 +6,24 @@ class Restaurant < ApplicationRecord
 
     validates :restaurant_name, :uniqueness => true
 
-    if Restaurant.where(restaurant_name: "서브웨이")[0].nil?
-        r = Restaurant.new
-        r.restaurant_name = "서브웨이"
-        r.save
-    end
+    def self.RestaurantName
+        if Restaurant.where(restaurant_name: "서브웨이")[0].nil?
+            r = Restaurant.new
+            r.restaurant_name = "서브웨이"
+            r.save
+        end
 
-    if Restaurant.where(restaurant_name: "맘스터치")[0].nil?
-        r = Restaurant.new
-        r.restaurant_name = "맘스터치"
-        r.save
-    end
+        if Restaurant.where(restaurant_name: "맘스터치")[0].nil?
+            r = Restaurant.new
+            r.restaurant_name = "맘스터치"
+            r.save
+        end
 
-    if Restaurant.where(restaurant_name: "한솥")[0].nil?
-        r = Restaurant.new
-        r.restaurant_name = "한솥"
-        r.save
+        if Restaurant.where(restaurant_name: "한솥")[0].nil?
+            r = Restaurant.new
+            r.restaurant_name = "한솥"
+            r.save
+        end
     end
 
 end
