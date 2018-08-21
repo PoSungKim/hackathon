@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @restaurant.menus.each do |menu| %>
+    <% Menu.where(:restaurant_name =>@restaurant.restaurant_name).each do |menu| %>
       <tr>
         <td><%= menu.id%></td>
         <td><%= menu.menu_name%></td>

@@ -3,35 +3,42 @@
 <p id="notice"><%= notice %></p>
 <h1>Restaurants</h1>
 <p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
+<h3><strong><%=params[:sido]%></strong>에 있는 해당 식당-<%=@zizums.length%>개</h3>
+
 <div class="d-flex justify-content-around">
-  <div class="shops">
-    <table>
-      <tbody>
-        <% @restaurants.each do |restaurant| %>
-          <br>
-          <h3 class="seeMenu"><%= restaurant.restaurant_name %></h3> 
-          <div class="hi">
-            <% @menus.where(:restaurant_name => restaurant.restaurant_name).each do |menu|%>
+  <div class="shops" >
+    <% @zizums.each do |zizum| %>
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <%# ajax로 전송할 레스토랑 이름%>
+          <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
+          <h3><%=zizum.zizum_name%></h3>
+          <%# display:none 하고 옆으로 메뉴 띄울 것임%>
+          <div class="hideMenu">
+            <% @menus.where(:restaurant_name => zizum.restaurant_name).each do |menu|%>
               <%=menu.menu_name%><br>
             <% end%>
           </div>
-        <% end %>
-      </tbody>
-    </table>
+          <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
+          <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
+        </div>
+      </div>
+    <% end %>
   </div>
 
+  <%# 해당 메뉴가 뜨는 자리. %>
   <div id="menuBox">
     해당 메뉴가 뜰 자리.
   </div>
 </div>
 
-<%#= link_to 'New Allergy', new_allergy_path %>
+<%#= link_to 'New Menu', new_menu_path%>
 
 <script>
-   $(".seeMenu").click(function() {
+   $(".card-body").click(function() {
       
-      var res_nameIn = $(this).html();
-      var menus = $(this).next('.hi').html();
+      var res_nameIn = $(this).children(".seeMenu").html();
+      var menus = $(this).children(".seeMenu").siblings('.hideMenu').html();
 
       $.ajax({
         async : true,
@@ -42,9 +49,7 @@
             console.log(data);
             //split 필요.
             $("#menuBox").html(data["menus"]);
-
         }
-
       })
     });
 

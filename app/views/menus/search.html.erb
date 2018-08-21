@@ -1,25 +1,74 @@
 <h3>검색하기(알레르기 있다면 체크)</h3>
 <%= form_tag(menus_path, method: :get) do %>
-    메밀: <%= check_box_tag :a1_maemil, checked = true%><br>
-    밀: <%= check_box_tag :a2_mil, checked = true%><br>
-    대두: <%= check_box_tag :a3_daedu, checked = true%><br>
-    호두: <%= check_box_tag :a4_hodu, checked = true%><br>
-    땅콩: <%= check_box_tag :a5_ddangkong, checked = true%><br>
-    복숭아: <%= check_box_tag :a6_peach, checked = true%><br>
-    토마토: <%= check_box_tag :a7_tomato, checked = true%><br>
-    돼지고기: <%= check_box_tag :a8_piggogi, checked = true%><br>
-    난류: <%= check_box_tag :a9_nanryu, checked = true%><br>
-    우유: <%= check_box_tag :a10_milk, checked = true%><br>
-    닭고기: <%= check_box_tag :a11_ddakgogi, checked = true%><br>
-    쇠고기: <%= check_box_tag :a12_shoigogi, checked = true%><br>
-    새우: <%= check_box_tag :a13_saewoo, checked = true%><br>
-    고등어: <%= check_box_tag :a14_godeungeoh, checked = true%><br>
-    홍합: <%= check_box_tag :a15_honghap, checked = true%><br>
-    전복: <%= check_box_tag :a16_junbok, checked = true%><br>
-    굴: <%= check_box_tag :a17_gul, checked = true%><br>
-    조개류: <%= check_box_tag :a18_jogaeryu, checked = true%><br>
-    게: <%= check_box_tag :a19_gye, checked = true%><br>
-    오징어: <%= check_box_tag :a20_ohjingeoh, checked = true%><br>
-    아황산: <%= check_box_tag :a21_ahwangsan, checked = true%><br>
+    시/도 입력(ex. 서울특별시): <%= text_field_tag :sido, params[:sido]%><br><br>
+    <br>
+    <div class="d-flex justify-content-between">
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a9_nanryu, checked = true%> 난류<br>
+                <%= check_box_tag :a10_milk, checked = true%> 우유<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a6_peach, checked = true%> 복숭아<br>
+                <%= check_box_tag :a7_tomato, checked = true%> 토마토<br>
+                <%= check_box_tag :a1_maemil, checked = true%> 메밀<br>
+                <%= check_box_tag :a2_mil, checked = true%> 밀<br>
+                <%= check_box_tag :a3_daedu, checked = true%> 대두(콩)<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a11_ddakgogi, checked = true%> 닭고기<br>
+                <%= check_box_tag :a12_shoigogi, checked = true%> 쇠고기<br>
+                <%= check_box_tag :a8_piggogi, checked = true%> 돼지고기<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a13_saewoo, checked = true%> 새우<br>
+                <%= check_box_tag :a14_godeungeoh, checked = true%> 고등어<br>
+                <%= check_box_tag :a15_honghap, checked = true%> 홍합<br>
+                <%= check_box_tag :a16_junbok, checked = true%> 전복<br>
+                <%= check_box_tag :a17_gul, checked = true%> 굴<br>
+                <%= check_box_tag :a18_jogaeryu, checked = true%> 조개류<br>
+                <%= check_box_tag :a19_gye, checked = true%> 게<br>
+                <%= check_box_tag :a20_ohjingeoh, checked = true%> 오징어<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a4_hodu, checked = true%> 호두<br>
+                <%= check_box_tag :a5_ddangkong, checked = true%> 땅콩<br>
+                <%= check_box_tag :a21_ahwangsan, checked = true%> 아황산류<br>
+            </div>
+        </div>
+    </div>
     <%= submit_tag 'Search'%>
 <% end %>
+
+<script>
+    $('.a-type').click(function() {
+        //toggle class 가 안먹음.
+        if ( $(this).next(".allergy-check").css('visibility') == 'hidden' ){
+            //내릴 때. 
+            $(this).next(".allergy-check").css('visibility','visible');
+            $(this).children(".btn").children("i").removeClass("fa-caret-down");
+            $(this).children(".btn").children("i").addClass("fa-caret-up");
+        }
+        else{
+            //올릴 때.
+            $(this).next(".allergy-check").css('visibility','hidden');
+             $(this).children(".btn").children("i").removeClass("fa-caret-up");
+             $(this).children(".btn").children("i").addClass("fa-caret-down");
+            
+        }
+    });
+</script>
+
