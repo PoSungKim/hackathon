@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+
+
   end
 
   # GET /articles/1
@@ -26,13 +28,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-  
   ## for notification
-  @article.followers.each do |follower|
-    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-    content: " #{@article.title.truncate(15, omission: '...')}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
-    link: request.referrer #수정하기 해당 article path로
-  end
+    Board.create!(content: "#{@article.title}의 메뉴가 업데이트되었습니다.") # 워딩 수정하기
+    # link: request.referrer #수정하기 해당 article path로
 
   
     respond_to do |format|
@@ -88,4 +86,6 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :content, :articleimage, :user_id,:notice)
     end
+
+
 end

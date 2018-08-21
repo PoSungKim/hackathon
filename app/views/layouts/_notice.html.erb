@@ -8,12 +8,11 @@
 </div>
 
 
-<!-- 팝업창  -->
+<!-- 팝업창  회원가입버튼누르면 나오게함 회원가입버튼누른 사람만-->
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h4>회원가입을 축하합니다! 원활한 사용을 위해 세부정보를 입력해주세요! </h4><br/>
-    <button id="yes">수정하기</button>
+    <h4>글이 생성되었습니다! </h4><br/>
     <button id="no"><a href="/">나중에 할게요!</a></button>
   </div>
 </div>
@@ -72,7 +71,6 @@
 <script>
   var modal = document.getElementById('myModal');
   var span = document.getElementsByClassName("close")[0];
-  var update = document.getElementById("yes"); //수정하기 누르면 editsns페이지 그대로남기
   var later = document.getElementById("no")
   span.onclick = function() {
           modal.style.display = "none";   
