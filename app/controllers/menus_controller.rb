@@ -10,6 +10,8 @@ class MenusController < ApplicationController
 
   def index
      #초기값 설정. 테러 미안.ㅠㅠ 이렇게 안하니까 에러나서.
+     sido = params[:sido]
+     sigungu = params[:sigungu]
      a1=0
      a2=0
      a3=0 
@@ -69,7 +71,14 @@ class MenusController < ApplicationController
      @restaurants = Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
      puts "실험씨작======================================================="
      @temp = Zizuminfo.where(:restaurant_name => @restaurants.map(&:restaurant_name))
-     @zizums = @temp.where(:sido => params[:sido])
+     
+     if sigungu == "전체" 
+      @zizums = @temp.where(:sido => sido)
+
+     else
+      @zizums = @temp.where("#{:sido} LIKE ? AND #{:sigungu} LIKE ?", sido, sigungu)
+     end
+
      puts @zizums
      puts "실험끝끝*******************************************************"
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)

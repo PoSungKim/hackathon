@@ -3,10 +3,14 @@
 <p id="notice"><%= notice %></p>
 <h1>Restaurants</h1>
 <p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
-<h3><%=params[:sido]%>에 있는 해당 식당-<%=@zizums.length%>개</h3>
+<h3><strong><%=params[:sido]%>/<%=params[:sigungu]%></strong>에 있는 해당 식당-<%=@zizums.length%>개</h3>
 
 <div class="d-flex justify-content-around">
   <div class="shops" >
+    <% if @zizums.length == 0%>
+          <p><%=params[:sido]%>/<%=params[:sigungu]%>가 일치하지 않는 시군구이거나 해당 식당이 없습니다.<br>다시 검색해주세요
+          <br><%= link_to '알레르기 검색', menus_search_path %><br></p>
+    <% end%>
     <% @zizums.each do |zizum| %>
       <div class="card" style="width: 20rem;">
         <div class="card-body">
@@ -20,6 +24,7 @@
             <% end%>
           </div>
           <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
+          <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
         </div>
       </div>
     <% end %>
@@ -27,7 +32,8 @@
 
   <%# 해당 메뉴가 뜨는 자리. %>
   <div id="menuBox">
-    해당 메뉴가 뜰 자리.
+    (해당 메뉴 뜨는 자리) 
+    즐거운 한끼식사 걱정없식
   </div>
 </div>
 
@@ -51,5 +57,9 @@
         }
       })
     });
+
+   if ('<%= @zizums.length == 0 %>'){
+     $("#menuBox").css('display','none');
+   }
 
 </script>
