@@ -66,6 +66,17 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def crawling
+    Restaurant.RestaurantName
+    Zizuminfo.Subway
+    Zizuminfo.Momstouch
+    Menu.Subway
+    Menu.Momstouch
+    puts "crwaling update finished!"
+    redirect_to :back
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant

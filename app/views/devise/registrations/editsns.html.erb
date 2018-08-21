@@ -1,0 +1,162 @@
+<h2>세부정보를 입력해주세요 </h2>
+<%# <%= resource_name.to_s.humanize %> 
+<%= form_for current_user,{ url: user_registration_path} do |f| %>
+  <%# <%= devise_error_messages! %> 
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <div class = "field">
+    <%= f.label "이름" %><br/>
+    <%= f.text_field :name, class: "form-control", :required => true %>
+  </div>
+
+  <hr>
+  <div class="field">
+    <h5> 성별 </h5> 
+      <%= f.radio_button :gender, "male" %> 남자<br/>
+      <%= f.radio_button :gender, "female" %> 여자 <br/>
+  </div><br/>
+
+  <div class="field">
+    <h5> 나이 </h5> 
+    <%= f.select :ages, options_for_select([["10대이하", "10대이하"], ["20-30대","20-30대"], ["40-50대","40-50대"],["60대이상","60대이상"]]), { prompt: '나이를 선택해주세요' } %>  
+  </div><br/><br/>
+  
+  <div class="field">
+    <h4> 알레르기정보 </h4>
+    <div> 유제품 및 난류:
+      <%= check_box_tag 'user[allergy][]', '난류' %>난류
+      <%= check_box_tag 'user[allergy][]', '우유' %> 우유 
+    </div><br/>
+    <div> 과채류 및 곡류:
+     <%= check_box_tag 'user[allergy][]', '복숭아/토마토'%> 복숭아/토마토
+     <%= check_box_tag 'user[allergy][]', '대두(콩)' %> 대두(콩) 
+     <%= check_box_tag 'user[allergy][]', '밀/메밀'%> 밀/메밀 
+    </div><br/>
+    <div> 육류:
+      <%= check_box_tag 'user[allergy][]', '닭고기' %> 닭고기 
+      <%= check_box_tag 'user[allergy][]', '돼지고기'%>돼지고기 
+      <%= check_box_tag 'user[allergy][]', '쇠고기'%>쇠고기
+    </div><br/> 
+    <div> 어패류:
+      <%= check_box_tag 'user[allergy][]', '고등어/오징어' %>고등어/오징어
+      <%= check_box_tag 'user[allergy][]', '게/새우 ' %> 게/새우 
+      <%= check_box_tag 'user[allergy][]', '조개류/홍합/전복/굴' %>조개류/홍합/전복/굴
+    </div><br/>
+    <div> 견과류,아황산:
+      <%= check_box_tag 'user[allergy][]', '땅콩/호두 ' %> 땅콩/호두 
+      <%= check_box_tag 'user[allergy][]', '아황산류 ' %> 아황산류 
+    </div><br/>
+    <div>
+      기타:<%= f.text_field :etc %>    
+      <%# 기타:<input  id="user[allergy][]" name="user[allergy][]"  class="input_gpm" type="text" /> %>
+    </div>
+  </div><br/>
+  
+  <div class="field">
+    <%= f.label :profileimage, "프로필 사진" %><br />
+    <%= f.file_field :profileimage, accept: 'image/png, image/gif, image/jpeg' %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%# <h3>Cancel my account</h3> %>
+<%# <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+<%= link_to "Back", root_path %>
+
+<!-- 팝업창  -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>회원가입을 축하합니다! 원활한 사용을 위해 세부정보를 입력해주세요! </h4><br/>
+    <button id="yes">수정하기</button>
+    <button id="no"><a href="/">나중에 할게요!</a></button>
+  </div>
+</div>
+
+<style> 
+/* 임시 ***************/
+#yes{
+  margin-left:38%;
+  width:200px;
+}
+#no{
+  width:200px;
+  margin-left:38%;
+}
+/***********************/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 60%;
+}
+
+/* The Close Button */
+.close {
+    text-align: right;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+<script>
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName("close")[0];
+  var update = document.getElementById("yes"); //수정하기 누르면 editsns페이지 그대로남기
+  var later = document.getElementById("no")
+  span.onclick = function() {
+          modal.style.display = "none";   
+  }
+  update.onclick = function() {
+        modal.style.display = "none";
+  }    
+// modal밖에 눌렀을때 닫기
+  //window.onclick = function(event) {
+  //    if (event.target == modal) {
+  //        modal.style.display = "none";
+  //    }
+  //}
+// page 로드시 팝업창  
+  function fnShowPopup() {
+      // alert('');
+      modal.style.display = "block"; 
+  }
+  $(document).ready(function () {
+      setTimeout(fnShowPopup, 300); 
+  });
+  
+</script>
+
+<%# <% end %> 

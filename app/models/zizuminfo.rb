@@ -113,11 +113,11 @@ class Zizuminfo < ApplicationRecord
 
     #한솥
 
-    if !Zizuminfo.exists?(restaurant_name: "서브웨이")
-        self.Subway
-    end
+    # if !Zizuminfo.exists?(restaurant_name: "서브웨이")
+    #     self.Subway
+    # end
 
-    if !Zizuminfo.exists?(restaurant_name: "맘스터치")
-        self.Momstouch
-    end
+    # if !Zizuminfo.exists?(restaurant_name: "맘스터치")
+    #     self.Momstouch
+    # end
 end

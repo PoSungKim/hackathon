@@ -113,6 +113,8 @@ class MenusController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
+    @restaurant = Restaurant.where(id: params[:restaurant_id])[0]
+    puts "restaurant?!?!", @restaurant
   end
 
   # GET /menus/1/edit

@@ -5,12 +5,40 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+### 라이크/팔로우 기능 잼 ###
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+
+### 회원가입 devise (1) ### gem 'devise'
+### 회원가입 devise (2) Use ActiveModel has_secure_password ###
+gem 'bcrypt', '~> 3.1.7'
+
+### Debugger 기능 ###
+gem 'pry-rails'
+
+### 이미지 업로더 ###
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'figaro'
+
+### 크롤링 ###
 gem 'nokogiri'
+gem 'whenever', require: false
+
+### 디자인 ###
 gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
+
+# for notification
+gem 'unread'
+
+# for login and admin
+gem 'rails_admin'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+gem 'omniauth-kakao', :git => 'https://github.com/hcn1519/omniauth-kakao'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'
@@ -28,15 +56,13 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+#gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
