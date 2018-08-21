@@ -41,7 +41,7 @@
   </thead>
 
   <tbody>
-    <% @zizuminfo.restaurant.menus.each do |menu| %>
+    <% Menu.where(:restaurant_name => @zizuminfo.restaurant_name).each do |menu| %>
       <tr>
         <td><%= menu.id%></td>
         <td><%= menu.menu_name%></td>
