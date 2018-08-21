@@ -20,6 +20,18 @@
       
 <%end%>
   </div>
+showHide
+<a onclick="showHide('info_html')" onfocus="this.blur()" style="color:white;margin-top:7px;"><b> 알림 (<%= current_user.new_alarms.unread_by(current_user).count %>)</b></a>
+<div id="info_html" style="display:none; margin-top: 10px;">
+<%= render partial: "new_alarms/notice_alarm", collection: current_user.new_alarms.unread_by(current_user) %>
+<%= link_to '<b>X</b>'.html_safe, new_alarms_read_all_path %>
+</div>
+
+<%= @articles_num %>
+<% if @articles_num == params[:num].to_i + 1 %>
+<%=테스트%>
+<% end %>
+
 
 
 

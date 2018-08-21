@@ -26,15 +26,14 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-
-    ## for notification 나중에 주석해제
-    #@users = User.all 
   
-    #@users.each do |user|
-    #  @new_alarm = NewAlarm.create! user: user , #알림가는 사용자  #원래는 commentcreate에서 user: commentable user== post작성자
-    #    content: "식당에 #{@article.title.truncate(15, omission: '...')}가 추가되었습니다.", # 워딩수정하기
-    #    link: request.referrer 수정하기
-    #end 
+  ## for notification
+  @article.followers.each do |follower|
+    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+    content: " #{@article.title.truncate(15, omission: '...')}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
+    link: request.referrer #수정하기 해당 article path로
+  end
+
   
     respond_to do |format|
       if @article.save

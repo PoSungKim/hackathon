@@ -24,7 +24,8 @@ class HomeController < ApplicationController
       
     end  
 
-   
+    @articles_num= Article.all.count
+    @articles_num= params[:num]
   end
 
 
