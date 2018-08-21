@@ -60,3 +60,19 @@
       </ul>
   </div>
 </div>
+
+<hr />
+
+<div class="row">
+
+  <div class="col-12">
+    <h3>라이크한 식당들</h3>
+      <ul>
+        <% current_user.following_by_type('Zizuminfo').each do |zizum| %>
+          <li> 
+            <p><%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %> </p>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>

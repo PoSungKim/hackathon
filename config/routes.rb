@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'edit_asks/ask'
 
   resources :zizuminfos
+  post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
+  post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'
+
   get 'home/index'
   root 'home#index'
 
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
   # get 'allergies/index' => "allergies#index", as: 'allergies' 
-  get 'menus/index' => "menus#index", as: 'menus' 
+  get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
   resources :restaurants do
@@ -39,7 +42,6 @@ Rails.application.routes.draw do
 
   ### 나만의 페이지 ###
   resources :profiles
-  post '/profiles/:id/follow', to: 'follows#profile_follow_toggle', as: 'profile_follow'
 
   ### Public Market ###
   resources :articles
