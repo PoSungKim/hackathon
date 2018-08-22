@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   ### 나만의 페이지 ###
   resources :profiles
 
+  get '/zizuminfos/:id/follow_destroy', to: 'follows#profile_follow_destroy_toggle', as: 'profile_follow_destroy'
+
   ### Public Market ###
   resources :articles
   post '/articles/:id/follow', to: 'follows#article_follow_toggle', as: 'article_follow'
