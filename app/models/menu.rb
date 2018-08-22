@@ -37,9 +37,9 @@ class Menu < ApplicationRecord
             if a.css('span').empty?
                 a_info.a9_nanryu = 0
             elsif a.css('span').attr('class').text == "a01"
-                a_info.a9_nanryu =1
+                a_info.a9_nanryu = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a9_nanryu =2
+                a_info.a9_nanryu = -2
             end
 
             #생선. 우리 표에 없음
@@ -57,7 +57,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a10_milk = 1   
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a10_milk = 2
+                a_info.a10_milk = -2
             end
 
             #땅콩 5
@@ -67,7 +67,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a5_ddangkong = 1   
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a5_ddangkong = 2
+                a_info.a5_ddangkong = -2
             end
 
             #참깨 5  테이블 상에 존재하지 않음
@@ -77,7 +77,7 @@ class Menu < ApplicationRecord
             # elsif a.css('span').attr('class').text == "a01"
             #     a_info.a5_ddangkong = 1   
             # elsif a.css('span').attr('class').text == "a02"
-            #     a_info.a5_ddangkong = 2
+            #     a_info.a5_ddangkong = -2
             # end
 
             #조개 18
@@ -87,7 +87,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a18_jogaeryu = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a18_jogaeryu = 2
+                a_info.a18_jogaeryu = -2
             end
 
             #대두,콩 3
@@ -97,7 +97,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a3_daedu = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a3_daedu = 2
+                a_info.a3_daedu = -2
             end
 
             #견과류 (호두 4)
@@ -107,7 +107,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a4_hodu = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a4_hodu = 2
+                a_info.a4_hodu = -2
             end
 
 
@@ -118,7 +118,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a2_mil = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a2_mil = 2
+                a_info.a2_mil = -2
             end
 
             #아황산류 21
@@ -128,7 +128,7 @@ class Menu < ApplicationRecord
             elsif a.css('span').attr('class').text == "a01"
                 a_info.a21_ahwangsan = 1
             elsif a.css('span').attr('class').text == "a02"
-                a_info.a21_ahwangsan = 2
+                a_info.a21_ahwangsan = -2
             end
      
             #미제공 항목
@@ -527,7 +527,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a9_nanryu = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a9_nanryu = 2
+    #                 a_info.a9_nanryu = -2
     #             end
 
     #             # 우유
@@ -538,7 +538,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a10_milk = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a10_milk = 2
+    #                 a_info.a10_milk = -2
     #             end
 
     #             # 메밀
@@ -549,7 +549,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a1_maemil = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a1_maemil = 2
+    #                 a_info.a1_maemil = -2
     #             end
 
     #             #list_02 땅콩, 대두, 밀
@@ -561,7 +561,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a5_ddangkong = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a5_ddangkong = 2
+    #                 a_info.a5_ddangkong = -2
     #             end
 
     #             # 대두
@@ -572,7 +572,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a3_daedu = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a3_daedu = 2
+    #                 a_info.a3_daedu = -2
     #             end
 
     #             # 밀
@@ -583,7 +583,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a2_mil = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a2_mil = 2
+    #                 a_info.a2_mil = -2
     #             end
 
     #             #list_03 고등어, 게, 돼지고기
@@ -595,7 +595,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a14_godeungeoh = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a14_godeungeoh = 2
+    #                 a_info.a14_godeungeoh = -2
     #             end
 
     #             # 게
@@ -606,7 +606,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a19_gye = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a19_gye = 2
+    #                 a_info.a19_gye = -2
     #             end
 
     #             # 돼지고기
@@ -617,7 +617,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a8_piggogi = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a8_piggogi = 2
+    #                 a_info.a8_piggogi = -2
     #             end
 
     #             #list_04 복숭아, 토마토, 새우
@@ -629,7 +629,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a6_peach = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a6_peach = 2
+    #                 a_info.a6_peach = -2
     #             end
 
     #             # 토마토
@@ -640,7 +640,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a7_tomato = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a7_tomato = 2
+    #                 a_info.a7_tomato = -2
     #             end
 
     #             # 새우
@@ -651,7 +651,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a13_saewoo = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a13_saewoo = 2
+    #                 a_info.a13_saewoo = -2
     #             end
 
     #             #list_05 아황산류, 호두, 닭고기
@@ -663,7 +663,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a21_ahwangsan = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a21_ahwangsan = 2
+    #                 a_info.a21_ahwangsan = -2
     #             end
 
     #             # 호두
@@ -674,7 +674,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a4_hodu = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a4_hodu = 2
+    #                 a_info.a4_hodu = -2
     #             end
 
     #             # 닭고기
@@ -685,7 +685,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a11_ddakgogi = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a11_ddakgogi = 2
+    #                 a_info.a11_ddakgogi = -2
     #             end
 
     #             #list_06 쇠고기, 오징어, 조개류
@@ -697,7 +697,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a12_shoigogi = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a12_shoigogi = 2
+    #                 a_info.a12_shoigogi = -2
     #             end
 
     #             # 오징어
@@ -708,7 +708,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a20_ohjingeoh = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a20_ohjingeoh = 2
+    #                 a_info.a20_ohjingeoh = -2
     #             end
 
     #             # 조개류
@@ -719,7 +719,7 @@ class Menu < ApplicationRecord
     #             elsif a == "불포함"
     #                 a_info.a18_jogaeryu = 0
     #             elsif a == "가공/제조"
-    #                 a_info.a18_jogaeryu = 2
+    #                 a_info.a18_jogaeryu = -2
     #             end
 
     #             #제공하지 않음
