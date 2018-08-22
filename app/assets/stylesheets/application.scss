@@ -12,10 +12,11 @@
 
 
 
-//------------nav바 및 전체홈페이지 관련
+//-----nav바
 .wholebackground {
     background-color: #F2F1F0;
 }
+
 
 .navbarstyle {
     position: fixed;
@@ -28,6 +29,7 @@
     font-family: 'Jeju Myeongjo', serif;
     justify-content: space-between;
     margin-bottom:20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .navbarcontent{
@@ -42,6 +44,32 @@
     margin-left: 28px;
 }
 //------
+
+//------main 관련
+.mainbg {
+    background: url('mainbg.png')  no-repeat center center fixed;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
+}
+
+.indexlogo {
+    width:400px;
+    height:150px;
+    display:flex;
+    justify-content: center;
+    margin-top:130px;
+    margin-bottom:40px;
+}
+
+.indexcontent{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+//-------
+
 #menuBox{
     margin: 10px;
     width: 300px;

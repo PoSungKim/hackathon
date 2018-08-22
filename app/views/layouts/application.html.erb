@@ -9,12 +9,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body class="container wholebackground">
+  <body id="whole" class="container wholebackground">
     <%= render 'layouts/header'%>
     <br><br><br>
     <%= yield %>
@@ -22,18 +20,25 @@
 
   <script>
     jQuery(function($) {
-    $("body").css("display", "none");
-    $("body").fadeIn(1000);
-    $("a.transition").click(function(event){
-    event.preventDefault();
-    linkLocation = this.href;
-    $("body").fadeOut(500, redirectPage);
-    });
-    function redirectPage() {
-    window.location = linkLocation;
-    }
+      $("body").css("display", "none");
+      $("body").fadeIn(1000);
+      $("a.transition").click(function(event){
+      event.preventDefault();
+      linkLocation = this.href;
+      $("body").fadeOut(500, redirectPage);
+      });
+      function redirectPage() {
+      window.location = linkLocation;
+      }
     });
   </script>
+  
+  <script> 
+    if (window.location.pathname == '/' ) { 
+      $("#whole").addClass("mainbg" ); } 
+  </script>
+
+
 </html>
 
 

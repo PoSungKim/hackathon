@@ -1,4 +1,4 @@
-<div id="navbar" class="navbarstyle" >
+<div id="navbar" class="navbarstyle">
     <div><%= link_to "/" do %>
             <%= image_tag 'logo.png', class:"logo" %>
          <% end %></div>
@@ -27,6 +27,8 @@
     </div>
 </div>
 
+
+
 <script>
 $(document).scroll(function() {
     if($(this).scrollTop() == 0)
@@ -34,5 +36,6 @@ $(document).scroll(function() {
     else
         $('#navbar').css('background-color','rgba(255, 255, 255, 1)');
 });
-
 </script>
+
+
