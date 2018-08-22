@@ -1,29 +1,5 @@
 <h1>New Menu</h1>
 
-<%#= render 'form', menu: @menu %>
-
-<!--새로 추가하는 경우 레스토랑 아이디, 수정할 때 오류 안 나나 확인-->
-
-<%= form_for @menu, url: {action: "create"}, html: {class: "클래스이름 여기!"} do |f| %>
-  <div class="field">
-    <%= f.label :menu_name %>
-    <%= f.text_field :menu_name%>
-  </div> 
-
-  <div class="field">
-    <%= f.label :restaurant_name %>
-    <%= f.text_field :restaurant_name%>
-  </div> 
-
-  <div class="field">
-    <%= f.hidden_field :restaurant, value: @restaurant%>   
-  </div> 
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+<%= render 'form', menu: @menu %>
 
 <%= link_to 'Back', menus_path %>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'userrequests/index'
+
+  get 'userrequests/new'
+
+  get 'userrequests/ask'
+
   get 'edit_asks/index'
   get 'edit_asks/ask'
 
@@ -14,13 +20,11 @@ Rails.application.routes.draw do
   get 'restaurants/search' => "restaurants#search"
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
-  # get 'allergies/index' => "allergies#index", as: 'allergies' 
   get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
-  resources :restaurants do
-    resources :allergies
-  end
+
+  resources :restaurants
   ##-------------------------------------------------------------------------------------------master//
 
   ### 로그인과 관리자 페이지 ### rails/db 관리자설정으로바꾸려면 config/initializer/rails_db 주석해제!
@@ -50,15 +54,31 @@ Rails.application.routes.draw do
   resources :profiles
 
   get '/zizuminfos/:id/follow_destroy', to: 'follows#profile_follow_destroy_toggle', as: 'profile_follow_destroy'
-
+  
   ### Public Market ###
   resources :articles
   post '/articles/:id/follow', to: 'follows#article_follow_toggle', as: 'article_follow'
+  get '/articles/:id/follow_destroy', to: 'follows#article_follow_destroy_toggle', as: 'article_follow_destroy'
+  delete '/articles/:id/destroy', to: 'follows#article_destroy', as: 'article_destroy'
   
   ### 회원가입 Devise ###
   # devise_for :users
 
   ### 크롤링 ###
   get '/crawling' => 'restaurants#crawling'
+
+  ### 수정 / 삭제 요청 ###
+  #요청 확인
+  get '/userrequests' => 'userrequests#index'
+  #메뉴 추가 요청
+  get '/userrequests/new_request' => 'userrequests#new_request'
+  post '/userrequests/create' => 'userrequests#create'
+  #메뉴 수청 / 삭제 요청
+  get '/userrequests/edit_request' => 'userrequests#edit_request'
+  post '/userrequests/edit_request' => 'userrequests#edit_request'
+  #승인
+  post '/userrequests/permit' => 'userrequests#permit'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

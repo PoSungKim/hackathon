@@ -113,8 +113,6 @@ class MenusController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
-    @restaurant = Restaurant.where(id: params[:restaurant_id])[0]
-    puts "restaurant?!?!", @restaurant
   end
 
   # GET /menus/1/edit
@@ -127,15 +125,19 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
 
  # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
-    @restaurant = @menu.restaurant_id
-    @zizums = Zizuminfo.where(:restaurant_id => @restaurant.map(&:restaurant_id))
+    @restaurant = @menu.restaurant_id #메뉴의 레스토랑아이디
+    @zizums = Zizuminfo.where(:restaurant_id => @restaurant) #해당레스토랑아이디를 가지는 지점들찾기
+    @zizums_num =  Zizuminfo.where(:restaurant_id => @restaurant).count
+    @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
 
+    for n in 0...@zizums_num
      #zizuminfo.follower니까 그zizum을포함한 식당일경우
     #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
-    @zizums.followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
-      @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-      content:"의 메뉴가 업데이트되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
-      link: request.referrer #수정하기 해당 article path로
+      @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+        @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+        content:"#{@rt_name}의 메뉴가 추가되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
+        link: request.referrer #수정하기 해당 article path로
+      end
     end
   
 
@@ -163,23 +165,44 @@ class MenusController < ApplicationController
       end
     end
 
-    @restaurant = @menu.restaurant_id
-    @zizums = Zizuminfo.where(:restaurant_id => @restaurant.map(&:restaurant_id))
+ # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
+ @restaurant = @menu.restaurant_id #메뉴의 레스토랑아이디
+ @zizums = Zizuminfo.where(:restaurant_id => @restaurant) #해당레스토랑아이디를 가지는 지점들찾기
+ @zizums_num =  Zizuminfo.where(:restaurant_id => @restaurant).count
+ @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
 
-     #zizuminfo.follower니까 그zizum을포함한 식당일경우
-    #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
-    @zizums.followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
-      @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-      content:"의 메뉴가 업데이트되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
-      link: request.referrer #수정하기 해당 article path로
-    end
+ for n in 0...@zizums_num
+  #zizuminfo.follower니까 그zizum을포함한 식당일경우
+ #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
+   @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+     @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+     content:"#{@rt_name}의 메뉴가 수정되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
+     link: request.referrer #수정하기 해당 article path로
+   end
+ end
   end
 
   # DELETE /menus/1
   # DELETE /menus/1.json
   def destroy
     @menu.destroy
-    Menumatch.where(menu: @menu.id)[0].destroy
+    # Menumatch.where(menu: @menu.id)[0].destroy
+
+    @restaurant = @menu.restaurant_id #메뉴의 레스토랑아이디
+    @zizums = Zizuminfo.where(:restaurant_id => @restaurant) #해당레스토랑아이디를 가지는 지점들찾기
+    @zizums_num =  Zizuminfo.where(:restaurant_id => @restaurant).count
+    @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
+   
+    for n in 0...@zizums_num
+     #zizuminfo.follower니까 그zizum을포함한 식당일경우
+    #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
+      @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+        @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+        content:"#{@rt_name}의 메뉴가 삭제되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
+        link: request.referrer #수정하기 해당 article path로
+      end
+    end
+     
 
     respond_to do |format|
       format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
@@ -195,6 +218,6 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:menu_name,:a1_maemil,:a2_mil,:a3_daedu,:a4_hodu,:a5_ddangkong,:a6_peach,:a7_tomato,:a8_piggogi, :a9_nanryu, :a10_milk, :a11_ddakgogi, :a12_shoigogi, :a13_saewoo, :a14_godeungeoh, :a15_honghap, :a16_junbok, :a17_gul, :a18_jogaeryu, :a19_gye, :a20_ohjingeoh, :a21_ahwangsan, :restaurant_name, :restaurant, :image)
+      params.require(:menu).permit(:menu_name,:a1_maemil,:a2_mil,:a3_daedu,:a4_hodu,:a5_ddangkong,:a6_peach,:a7_tomato,:a8_piggogi, :a9_nanryu, :a10_milk, :a11_ddakgogi, :a12_shoigogi, :a13_saewoo, :a14_godeungeoh, :a15_honghap, :a16_junbok, :a17_gul, :a18_jogaeryu, :a19_gye, :a20_ohjingeoh, :a21_ahwangsan, :restaurant_name, :restaurant_id, :image)
     end
 end
