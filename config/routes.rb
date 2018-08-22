@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'userrequests/index'
+
+  get 'userrequests/new'
+
+  get 'userrequests/ask'
+
   get 'edit_asks/index'
 
   get 'edit_asks/ask'
@@ -12,13 +18,9 @@ Rails.application.routes.draw do
   get 'restaurants/search' => "restaurants#search"
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
-  # get 'allergies/index' => "allergies#index", as: 'allergies' 
-  get 'menus/index' => "menus#index", as: 'menus' 
 
   resources :menus #메뉴
-  resources :restaurants do
-    resources :allergies
-  end
+
   ##-------------------------------------------------------------------------------------------master//
 
   ### 로그인과 관리자 페이지 ### rails/db 관리자설정으로바꾸려면 config/initializer/rails_db 주석해제!

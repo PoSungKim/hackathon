@@ -11,8 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20180819153435) do
-<<<<<<< HEAD
-=======
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -25,7 +23,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
->>>>>>> 95006e6b079642f76604e5effbac8456b17de64d
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -79,8 +76,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_identities_on_user_id"
-<<<<<<< HEAD
-=======
   end
 
   create_table "menumatches", force: :cascade do |t|
@@ -92,7 +87,6 @@ ActiveRecord::Schema.define(version: 20180819153435) do
     t.datetime "updated_at",      null: false
     t.index ["menu_id"], name: "index_menumatches_on_menu_id"
     t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
->>>>>>> 95006e6b079642f76604e5effbac8456b17de64d
   end
 
   create_table "menus", force: :cascade do |t|
