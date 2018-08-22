@@ -44,10 +44,12 @@ Rails.application.routes.draw do
   resources :profiles
 
   get '/zizuminfos/:id/follow_destroy', to: 'follows#profile_follow_destroy_toggle', as: 'profile_follow_destroy'
-
+  
   ### Public Market ###
   resources :articles
   post '/articles/:id/follow', to: 'follows#article_follow_toggle', as: 'article_follow'
+  get '/articles/:id/follow_destroy', to: 'follows#article_follow_destroy_toggle', as: 'article_follow_destroy'
+  delete '/articles/:id/destroy', to: 'follows#article_destroy', as: 'article_destroy'
   
   ### 회원가입 Devise ###
   # devise_for :users

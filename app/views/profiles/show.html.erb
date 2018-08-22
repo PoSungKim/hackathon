@@ -37,14 +37,16 @@
 <div class="row">
 
   <div class="col-12">
-    <h3>라이크한 식당들 (최근 5)</h3>
-      <ul>
+    <h3 id="spreadBtn1">라이크한 식당들 (최근 5)</h3>
+      <ul id="hiddenList1">
         <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
           <li> 
             <% if zizum.followed_by?(@profile.user) %>
               <p>
-                <%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %> 
-                <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                <%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %>
+                <% if @profile.user == current_user %>
+                  <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                <% end %>
               </p>
             <% end %>
           </li>
@@ -58,12 +60,15 @@
 <div class="row">
 
   <div class="col-12">
-    <h3>라이크한 게시글 (최근 5)</h3>
-      <ul>
+    <h3 id="spreadBtn2">라이크한 게시글 (최근 5)</h3>
+      <ul id="hiddenList2">
         <% @profile.user.following_by_type('Article').order("created_at desc").limit(5).each do |article| %>
           <li> <% if article.articleimage.thumb.url != nil %>
             <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %> 
+            <%= link_to article.title, article_path(article.id) %>
+            <% if @profile.user == current_user %> 
+              <%= link_to fa_icon('trash'), article_follow_destroy_path(article.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+            <% end %>
           </li>
         <% end %>
       </ul>
@@ -74,12 +79,15 @@
 
 <div class="row">
   <div class="col-12">
-    <h3>자신이 쓴 게시글 (최근 5)</h3>
-      <ul>
+    <h3 id="spreadBtn3">자신이 쓴 게시글 (최근 5)</h3>
+      <ul id="hiddenList3">
         <% @profile.user.articles.order("created_at desc").limit(5).each do |article| %>
           <li>  <% if article.articleimage.thumb.url != nil %>
             <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %> 
+            <%= link_to article.title, article_path(article.id) %>
+            <% if @profile.user == current_user %>  
+              <%= link_to fa_icon('trash'), article_destroy_path(article.id), method: :DELETE, data: {confirm: '게시물을 삭제하시겠습니까?'} %>
+            <% end %>
           </li>
         <% end %>
       </ul>
@@ -101,5 +109,39 @@
                 $(this).removeClass("unlike");
                 $(this).addClass("like");
             }
+    });
+
+    $(document).ready(function(){
+      $("#spreadBtn1").click(function(){
+          if($("#hiddenList1").is(":visible")){
+            // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+              $("#hiddenList1").slideUp();
+          }else{
+              // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+              $("#hiddenList1").slideDown();
+          }
+      });
+    }); 
+    $(document).ready(function(){
+        $("#spreadBtn2").click(function(){
+            if($("#hiddenList2").is(":visible")){
+              // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+                $("#hiddenList2").slideUp();
+            }else{
+                // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+                $("#hiddenList2").slideDown();
+            }
+        });
+    }); 
+    $(document).ready(function(){
+        $("#spreadBtn3").click(function(){
+            if($("#hiddenList3").is(":visible")){
+              // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+                $("#hiddenList3").slideUp();
+            }else{
+                // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+                $("#hiddenList3").slideDown();
+            }
+        });
     });
 </script> 
