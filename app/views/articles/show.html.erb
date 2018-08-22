@@ -35,10 +35,10 @@
   <%= image_tag @article.articleimage.url %> <%end%>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to '뒤로', articles_path %>
 <% if current_user == @article.user %>
-  | <%= link_to '삭제', article, method: :DELETE, data: {confirm: '게시물을 삭제하시겠습니까?'}%>
+  | <%= link_to '수정', edit_article_path(@article) %>
+  | <%= link_to '삭제', article_path(@article), method: :DELETE, data: {confirm: '게시물을 삭제하시겠습니까?'}%>
 <% end %>
 
 <script>

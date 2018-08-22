@@ -37,7 +37,7 @@
 <div class="row">
 
   <div class="col-12">
-    <h3 id="spreadBtn1">라이크한 식당들 (최근 5)</h3>
+    <h3 id="spreadBtn1">라이크한 식당들 (최근 5) 클릭하면 좁아짐</h3>
       <ul id="hiddenList1">
         <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
           <li> 
@@ -60,7 +60,7 @@
 <div class="row">
 
   <div class="col-12">
-    <h3 id="spreadBtn2">라이크한 게시글 (최근 5)</h3>
+    <h3 id="spreadBtn2">라이크한 게시글 (최근 5) 클릭하면 좁아짐</h3>
       <ul id="hiddenList2">
         <% @profile.user.following_by_type('Article').order("created_at desc").limit(5).each do |article| %>
           <li> <% if article.articleimage.thumb.url != nil %>
@@ -79,7 +79,7 @@
 
 <div class="row">
   <div class="col-12">
-    <h3 id="spreadBtn3">자신이 쓴 게시글 (최근 5)</h3>
+    <h3 id="spreadBtn3">자신이 쓴 게시글 (최근 5) 클릭하면 좁아짐</h3>
       <ul id="hiddenList3">
         <% @profile.user.articles.order("created_at desc").limit(5).each do |article| %>
           <li>  <% if article.articleimage.thumb.url != nil %>
