@@ -26,6 +26,10 @@ class ZizuminfosController < ApplicationController
   def create
     @zizuminfo = Zizuminfo.new(zizuminfo_params)
 
+     ## for notification
+    #Board.create!(content: "새로운 식당 #{@zizum_name}가 등록되었습니다.") >>>>> restaurant으로 이동
+     # link: request.referrer #수정하기 해당 article path로
+ 
     respond_to do |format|
       if @zizuminfo.save
         format.html { redirect_to @zizuminfo, notice: 'Zizuminfo was successfully created.' }
@@ -40,6 +44,14 @@ class ZizuminfosController < ApplicationController
   # PATCH/PUT /zizuminfos/1
   # PATCH/PUT /zizuminfos/1.json
   def update
+
+  ## for notification
+  @zizuminfo.followers.each do |follower|
+    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+    content: " #{@restuarant_name} #{@zizum_name}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
+    link: request.referrer #수정하기 해당 article path로
+  end
+
     respond_to do |format|
       if @zizuminfo.update(zizuminfo_params)
         format.html { redirect_to @zizuminfo, notice: 'Zizuminfo was successfully updated.' }

@@ -10,6 +10,8 @@ class MenusController < ApplicationController
 
   def index
      #초기값 설정. 테러 미안.ㅠㅠ 이렇게 안하니까 에러나서.
+     sido = params[:sido]
+     sigungu = params[:sigungu]
      a1=0
      a2=0
      a3=0 
@@ -69,7 +71,14 @@ class MenusController < ApplicationController
      @restaurants = Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
      puts "실험씨작======================================================="
      @temp = Zizuminfo.where(:restaurant_name => @restaurants.map(&:restaurant_name))
-     @zizums = @temp.where(:sido => params[:sido])
+     
+     if sigungu == "전체" 
+      @zizums = @temp.where(:sido => sido)
+
+     else
+      @zizums = @temp.where("#{:sido} LIKE ? AND #{:sigungu} LIKE ?", sido, sigungu)
+     end
+
      puts @zizums
      puts "실험끝끝*******************************************************"
      ### @menus.where(:shop_id => 어쩌고 ) 이용하기 (views 에서 보일 때)
@@ -104,6 +113,8 @@ class MenusController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
+    @restaurant = Restaurant.where(id: params[:restaurant_id])[0]
+    puts "restaurant?!?!", @restaurant
   end
 
   # GET /menus/1/edit
@@ -114,6 +125,19 @@ class MenusController < ApplicationController
   # POST /menus.json
   def create
     @menu = Menu.new(menu_params)
+
+ # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
+    @restaurant = @menu.restaurant_id
+    @zizums = Zizuminfo.where(:restaurant_id => @restaurant.map(&:restaurant_id))
+
+     #zizuminfo.follower니까 그zizum을포함한 식당일경우
+    #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
+    @zizums.followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+      @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+      content: " #{@restuarant_name} #{@zizum_name}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
+      link: request.referrer #수정하기 해당 article path로
+    end
+  
 
     respond_to do |format|
       if @menu.save
@@ -129,6 +153,13 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update    
+  ## for notification
+  @zizuminfo.followers.each do |follower|
+    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+    content: " #{@restuarant_name} #{@zizum_name}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
+    link: request.referrer #수정하기 해당 article path로
+  end
+
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }

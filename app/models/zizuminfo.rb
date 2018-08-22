@@ -5,6 +5,8 @@ class Zizuminfo < ApplicationRecord
 
     validates :zizum_name, :uniqueness => true
 
+    acts_as_followable
+
     #서브웨이
     def self.Subway
         #restaurant table 상 본점 id
@@ -113,11 +115,11 @@ class Zizuminfo < ApplicationRecord
 
     #한솥
 
-    if !Zizuminfo.exists?(restaurant_name: "서브웨이")
-        self.Subway
-    end
+    # if !Zizuminfo.exists?(restaurant_name: "서브웨이")
+    #     self.Subway
+    # end
 
-    if !Zizuminfo.exists?(restaurant_name: "맘스터치")
-        self.Momstouch
-    end
+    # if !Zizuminfo.exists?(restaurant_name: "맘스터치")
+    #     self.Momstouch
+    # end
 end

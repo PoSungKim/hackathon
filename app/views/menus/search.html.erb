@@ -1,7 +1,36 @@
 <h3>검색하기(알레르기 있다면 체크)</h3>
 <div id="default">
 <%= form_tag(menus_path, method: :get) do %>
-    시/도 입력(ex. 서울특별시): <%= text_field_tag :sido, params[:sido]%><br><br>
+    시/도 입력(ex. 서울특별시): 
+    <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
+    <select name="sido">
+        <option value="서울특별시">서울특별시</option>
+        <option value="부산광역시">부산광역시</option>
+        <option value="대구광역시">대구광역시</option> 
+        <option value="인천광역시">인천광역시</option>     
+        <option value="광주광역시">광주광역시</option>
+        <option value="대전광역시">대전광역시</option>
+        <option value="세종특별자치시">세종특별자치시</option> 
+        <option value="경기도">경기도</option>
+        <option value="강원도">강원도</option>
+        <option value="충청북도">충청북도</option>
+        <option value="충청남도">충청남도</option> 
+        <option value="전라북도">전라북도</option>
+        <option value="전라남도">전라남도</option>
+        <option value="경상북도">경상북도</option>
+        <option value="경상남도">경상남도</option> 
+        <option value="제주특별자치시">제주특별자치시</option>
+    </select>
+    <br><br>
+    시/군/구 입력(ex. 용산구):
+    <button type="button" class="jikjup">직접 입력</button>
+    <button type="button" class="all">전체 선택</button>
+    
+    <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
+    <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
+    
+
+    <br>
     <br>
     <div class="d-flex justify-content-between">
         <div>
@@ -87,9 +116,13 @@
         }
     });
 
-    var myinfo = document.getElementById("myinfo");
-    var btn = document.getElementById('custom');
-    var basic = document.getElementById("default");
+    //experiment는 눌렸다는 것 임시로 표시하기 위해서.
+    $(".jikjup").click(function(){
+        if( $(".all").hasClass("experiment")){
+            $(".all").removeClass("experiment");
+        }
+        
+        $(this).toggleClass("experiment");
 
     // btn.onclick = function(){
         // myinfo.style.display="block";
@@ -101,4 +134,25 @@
         basic.style.display="none";
     }
     // function funcreset(){}
+        if ( $(".sigungu-enter").css('visibility')=='hidden'){
+            $(".sigungu-enter").css('visibility', 'visible');
+        }
+        else
+            $(".sigungu-enter").css('visibility','hidden');
+
+        document.getElementById("location").value="";
+
+    });
+
+    $(".all").click(function(){
+         if( $(".jikjup").hasClass("experiment")){
+            $(".jikjup").removeClass("experiment");
+            $(".sigungu-enter").css('visibility','hidden');
+        }
+
+         $(this).toggleClass("experiment");
+         document.getElementById("location").value="전체";
+    });
+    
 </script>
+

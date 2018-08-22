@@ -31,6 +31,11 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
+      ## for notification
+      Board.create!(content: "새로운 식당 #{@restaurant_name}가 등록되었습니다.") # 워딩 수정하기
+      # link: request.referrer #수정하기 해당 article path로
+  
+
     respond_to do |format|
       if @restaurant.save
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
@@ -65,6 +70,17 @@ class RestaurantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def crawling
+    Restaurant.RestaurantName
+    Zizuminfo.Subway
+    Zizuminfo.Momstouch
+    Menu.Subway
+    Menu.Momstouch
+    puts "crwaling update finished!"
+    redirect_to :back
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

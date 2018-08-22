@@ -48,13 +48,6 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
 
-  ## for notification
-  @article.followers.each do |follower|
-    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-    content: " #{@article.title.truncate(15, omission: '...')}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
-    link: request.referrer #수정하기 해당 article path로
-  end
-
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
