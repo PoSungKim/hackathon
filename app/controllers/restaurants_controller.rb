@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
+    @zizums = Zizuminfo.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
   end
 
   # GET /restaurants/1

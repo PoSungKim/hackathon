@@ -39,9 +39,11 @@
       <th colspan="5"></th>
     </tr>
   </thead>
-
+<%# Menu.where(:restaurant_name => @zizuminfo.restaurant_name) %>
   <tbody>
-    <% Menu.where(:restaurant_name => @zizuminfo.restaurant_name).each do |menu| %>
+    <% byebug %>
+    <% @zizuminfo.restaurant.menus.each do |menu| %>
+    
       <tr>
         <td><%= menu.id%></td>
         <td><%= menu.menu_name%></td>

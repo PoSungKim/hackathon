@@ -98,7 +98,7 @@
 <% else %>
 
   <div class="d-flex justify-content-around">
-    <div class="shops">
+    <div class="shops" >
     
       <% @zizums.each do |zizum| %>
         <div class="card" style="width: 20rem;">
@@ -141,7 +141,7 @@
         type : "GET",
         url : "getMenu",
         success :  function(data){
-            console.log(data);
+    
             //split 필요.
             $("#menuBox").html(data["menus"]);
         }
