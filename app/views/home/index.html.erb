@@ -4,11 +4,12 @@
             <%= image_tag 'logo.png', class:"indexlogo" %>
         </div>
         <div class="indexcontent">
-            <div><%= link_to '알레르기 검색', menus_search_path %></div>
-            <div><%= link_to '식당으로 검색', restaurants_search_path%></div>
+            <button class="mainbutton"><%= link_to '식당으로 검색', restaurants_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
+             <button class="mainbutton"><%= link_to '알레르기 검색', menus_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
         </div>
     </div>
 </body>
+
 
 
 

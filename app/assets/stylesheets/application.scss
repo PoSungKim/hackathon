@@ -30,19 +30,31 @@
     justify-content: space-between;
     margin-bottom:20px;
     background-color: rgba(255, 255, 255, 0.5);
+    -webkit-trasition: 0.6s;
+    transition: 5s;
 }
 
 .navbarcontent{
     display: flex;
     justify-content: space-around;
     width: 40em;
+    align-items: left;
+}
+.navbarconent:hover{
+    color: #454338;
 }
 
+.jeju {
+    font-family: 'Jeju Myeongjo', serif;
+    color:#454338;
+}
 .logo {
     width:100px;
     height:30px;
     margin-left: 28px;
 }
+
+
 //------
 
 //------main 관련
@@ -67,6 +79,16 @@
     display:flex;
     justify-content: space-evenly;
 }
+
+.mainbutton {
+    border: none;
+    width: 150px;
+    height: 48px;
+    background-color: #E2D6CF;
+    font-family: 'KoPubDotumMedium';
+}
+
+
 
 //-------
 
@@ -102,4 +124,12 @@
 
 .allergy-check{
     visibility:hidden;
+}
+
+.experiment{
+    background-color:rgb(56, 56, 56);
+    color: white;
+}
+.sigungu-enter{
+    visibility: hidden;
 }
