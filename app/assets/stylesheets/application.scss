@@ -12,10 +12,11 @@
 
 
 
-//------------nav바 및 전체홈페이지 관련
+//-----nav바
 .wholebackground {
     background-color: #F2F1F0;
 }
+
 
 .navbarstyle {
     position: fixed;
@@ -27,59 +28,83 @@
     padding: 10px;
     font-family: 'Jeju Myeongjo', serif;
     justify-content: space-between;
-    margin-bottom:20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-trasition: 0.6s;
+    transition: 0.6s;
 }
 
 .navbarcontent{
     display: flex;
     justify-content: space-around;
     width: 40em;
+    align-items: left;
+}
+.navbarconent:hover{
+    color: #454338;
 }
 
+.jeju {
+    font-family: 'Jeju Myeongjo', serif;
+    color:#454338;
+}
 .logo {
     width:100px;
     height:30px;
     margin-left: 28px;
 }
 //------
-#menuBox{
-    margin: 10px;
-    width: 300px;
-    height: 500px;
-    overflow-y: scroll;
-    border-style: solid;
-    border-color: black;
+
+
+
+//------main 관련
+.mainbg {
+    background: url('mainbg.png')  no-repeat center center fixed;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
 }
 
-.shops{
-    margin: 10px;
-    border-style: solid;
-    border-color: black;
-    width: 600px;
-    height: 700px;
-    overflow-y: scroll;
+.indexlogo {
+    width:400px;
+    height:150px;
+    display:flex;
+    justify-content: center;
+    margin-top:130px;
+    margin-bottom:40px;
 }
 
-.hideMenu{
-    display: none;
+.indexcontent{
+    display:flex;
+    justify-content: space-evenly;
 }
 
-.card{
-    margin: 15px;
+.mainbutton {
+    border: none;
+    width: 150px;
+    height: 48px;
+    background-color: #E2D6CF;
+    font-family: 'KoPubDotumMedium';
 }
 
-.allergy{
-    width: 180px;
+//-------
+
+
+//----login 페이지 관련
+.loginimage{
+    left:0;
+    height:100%;
+    width:35%;
 }
 
-.allergy-check{
-    visibility:hidden;
+.logincontent{
+    display:flex;
 }
 
-.experiment{
-    background-color:rgb(56, 56, 56);
-    color: white;
+.loginform {
+    padding-left:50px;
+    padding-top:50px;
+    display:flex;
+    align-content: space-around;
 }
-.sigungu-enter{
-    visibility: hidden;
-}
+

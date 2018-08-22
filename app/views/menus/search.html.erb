@@ -28,6 +28,7 @@
     <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
     <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
     
+
     <br>
     <br>
     <div class="d-flex justify-content-between">
@@ -75,6 +76,7 @@
                 <%= check_box_tag :a4_hodu, checked = true%> 호두<br>
                 <%= check_box_tag :a5_ddangkong, checked = true%> 땅콩<br>
                 <%= check_box_tag :a21_ahwangsan, checked = true%> 아황산류<br>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <div id="default"> 
     <%= form_tag(menus_path, method: :get) do %>
@@ -128,6 +130,8 @@
                 </div>
 =======
 >>>>>>> 7f830e0209f7d156b931e599e835d5d9991c1bc5
+=======
+>>>>>>> 7dc5bce62a3f446f0a75516576fcb0bf7f87cf1b
             </div>
         </div>
         <%= submit_tag 'Search'%>
