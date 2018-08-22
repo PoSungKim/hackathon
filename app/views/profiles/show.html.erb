@@ -70,9 +70,27 @@
       <ul>
         <% current_user.following_by_type('Zizuminfo').each do |zizum| %>
           <li> 
-            <p><%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %> </p>
+            <% if zizum.followed_by?(current_user) %>
+              <p><%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %> </p>
+            <% end %>
           </li>
         <% end %>
       </ul>
   </div>
 </div>
+
+<script>
+
+    $(".icon").click(function(){
+        if ($(this).hasClass("like")) //follow하고 있다면
+            {
+                $(this).removeClass("like");
+                $(this).addClass("unlike");
+            }
+        else if ($(this).hasClass("unlike"))
+            {
+                $(this).removeClass("unlike");
+                $(this).addClass("like");
+            }
+    });
+</script> 
