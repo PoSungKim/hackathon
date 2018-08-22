@@ -83,14 +83,14 @@
         <td><%= menu.a21_ahwangsan%></td>
         <td><%= link_to '메뉴 수정', edit_menu_path(menu) %></td>
         <td><%= link_to '메뉴 삭제', menu, method: :delete, data: { confirm: 'Are you sure?' }%></td>
-        <td><%= link_to '수정 요청' %></td>  <!--new_menu_path(restaurant_id: @zizuminfo.restaurant.id)-->
+        <td><%= link_to '수정 요청', userrequests_edit_request_url(menuID: menu.id) %></td> 
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= link_to '메뉴 추가', new_menu_path %>
-<%= link_to '추가 요청' %> <!--new_menu_path(restaurant_id: @zizuminfo.restaurant.id)-->
+<%= link_to '추가 요청', userrequests_new_request_url(restaurantID: @zizuminfo.restaurant.id)%> 
 <!--#############################################################################################-->
 
 
