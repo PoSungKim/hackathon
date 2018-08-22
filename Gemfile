@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+### 카드안 라이크 기능 ###
+gem 'axios_rails'
+
 ### 라이크/팔로우 기능 잼 ###
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'edit_asks/ask'
 
   resources :zizuminfos
+  post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
+  post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'
+
   get 'home/index'
   root 'home#index'
 
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   get 'restaurants/search' => "restaurants#search"
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
+  get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
 
@@ -41,11 +45,14 @@ Rails.application.routes.draw do
 
   ### 나만의 페이지 ###
   resources :profiles
-  post '/profiles/:id/follow', to: 'follows#profile_follow_toggle', as: 'profile_follow'
 
+  get '/zizuminfos/:id/follow_destroy', to: 'follows#profile_follow_destroy_toggle', as: 'profile_follow_destroy'
+  
   ### Public Market ###
   resources :articles
   post '/articles/:id/follow', to: 'follows#article_follow_toggle', as: 'article_follow'
+  get '/articles/:id/follow_destroy', to: 'follows#article_follow_destroy_toggle', as: 'article_follow_destroy'
+  delete '/articles/:id/destroy', to: 'follows#article_destroy', as: 'article_destroy'
   
   ### 회원가입 Devise ###
   # devise_for :users
