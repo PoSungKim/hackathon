@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
   ## for notification
-    Board.create!(content: "#{@article.title}의 메뉴가 업데이트되었습니다.") # 워딩 수정하기
+    Board.create!(content: "새로운 식당 #{@article.title}가 등록되었습니다.") # 워딩 수정하기
     # link: request.referrer #수정하기 해당 article path로
 
   

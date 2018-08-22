@@ -106,11 +106,6 @@ ActiveRecord::Schema.define(version: 20180821074539) do
     t.index ["user_id"], name: "index_new_alarms_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notiifications", force: :cascade do |t|
     t.integer  "recipient_id"
     t.integer  "actor_id"
@@ -127,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180821074539) do
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: "",    null: false
     t.integer  "phonenum",                               null: false
+    t.string   "registerimg"
     t.string   "shop_name"
     t.integer  "shop_num"
     t.text     "shop_info"

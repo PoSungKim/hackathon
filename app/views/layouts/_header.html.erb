@@ -33,7 +33,7 @@
             <% elsif user_signed_in?%>
                 <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "nav-item nav-link active" %>
             <% elsif owner_signed_in?%>
-                <%= link_to "로그아웃", destroy_owneer_session_path, method: :delete, class: "nav-item nav-link active" %>            
+                <%= link_to "로그아웃", destroy_owner_session_path, method: :delete, class: "nav-item nav-link active" %>            
             <% end %>
 
         <!-- 알림창 -->

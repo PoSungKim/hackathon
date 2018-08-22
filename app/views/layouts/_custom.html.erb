@@ -1,17 +1,17 @@
 <%= form_tag(menus_path, method: :get) do %>
-    <%= text_field_tag :sido, params[:sido]%>
+    시/도 입력(ex. 서울특별시): <%= text_field_tag :sido, params[:sido]%><br><br>
     <br>
      <div class="d-flex justify-content-between">
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류</button></div>
-            <div >
-                난류: <%= check_box_tag :a9_nanryu, true, current_user.allergy.include?('난류')%><br>
-                우유: <%= check_box_tag :a10_milk,true, current_user.allergy.include?('우유')%><br>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
+              <div >
+                <%= check_box_tag :a9_nanryu, true, current_user.allergy.include?('난류')%> 난류<br>
+                <%= check_box_tag :a10_milk,true, current_user.allergy.include?('우유')%> 우유<br>
             </div>
         </div>
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류</button></div>
-            <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류 <i class="fas fa-caret-down"></i></button></div>
+             <div>
                 복숭아: <%= check_box_tag :a6_peach, true, current_user.allergy.include?('복숭아')%><br>
                 토마토: <%= check_box_tag :a7_tomato,true, current_user.allergy.include?('토마토')%><br>
                 메밀: <%= check_box_tag :a1_maemil, true, current_user.allergy.include?('메밀')%><br>
@@ -20,16 +20,16 @@
             </div>
         </div>
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류</button></div>
-            <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류 <i class="fas fa-caret-down"></i></button></div>
+               <div>
                 닭고기: <%= check_box_tag :a11_ddakgogi, true, current_user.allergy.include?('닭고기')%><br>
                 쇠고기: <%= check_box_tag :a12_shoigogi,true, current_user.allergy.include?('쇠고기')%><br>
                 돼지고기: <%= check_box_tag :a8_piggogi,true, current_user.allergy.include?('돼지고기')%><br>
             </div>
         </div>
-        <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류</button></div>
-            <div>
+        <div>  
+         <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류 <i class="fas fa-caret-down"></i></button></div>        
+             <div>
                 새우: <%= check_box_tag :a13_saewoo,true, current_user.allergy.include?('새우')%><br>
                 고등어: <%= check_box_tag :a14_godeungeoh, true, current_user.allergy.include?('고등어')%><br>
                 홍합: <%= check_box_tag :a15_honghap, true, current_user.allergy.include?('홍합')%><br>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타</button></div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타 <i class="fas fa-caret-down"></i></button></div>        
             <div>
                 호두: <%= check_box_tag :a4_hodu, true, current_user.allergy.include?('호두')%><br>
                 땅콩: <%= check_box_tag :a5_ddangkong,true, current_user.allergy.include?('땅콩')%><br>

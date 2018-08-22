@@ -25,6 +25,12 @@ class HomeController < ApplicationController
       end  
     @boards_num= Board.all.count
     #@articles_num= params[:num]
+    # $notice=Board.last(3).pluck(:content)
+    @date = Date.today
+    @todays = Board.where(created_at: @date.midnight .. @date.end_of_day).count
+    @today_contents = Board.where(created_at: @date.midnight .. @date.end_of_day).pluck(:content)
+  
+
   end
 
 end

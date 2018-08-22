@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
-  # devise_for :admins
+  # devise_for :admins 관리자페이지 admin설정하려면 주석해제 +initializer/rails_admin도!
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #devise보다 아래위치
 
   ### 알림 ###

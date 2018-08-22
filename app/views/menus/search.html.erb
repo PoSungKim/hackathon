@@ -50,19 +50,21 @@
                 <%= check_box_tag :a21_ahwangsan, checked = true%> 아황산류<br>
             </div>
         </div>
+        </div>
         <%= submit_tag 'Search'%>
     <%end%>    
 </div>
 
+
 <!--- custom 검색옵션 -->
 <% if user_signed_in? %> 
-    <div id="myinfo" style="display:none;">
+    <div id="myinfo" style="display:none">
         <%= render partial: 'layouts/custom' %>
     </div>    
 <%else%>
 <%end%>
 
-<button id="custom">내 알러지정보 불러오기</button>
+<button id="custom" onClick="custom_on()">내 알러지정보 불러오기</button>
 <%# <button id="reset" onClick="funcreset()">초기화</button> %>
 <%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
 
@@ -89,10 +91,14 @@
     var btn = document.getElementById('custom');
     var basic = document.getElementById("default");
 
-    btn.onclick = function(){
+    // btn.onclick = function(){
+        // myinfo.style.display="block";
+        // basic.style.display="none";
+    // }
+
+    function custom_on() {
         myinfo.style.display="block";
         basic.style.display="none";
     }
-
     // function funcreset(){}
 </script>
