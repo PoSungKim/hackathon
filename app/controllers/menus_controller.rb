@@ -134,7 +134,7 @@ class MenusController < ApplicationController
     #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
     @zizums.followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
       @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-      content: " #{@restuarant_name} #{@zizum_name}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
+      content:"의 메뉴가 업데이트되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
       link: request.referrer #수정하기 해당 article path로
     end
   
@@ -153,13 +153,6 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update    
-  ## for notification
-  @zizuminfo.followers.each do |follower|
-    @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-    content: " #{@restuarant_name} #{@zizum_name}의 메뉴가 업데이트되었습니다.", # 워딩 수정하기
-    link: request.referrer #수정하기 해당 article path로
-  end
-
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
@@ -168,6 +161,17 @@ class MenusController < ApplicationController
         format.html { render :edit }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
+    end
+
+    @restaurant = @menu.restaurant_id
+    @zizums = Zizuminfo.where(:restaurant_id => @restaurant.map(&:restaurant_id))
+
+     #zizuminfo.follower니까 그zizum을포함한 식당일경우
+    #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
+    @zizums.followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+      @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
+      content:"의 메뉴가 업데이트되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
+      link: request.referrer #수정하기 해당 article path로
     end
   end
 

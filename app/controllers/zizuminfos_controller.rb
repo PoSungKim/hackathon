@@ -25,11 +25,7 @@ class ZizuminfosController < ApplicationController
   # POST /zizuminfos.json
   def create
     @zizuminfo = Zizuminfo.new(zizuminfo_params)
-
-     ## for notification
-    #Board.create!(content: "새로운 식당 #{@zizum_name}가 등록되었습니다.") >>>>> restaurant으로 이동
-     # link: request.referrer #수정하기 해당 article path로
- 
+    
     respond_to do |format|
       if @zizuminfo.save
         format.html { redirect_to @zizuminfo, notice: 'Zizuminfo was successfully created.' }
