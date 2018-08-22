@@ -1,41 +1,131 @@
 <%# ------------검색결과가 뜨는 페이지------------------ %>
-
+<%# ------------재검색 페이지 위에 띄우기---------------------- %>
 <p id="notice"><%= notice %></p>
 <h1>Restaurants</h1>
 <p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
+<%# ------------재검색----------------------------------------------------------------------------- %>
+<h3>재검색하기(알레르기 있다면 체크)->재검색 부분 css 통해 수정 필요.</h3> 
+<%= form_tag(menus_path, method: :get) do %>
+    시/도 입력(ex. 서울특별시): 
+    <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
+    <select name="sido">
+        <option value="<%=params[:sido]%>"><%=params[:sido]%></option>
+        <option value="서울특별시" class="sido-opt">서울특별시</option>
+        <option value="부산광역시" class="sido-opt">부산광역시</option>
+        <option value="대구광역시" class="sido-opt">대구광역시</option> 
+        <option value="인천광역시" class="sido-opt">인천광역시</option>     
+        <option value="광주광역시" class="sido-opt">광주광역시</option>
+        <option value="대전광역시" class="sido-opt">대전광역시</option>
+        <option value="세종특별자치시" class="sido-opt">세종특별자치시</option> 
+        <option value="경기도" class="sido-opt">경기도</option>
+        <option value="강원도" class="sido-opt">강원도</option>
+        <option value="충청북도" class="sido-opt">충청북도</option>
+        <option value="충청남도" class="sido-opt">충청남도</option> 
+        <option value="전라북도" class="sido-opt">전라북도</option>
+        <option value="전라남도" class="sido-opt">전라남도</option>
+        <option value="경상북도" class="sido-opt">경상북도</option>
+        <option value="경상남도" class="sido-opt">경상남도</option> 
+        <option value="제주특별자치시" class="sido-opt">제주특별자치시</option>
+    </select>
+    <br><br>
+    시/군/구 입력(ex. 용산구):
+    <button type="button" class="jikjup">직접 입력</button>
+    <button type="button" class="all">전체 선택</button>
+
+    <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
+    <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
+    <br>
+    <br>
+    
+    <div class="d-flex justify-content-between">
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a9_nanryu, true, checked = params[:a9_nanryu]%> 난류<br>
+                <%= check_box_tag :a10_milk, true, checked = params[:a10_milk]%> 우유<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a6_peach, true, checked = params[:a6_peach]%> 복숭아<br>
+                <%= check_box_tag :a7_tomato, true, checked = params[:a7_tomato]%> 토마토<br>
+                <%= check_box_tag :a1_maemil, true, checked = params[:a6_peach]%> 메밀<br>
+                <%= check_box_tag :a2_mil, true, checked = params[:a2_mil]%> 밀<br>
+                <%= check_box_tag :a3_daedu, true, checked = params[:a3_daedu]%> 대두(콩)<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a11_ddakgogi, true, checked = params[:a11_ddakgogi]%> 닭고기<br>
+                <%= check_box_tag :a12_shoigogi, true, checked = params[:a12_shoigogi]%> 쇠고기<br>
+                <%= check_box_tag :a8_piggogi, true, checked = params[:a8_piggogi]%> 돼지고기<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a13_saewoo, true, checked = params[:a13_saewoo]%> 새우<br>
+                <%= check_box_tag :a14_godeungeoh, true, checked = params[:a14_godeungeoh]%> 고등어<br>
+                <%= check_box_tag :a15_honghap, true, checked = params[:a15_honghap]%> 홍합<br>
+                <%= check_box_tag :a16_junbok, true, checked = params[:a16_junbok]%> 전복<br>
+                <%= check_box_tag :a17_gul, true, checked = params[:a17_gul]%> 굴<br>
+                <%= check_box_tag :a18_jogaeryu, true, checked = params[:a18_jogaeryu]%> 조개류<br>
+                <%= check_box_tag :a19_gye, true, checked = params[:a19_gye]%> 게<br>
+                <%= check_box_tag :a20_ohjingeoh, true, checked = params[:a20_ohjingeoh]%> 오징어<br>
+            </div>
+        </div>
+        <div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타  <i class="fas fa-caret-down"></i></button></div>
+            <div class="allergy-check">
+                <%= check_box_tag :a4_hodu, true, checked = params[:a4_hodu]%> 호두<br>
+                <%= check_box_tag :a5_ddangkong, true, checked = params[:a5_ddangkong]%> 땅콩<br>
+                <%= check_box_tag :a21_ahwangsan, true, checked = params[:a21_ahwangsan]%> 아황산류<br>
+            </div>
+        </div>
+        <%= submit_tag 'Search'%>
+    <%end%>    
+  </div>
+<%# ------------재검색 끝끝끝----------------------------------------------------------------------------- %>
+=========================================================================
 <h3><strong><%=params[:sido]%>/<%=params[:sigungu]%></strong>에 있는 해당 식당-<%=@zizums.length%>개</h3>
 
-<div class="d-flex justify-content-around">
-  <div class="shops" >
-    <% if @zizums.length == 0%>
-          <p><%=params[:sido]%>/<%=params[:sigungu]%>가 일치하지 않는 시군구이거나 해당 식당이 없습니다.<br>다시 검색해주세요
-          <br><%= link_to '알레르기 검색', menus_search_path %><br></p>
-    <% end%>
-    <% @zizums.each do |zizum| %>
-      <div class="card" style="width: 20rem;">
-        <div class="card-body">
-          <%# ajax로 전송할 레스토랑 이름%>
-          <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
-          <h3><%=zizum.zizum_name%></h3>
-          <%# display:none 하고 옆으로 메뉴 띄울 것임%>
-          <div class="hideMenu">
-            <% @menus.where(:restaurant_name => zizum.restaurant_name).each do |menu|%>
-              <%=menu.menu_name%><br>
-            <% end%>
-          </div>
-          <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
-          <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
-        </div>
-      </div>
-    <% end %>
-  </div>
 
-  <%# 해당 메뉴가 뜨는 자리. %>
-  <div id="menuBox">
-    (해당 메뉴 뜨는 자리) 
-    즐거운 한끼식사 걱정없식
+<% if @zizums.length == 0%>
+  <p><%=params[:sido]%>/<%=params[:sigungu]%>가 일치하지 않는 시군구이거나 해당 식당이 없습니다.<br>다시 검색해주세요
+  <br><%= link_to '알레르기 검색', menus_search_path %><br></p>
+<% else %>
+
+  <div class="d-flex justify-content-around">
+    <div class="shops">
+    
+      <% @zizums.each do |zizum| %>
+        <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <%# ajax로 전송할 레스토랑 이름%>
+            <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
+            <h3><%=zizum.zizum_name%></h3>
+            <%# display:none 하고 옆으로 메뉴 띄울 것임%>
+            <div class="hideMenu">
+              <% @menus.where(:restaurant_name => zizum.restaurant_name).each do |menu|%>
+                <%=menu.menu_name%><br>
+              <% end%>
+            </div>
+            <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
+            <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%# 해당 메뉴가 뜨는 자리. %>
+    <div id="menuBox">
+      (해당 메뉴 뜨는 자리) 
+      즐거운 한끼식사 걱정없식
+    </div>
   </div>
-</div>
+<%end%>
 
 <%#= link_to 'New Menu', new_menu_path%>
 
@@ -58,8 +148,71 @@
       })
     });
 
-   if ('<%= @zizums.length == 0 %>'){
-     $("#menuBox").css('display','none');
-   }
+
+   //-------------처음으로 index 페이지 넘어왔을 때 상태------------- 
+   $(function(){
+     document.getElementById("location").value='<%=params[:sigungu]%>';
+    $(".allergy-check").css('visibility','visible');
+    if('<%=params[:sigungu]%>' == "전체")
+      $(".all").addClass("experiment");
+    
+    else{
+     $(".jikjup").addClass("experiment");
+     $(".sigungu-enter").css('visibility','visible');
+    }
+   }); 
+
+  $(".sido-opt").filter(function(){
+      return $(this).html() == '<%=params[:sido]%>'
+    }).css('display','none');
+
+  //--------------search할 때의 필터링 js 와 같음.------------------
+   $('.a-type').click(function() {
+        //toggle class 가 안먹음.
+        if ( $(this).next(".allergy-check").css('visibility') == 'hidden' ){
+            //내릴 때. 
+            $(this).next(".allergy-check").css('visibility','visible');
+            $(this).children(".btn").children("i").removeClass("fa-caret-down");
+            $(this).children(".btn").children("i").addClass("fa-caret-up");
+        }
+        else{
+            //올릴 때.
+            $(this).next(".allergy-check").css('visibility','hidden');
+             $(this).children(".btn").children("i").removeClass("fa-caret-up");
+             $(this).children(".btn").children("i").addClass("fa-caret-down");
+            
+        }
+    });
+
+    //experiment는 눌렸다는 것 임시로 표시하기 위해서.
+    $(".jikjup").click(function(){
+        if( $(".all").hasClass("experiment")){
+            $(".all").removeClass("experiment");
+        }
+        
+        $(this).toggleClass("experiment");
+
+        if ( $(".sigungu-enter").css('visibility')=='hidden'){
+            $(".sigungu-enter").css('visibility', 'visible');
+        }
+        else
+            $(".sigungu-enter").css('visibility','hidden');
+
+        document.getElementById("location").value="";
+
+    });
+
+    $(".all").click(function(){
+        if ( $(".sigungu-enter").css('visibility')=='visible')
+          $(".sigungu-enter").css('visibility','hidden'); 
+          
+        if( $(".jikjup").hasClass("experiment")){
+            $(".jikjup").removeClass("experiment");
+            $(".sigungu-enter").css('visibility','hidden');
+        }
+
+         $(this).toggleClass("experiment");
+         document.getElementById("location").value="전체";
+    });
 
 </script>
