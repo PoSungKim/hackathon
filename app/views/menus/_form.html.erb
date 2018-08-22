@@ -1,0 +1,250 @@
+<%= form_for(menu) do |f| %>
+  <% if menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :menu_name %>
+    <%= f.text_field :menu_name%>
+  </div> 
+
+  <div class="field">
+    <%= f.label :restaurant_name %>
+    <%= f.text_field :restaurant_name%>
+  </div> 
+
+  <!--알레르기 정보-->
+  <div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div>
+  <div class="field">
+    <p>밀</p>
+    <%= f.label :a2_mil, '포함'%>
+    <%= f.radio_button :a2_mil, 1%>
+    <%= f.label :a2_mil, '미포함'%>
+    <%= f.radio_button :a2_mil, 0%>
+    <%= f.label :a2_mil, '교차가능'%>
+    <%= f.radio_button :a2_mil, 2%>
+    <%= f.label :a2_mil, '제공안함'%>
+    <%= f.radio_button :a2_mil, -1%>
+  </div>
+  <div class="field">
+    <p>대두</p>
+    <%= f.label :a3_daedu, '포함'%>
+    <%= f.radio_button :a3_daedu, 1%>
+    <%= f.label :a3_daedu, '미포함'%>
+    <%= f.radio_button :a3_daedu, 0%>
+    <%= f.label :a3_daedu, '교차가능'%>
+    <%= f.radio_button :a3_daedu, 2%>
+    <%= f.label :a3_daedu, '제공안함'%>
+    <%= f.radio_button :a3_daedu, -1%>
+  </div>
+  <div class="field">
+    <p>호두</p>
+    <%= f.label :a4_hodu, '포함'%>
+    <%= f.radio_button :a4_hodu, 1%>
+    <%= f.label :a4_hodu, '미포함'%>
+    <%= f.radio_button :a4_hodu, 0%>
+    <%= f.label :a4_hodu, '교차가능'%>
+    <%= f.radio_button :a4_hodu, 2%>
+    <%= f.label :a4_hodu, '제공안함'%>
+    <%= f.radio_button :a4_hodu, -1%>
+  </div><div class="field">
+    <p>땅콩</p>
+    <%= f.label :a5_ddangkong, '포함'%>
+    <%= f.radio_button :a5_ddangkong, 1%>
+    <%= f.label :a5_ddangkong, '미포함'%>
+    <%= f.radio_button :a5_ddangkong, 0%>
+    <%= f.label :a5_ddangkong, '교차가능'%>
+    <%= f.radio_button :a5_ddangkong, 2%>
+    <%= f.label :a5_ddangkong, '제공안함'%>
+    <%= f.radio_button :a5_ddangkong, -1%>
+  </div>
+  <div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div><div class="field">
+    <p>메밀</p>
+    <%= f.label :a1_maemil, '포함'%>
+    <%= f.radio_button :a1_maemil, 1%>
+    <%= f.label :a1_maemil, '미포함'%>
+    <%= f.radio_button :a1_maemil, 0%>
+    <%= f.label :a1_maemil, '교차가능'%>
+    <%= f.radio_button :a1_maemil, 2%>
+    <%= f.label :a1_maemil, '제공안함'%>
+    <%= f.radio_button :a1_maemil, -1%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image,
+        accept: 'image/png, image/gif, image/jpeg'%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurants</h1>
+    <h3>검색 결과 : <%=@restaurants.length%>개</h3>
+    <% @restaurants.each do |restaurant| %>
+        <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h3><%= restaurant.restaurant_name%></h3>
+            <p class="card-text"><%= link_to '식당상세페이지', restaurant %></p>
+            <p class="card-text"><%#= link_to 'Edit', edit_restaurant_path(restaurant) %></p>
+            <p class="card-text"><%#= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          </div> 
+       </div>
+    <% end %>
+<br>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>
