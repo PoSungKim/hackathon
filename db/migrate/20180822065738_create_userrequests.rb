@@ -6,6 +6,10 @@ class CreateUserrequests < ActiveRecord::Migration[5.0]
 
       #추가 / 수정 요청자 정보
       t.string :uid
+      #신청 이유
+      t.text :memo
+      #처리상태. 미처리, 승인, 반려
+      t.string :status
 
       t.string :menu_name
 
@@ -31,7 +35,7 @@ class CreateUserrequests < ActiveRecord::Migration[5.0]
       t.integer :a20_ohjingeoh
       t.integer :a21_ahwangsan
 
-      t.belongs_to :restaurant
+      t.integer :restaurant_id
       t.string :restaurant_name
 
       t.string :image

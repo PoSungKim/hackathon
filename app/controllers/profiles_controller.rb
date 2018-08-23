@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    #본인 신청내역 로딩 위해
+    @user_requests = Userrequest.where(uid: current_user.id)
   end
 
   # GET /profiles/new

@@ -94,7 +94,32 @@
   </div>
 </div>
 
-<hr />
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+        <th>요청</th>
+        <th>식당</th>
+        <th>메뉴이름</th>
+        <th>전달사항</th>
+        <th>요청일</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_requests.each do |r| %>
+      <tr>
+        <td><%= r.request_type %></td>
+        <td><%= r.restaurant_name%></td>
+        <td><%= r.menu_name%></td>
+        <td><%= r.memo%></td>
+        <td><%= r.created_at%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <script>
 
