@@ -9,32 +9,38 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body class="container">
+  <body id="whole" class="container wholebackground" style="text-decoration: none;">
     <%= render 'layouts/header'%>
-
-    <!-- 회원가입 devise (4): 요구사항 -->
-    <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <div>
-
+    <br><br><br>
     <%= yield %>
-
   </body>
 
-  <script>
-    function showHide(id) {
-    var obj = document.getElementById(id);
-      if (obj.style.display == 'none')
-       obj.style.display = 'block';
-      else
-       obj.style.display = 'none';  
-    }
-  </script>
+ 
+    
+    <script>
+      jQuery(function($) {
+        if (window.location.pathname == '/' ) { 
+        $("#whole").addClass("mainbg" ); } 
+        $("body").css("display", "none");
+        $("body").fadeIn(1000);
+        $("a.transition").click(function(event){
+          event.preventDefault();
+          linkLocation = this.href;
+        $("body").fadeOut(2000, redirectPage);
+        });
+        function redirectPage() {
+        window.location = linkLocation;
+        }
+      });
+    </script>
+  
+  
+
+
 </html>
+
+
 

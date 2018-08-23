@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
   ## 임시로 
     $rt_num = params[:rt_num]

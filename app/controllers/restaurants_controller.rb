@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
@@ -73,7 +74,7 @@ class RestaurantsController < ApplicationController
     Menu.Subway
     Menu.Momstouch
     puts "crwaling update finished!"
-    redirect_to :back
+    redirect_to userrequests_index_path
   end
 
 
