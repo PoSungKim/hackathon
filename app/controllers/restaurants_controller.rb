@@ -82,7 +82,7 @@ class RestaurantsController < ApplicationController
     Menu.Momstouch
     puts "\n\nmomstouch menu finished\n\n"
     # sleep 1.5
-
+    redirect_to userrequests_index_path
   end
 
 
