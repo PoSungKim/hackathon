@@ -1,92 +1,135 @@
+<!-- Button Effect & Font Style -->
+<link rel="stylesheet" type="text/css" href="profiles.scss" />
+
+<style type="text/scss">
+  * { font-family: 'Jeju Myeongjo', serif; }
+  h1 { font-weight: bold; }
+</style>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1 style="text-align: center;">나만의 페이지</h1>
+
+
+<!-- My Page : Open-->
+
+
+<h1 style="text-align: center;">나만의 페이지</h1> 
+<br> <br>
 
 <div class="row">
-
+  <!-- 프로필 이미지 -->
   <div class="col-6">
-    <p>
+    <p align="center">
+      <br>
       <% if @profile.user.profileimage.url != nil %>
-      <%= image_tag @profile.user.profileimage.url %> <br> <%end %>
-      <%= link_to '개인정보 변경', edit_user_registration_path %> 
+      <%= image_tag @profile.user.profileimage.url %> <br> <%end %> <br>
+      <!-- <%= link_to '개인정보 변경', edit_user_registration_path %>   
+      수정 버튼 위치 1 : UNACTIVATED -->
     </p>
   </div>
 
+  <!-- 개인 정보 창 -->
   <div class="col-6">
-    <p>
-      <strong>회원님: </strong>
-      <%= @profile.user.name %> 
+    <p>  <!-- user name -->
+      <strong> <%= @profile.user.name %> </strong> 님, 안녕하세요 !
       <%# (<%= @profile.user.nickname%>
     </p>
 
-    <p>
-      <strong>나이: </strong>
+    <p>  <!-- user ages -->
+      <strong>연령 : </strong>
       <%= @profile.user.ages %> 
     </p>
 
-    <p>
-      <strong>알레르기정보 </strong>
+    <p>  <!-- user allergy -->
+      <strong>주의해야 할 음식 : </strong>
       <%= @profile.user.allergy.gsub(',','') %> 
     </p>
+
+    <br>
+    <div align="right">
+      <button class="fill mbutton">  <!-- 수정 버튼 위치 2 -->
+        <%= link_to '개인정보 변경', edit_user_registration_path, :style=> "color:black; text-decoration: none;" %>
+      </button>
+    </div>
   </div>
 
-</div>
+</div> <!-- My Page : Close -->
 
-<hr />
 
-<div class="row">
 
+<!-- user activities -->
+<hr />  
+
+<div class="row"> <!-- like - restaurants -->
   <div class="col-12">
-    <h3>라이크한 식당들 (최근 5)</h3>
-      <ul>
+    <h4 id="spreadBtn1">라이크한 식당들 (최근 5) 클릭하면 좁아짐</h4>
+      <ul id="hiddenList1">
         <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
           <li> 
             <% if zizum.followed_by?(@profile.user) %>
               <p>
-                <%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %> 
-                <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                <%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %>
+                <% if @profile.user == current_user %>
+                  <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                <% end %>
               </p>
             <% end %>
           </li>
         <% end %>
       </ul>
   </div>
-</div>
+</div>  <!-- like - restaurants : close -->
 
-<hr />
 
-<div class="row">
+<!-- Market Close : UNACTIVATED -->
 
+<!-- <hr />
+<div class="row"> 
   <div class="col-12">
-    <h3>라이크한 게시글 (최근 5)</h3>
-      <ul>
+    <h5 id="spreadBtn2">라이크한 게시글 (최근 5) 클릭하면 좁아짐</h5>
+      <ul id="hiddenList2">
         <% @profile.user.following_by_type('Article').order("created_at desc").limit(5).each do |article| %>
           <li> <% if article.articleimage.thumb.url != nil %>
             <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %> 
+            <%= link_to article.title, article_path(article.id) %>
+            <% if @profile.user == current_user %> 
+              <%= link_to fa_icon('trash'), article_follow_destroy_path(article.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+            <% end %>
           </li>
         <% end %>
       </ul>
   </div>
-</div>
+</div> 
 
-<hr />
+Liked article : HIDDEN -->
 
-<div class="row">
+
+<!-- <hr />
+<div class="row">  
   <div class="col-12">
-    <h3>자신이 쓴 게시글 (최근 5)</h3>
-      <ul>
+    <h5 id="spreadBtn3">자신이 쓴 게시글 (최근 5) 클릭하면 좁아짐</h5>
+      <ul id="hiddenList3">
         <% @profile.user.articles.order("created_at desc").limit(5).each do |article| %>
           <li>  <% if article.articleimage.thumb.url != nil %>
             <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %> 
+            <%= link_to article.title, article_path(article.id) %>
+            <% if @profile.user == current_user %>  
+              <%= link_to fa_icon('trash'), article_destroy_path(article.id), method: :DELETE, data: {confirm: '게시물을 삭제하시겠습니까?'} %>
+            <% end %>
           </li>
         <% end %>
       </ul>
   </div>
-</div>
+</div> 
+
+Written article : HIDDEN -->
 
 <hr />
+
+
+
+
 
 <script>
 
@@ -101,5 +144,39 @@
                 $(this).removeClass("unlike");
                 $(this).addClass("like");
             }
+    });
+
+    $(document).ready(function(){
+      $("#spreadBtn1").click(function(){
+          if($("#hiddenList1").is(":visible")){
+            // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+              $("#hiddenList1").slideUp();
+          }else{
+              // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+              $("#hiddenList1").slideDown();
+          }
+      });
+    }); 
+    $(document).ready(function(){
+        $("#spreadBtn2").click(function(){
+            if($("#hiddenList2").is(":visible")){
+              // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+                $("#hiddenList2").slideUp();
+            }else{
+                // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+                $("#hiddenList2").slideDown();
+            }
+        });
+    }); 
+    $(document).ready(function(){
+        $("#spreadBtn3").click(function(){
+            if($("#hiddenList3").is(":visible")){
+              // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+                $("#hiddenList3").slideUp();
+            }else{
+                // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+                $("#hiddenList3").slideDown();
+            }
+        });
     });
 </script> 
