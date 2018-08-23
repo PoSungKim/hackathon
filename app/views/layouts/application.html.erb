@@ -10,7 +10,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="http://code.jquery.com/jquery-latest.js"></script> 
   <!--
 function getCookie(name) {
 var nameOfCookie = name + "=";
@@ -43,17 +42,10 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
 </script>
   </head>
 
-  <body class="container">
+  <body id="whole" class="container wholebackground" style="text-decoration: none;">
     <%= render 'layouts/header'%>
-
-    <!-- 회원가입 devise (4): 요구사항 -->
-    <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <div>
-
+    <br><br><br>
     <%= yield %>
-
   </body>
 
   <script>
@@ -105,6 +97,27 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
     }
   })();
 // End Channel Plugin -->
-  </script>
+
+      jQuery(function($) {
+        if (window.location.pathname == '/' ) { 
+        $("#whole").addClass("mainbg" ); } 
+        $("body").css("display", "none");
+        $("body").fadeIn(1000);
+        $("a.transition").click(function(event){
+          event.preventDefault();
+          linkLocation = this.href;
+        $("body").fadeOut(2000, redirectPage);
+        });
+        function redirectPage() {
+        window.location = linkLocation;
+        }
+      });
+    </script>
+  
+  
+
+
 </html>
+
+
 

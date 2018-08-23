@@ -1,5 +1,5 @@
-<h2>Log in</h2>
-  <%= devise_error_messages! %>
+<h2>환영합니다! 서비스를 이용하시기 전에 회원가입을 부탁드릴께요 ^^</h2>
+<%= devise_error_messages! %>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,

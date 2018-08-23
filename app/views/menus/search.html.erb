@@ -1,5 +1,9 @@
 <h3>검색하기(알레르기 있다면 체크)</h3>
+<<<<<<< HEAD
 <div id="default">
+=======
+<div class="original-check">
+>>>>>>> 14d72f1247d5b705db0f2b4f07446a0c7c693e6c
 <%= form_tag(menus_path, method: :get) do %>
     시/도 입력(ex. 서울특별시): 
     <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
@@ -28,11 +32,9 @@
     
     <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
     <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
-    
 
     <br>
-    <br>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between original-check">
         <div>
             <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
             <div class="allergy-check">
@@ -81,6 +83,7 @@
         </div>
         </div>
         <%= submit_tag 'Search'%>
+    </div>
     <%end%>    
 </div>
 
@@ -89,16 +92,39 @@
 <% if user_signed_in? %> 
     <div id="myinfo" style="display:none">
         <%= render partial: 'layouts/custom' %>
-    </div>    
+    </div>
+    <button id="custom">내 알러지정보 불러오기</button>
 <%else%>
-<%end%>
+    <button id="custom-alert">내 알러지정보 불러오기</button>
+<%end %>
 
-<button id="custom" onClick="custom_on()">내 알러지정보 불러오기</button>
 <%# <button id="reset" onClick="funcreset()">초기화</button> %>
 <%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
 
 
 <script>
+    $("#custom-alert").click(function(){
+        alert("로그인이 필요한 기능입니다");
+    });
+
+    $("#custom").click(function(){
+        if( $(this).html() == "내 알러지정보 불러오기")
+        {
+            $(".original-check").addClass("getinfo");
+            $("#myinfo").removeClass("getinfo");
+            $(".allergy-check").css('visibility','visible');
+            $("i").removeClass("fa-caret-down");
+            $("i").addClass("fa-caret-up");
+            $(this).html("되돌리기");
+        }
+        else
+        {
+            $(".original-check").removeClass("getinfo");
+            $("#myinfo").addClass("getinfo");
+            $(this).html("내 알러지정보 불러오기");
+        }
+    });
+
     $('.a-type').click(function() {
         //toggle class 가 안먹음.
         if ( $(this).next(".allergy-check").css('visibility') == 'hidden' ){

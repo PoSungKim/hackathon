@@ -1,25 +1,17 @@
+
+<body>
+    <div>
+        <div class="indexcontent">
+            <%= image_tag 'logo.png', class:"indexlogo" %>
+        </div>
+        <div class="indexcontent">
+            <button class="mainbutton"><%= link_to '식당으로 검색', zizuminfos_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
+             <button class="mainbutton"><%= link_to '알레르기 검색', menus_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
 <%# <marquee>공지사항입니다</marquee>  %>
-<h1>걱정없식</h1>
-<h2>검색하기</h2>
-
-<%= link_to '알레르기 검색', menus_search_path %><br>
-<%= link_to '식당으로 검색', restaurants_search_path%><br>
-
-<div class="container">
-  <h1 style = "margin-top: 40px; text-align: center"> HOME </h1>
-  <h1 style = "margin-top: 40px; text-align: center"> </h1>
-  <div class="form-group" style="margin-top: 50px; text-align: center">
-    <% if user_signed_in? %>
-      <p> 현재 로그인된 유저의 이름: <%= current_user.name %> </p>    
-      <p> 현재 로그인된 유저의 이메일: <%= current_user.email %> </p>
-      <p> 현재 로그인된 유저의 성별: <%= current_user.gender %> </p>
-      <p> 현재 로그인된 유저의 연령대: <%= current_user.ages %> </p>      
-      <p> 현재 로그인된 유저의 알러지정보: <%= current_user.allergy.gsub(',','') %> </p>      
-      <p><%= link_to('정보수정', edit_user_registration_path) %></p>
-      <%# <p><%= link_to('정보업데이트', editsns_path) %>
-    <%end%>
-</div>
-
 <!--공지 팝업창 그날 하루 올라온 식당만.(수정가능)ㅇ-->
  <div id="myModal" class="modal">
   <div class="modal-content">
@@ -87,7 +79,7 @@
 <% end  %>
 
   <!--혜진 임시 크롤링 버튼-->
-  <%= link_to "크롤링 업데이트", "/crawling"%>
-</div>
+  <%# <%= link_to "크롤링 업데이트", "/crawling"%> 
+
 
 

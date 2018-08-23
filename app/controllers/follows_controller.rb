@@ -58,23 +58,23 @@ class FollowsController < ApplicationController
             redirect_to zizuminfo_url(@zizum.id) 
     end
 
-    def followerNum
-        @res = params[:res_name]
-        @ziz = params[:ziz_name]
+    # def followerNum
+    #     @res = params[:res_name]
+    #     @ziz = params[:ziz_name]
 
-        $result = {"res_name" => nil, "ziz_name"=> nil, "follower" => 0}
+    #     $result = {"res_name" => nil, "ziz_name"=> nil, "follower" => 0}
 
-        $result[:res_name] = @res
-        $result[:ziz_name] = @ziz
+    #     $result[:res_name] = @res
+    #     $result[:ziz_name] = @ziz
 
-        @zizum = Zizuminfos.where("#{:zizum_name} LIKE ? AND #{:restaurant_name} LIKE ?",@ziz,@res)[0]
+    #     @zizum = Zizuminfos.where("#{:zizum_name} LIKE ? AND #{:restaurant_name} LIKE ?",@ziz,@res)[0]
 
-        $result = $result.to_json
-        puts "================*******실험시작"
-        puts @zizum
-        puts "==============끝================="
+    #     $result = $result.to_json
+    #     puts "================*******실험시작"
+    #     puts @zizum
+    #     puts "==============끝================="
         
-        debugger
+    #     debugger
 
-    end
+    # end
 end 

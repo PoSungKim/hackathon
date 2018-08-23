@@ -1,10 +1,15 @@
 class ZizuminfosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_zizuminfo, only: [:show, :edit, :update, :destroy]
 
   # GET /zizuminfos
   # GET /zizuminfos.json
+
+  def search
+  end
+  
   def index
-    @zizuminfos = Zizuminfo.all
+    @zizums = Zizuminfo.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
   end
 
   # GET /zizuminfos/1
