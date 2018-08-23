@@ -3,7 +3,7 @@ class NewAlarmsController < ApplicationController
         @new_alarms = current_user.new_alarms.unread_by(current_user)
     end
     
-    def show
+    def show   
         @new_alarm = NewAlarm.find(params[:id])
         @new_alarm.mark_as_read! for: current_user
         redirect_to @new_alarm.link
