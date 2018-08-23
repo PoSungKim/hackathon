@@ -89,10 +89,12 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.integer  "a19_gye"
     t.integer  "a20_ohjingeoh"
     t.integer  "a21_ahwangsan"
+    t.integer  "restaurant_id"
     t.string   "restaurant_name"
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
   create_table "new_alarms", force: :cascade do |t|
@@ -102,11 +104,6 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_new_alarms_on_user_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "notiifications", force: :cascade do |t|

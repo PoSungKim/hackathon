@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+### Full Page Scroll ###
+gem 'fullpage-rails'
+
 ### 카드안 라이크 기능 ###
 gem 'axios_rails'
 

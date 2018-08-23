@@ -3,27 +3,27 @@
             <%= image_tag 'logo.png', class:"logo" %>
          <% end %></div>
     <div class="navbarcontent"> 
-        <div><%= link_to "About", home_about_path, class:"jeju", :style=>"text-decoration: none;  color: #454338;" %>        </div>
-        <div><%= link_to "Restaurant",  zizuminfos_search_path, class:"jeju", :style=>"text-decoration: none; color: #454338;" %></div>
+        <div><%= link_to "About", home_about_path, class:"headerfont", :style=>"text-decoration: none;  color: #454338" %>        </div>
+        <div><%= link_to "Restaurant",  zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338" %></div>
         <div>Filtering</div>
         <div>
         <!-- 마이페이지 -->
             <% if user_signed_in? %> 
                 <% if current_user.profile.nil? %> 
-                    <%= link_to "My Page", new_profile_path(@profile), class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                    <%= link_to "My Page", new_profile_path(@profile), class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
                 <% elsif !current_user.profile.nil? %>
-                    <%= link_to "My Page", profile_path(current_user.profile.id), class:"jeju", :style=>"text-decoration: none; color: #454338;"  %>
+                    <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
                 <% end %>
             <% end %>
         </div>
         <!-- 로그인/로그아웃 -->
         <div>
             <% if !user_signed_in? %> 
-                <%= link_to "Log In", new_user_session_path, class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                <%= link_to "Log In", new_user_session_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
             <% elsif user_signed_in?%>
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
              <% elsif owner_signed_in?%>
-                <%= link_to "Log Out", destroy_owneer_session_path, method: :delete, class: "nav-item nav-link active" %>   
+                <%= link_to "Log Out", destroy_owneer_session_path, method: :delete, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>   
             <% end %>
         </div>
     </div>
