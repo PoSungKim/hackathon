@@ -17,27 +17,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
          clean_up_passwords(resource)
          respond_with_navigational(resource){ render_with_scope :edit }
        end
-    
+
     end
 
   ## for editsns 
   def edit
-    render :edit
+    # render :edit
   end   
 
   def editsns
-    render :editsns
+    # render :editsns
   end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+ # def new
+   #   super
+  #end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  #def create
+  #super
+  #end
 
   # GET /resource/edit
   # def edit
@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+ protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -74,14 +74,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
+  def after_update_path_for(resource)
+    redirect_to new_profile_path_url
+  end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+ def after_sign_up_path_for(resource)
+  redirect_to new_profile_path_url
+  end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+   def after_inactive_sign_up_path_for(resource)
+    redirect_to new_profile_path_url
+   end
 end

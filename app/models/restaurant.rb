@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
     has_many :menus
 
     validates :restaurant_name, :uniqueness => true
+    acts_as_followable
 
     def self.RestaurantName
         if Restaurant.where(restaurant_name: "서브웨이")[0].nil?

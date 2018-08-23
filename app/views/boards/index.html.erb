@@ -37,4 +37,28 @@
     <% end %>
    <% end %> 
   </tbody>
-</table>  
+ </table>
+<div id="div_laypopup" align="center" style="display:none;border-width:0px;Z-INDEX: 201; POSITION: absolute;left:528px; top:640px;">  
+    <input type="checkbox" name="close" value="OK" onclick="javascript:closeWinAt00('div_laypopup', 1);"/>오늘만 이 창을 열지 않음 
+ </div>  
+
+
+ <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>새로운 식당이 업데이트 되었습니다.</h4><br/>
+    <h6>8월22일자:<br>
+    <input type="checkbox" name="close" value="OK" onclick="javascript:closeWinAt00('myModal', 1);"/>오늘만 이 창을 열지 않음  
+  </div>
+</div>
+
+
+ <script>  
+ openWin('myModal');  
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+          modal.style.display = "none";   
+  }
+ </script>  
+

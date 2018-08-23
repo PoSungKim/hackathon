@@ -30,7 +30,7 @@ class ZizuminfosController < ApplicationController
   # POST /zizuminfos.json
   def create
     @zizuminfo = Zizuminfo.new(zizuminfo_params)
-
+    
     respond_to do |format|
       if @zizuminfo.save
         format.html { redirect_to @zizuminfo, notice: 'Zizuminfo was successfully created.' }

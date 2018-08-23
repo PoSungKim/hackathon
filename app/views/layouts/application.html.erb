@@ -9,7 +9,37 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--
+function getCookie(name) {
+var nameOfCookie = name + "=";
+var x = 0
+
+while ( x <= document.cookie.length ) {
+var y = (x+nameOfCookie.length);
+if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+if ( (endOfCookie=document.cookie.indexOf( ";",y )) == -1 )
+endOfCookie = document.cookie.length;
+return unescape( document.cookie.substring(y, endOfCookie ) );
+}
+x = document.cookie.indexOf( " ", x ) + 1;
+if ( x == 0 )
+break;
+}
+return "";
+}
+
+function openWin() {
+if (getCookie("name1") != "done") {
+window.open("popup.html","name1","width=300, height=400, top=0,left=0");
+}
+
+if (getCookie("name2") != "done") {
+window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
+}
+}
+// -->
+</script>
   </head>
 
   <body id="whole" class="container wholebackground" style="text-decoration: none;">
@@ -18,9 +48,56 @@
     <%= yield %>
   </body>
 
- 
-    
-    <script>
+  <script>
+    function showHide(id) {
+    var obj = document.getElementById(id);
+      if (obj.style.display == 'none')
+       obj.style.display = 'block';
+      else
+       obj.style.display = 'none';  
+    }
+   //Channel Plugin Scripts -->
+  ;window.channelPluginSettings = {
+    "pluginKey": "0c46d23e-36cc-47ea-b4ab-43e263042e5c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+// End Channel Plugin -->
+
       jQuery(function($) {
         if (window.location.pathname == '/' ) { 
         $("#whole").addClass("mainbg" ); } 

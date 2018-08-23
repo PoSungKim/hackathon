@@ -34,3 +34,61 @@
 .getinfo{
     display: none;
 }
+
+#menuBox{
+    margin: 10px;
+    width: 400px;
+    height: 700px;
+    overflow-y: scroll;
+    border-style: solid;
+    border-color: black;
+}
+
+.shops{
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+    width: 600px;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.hideMenu{
+    display: none;
+}
+
+.card{
+    margin: 15px;
+}
+
+.allergy{
+    width: 180px;
+}
+
+.allergy-check{
+    visibility:hidden;
+}
+
+.experiment{
+    background-color:rgb(56, 56, 56);
+    color: white;
+}
+.sigungu-enter{
+    visibility: hidden;
+}
+
+.icon{
+    
+}
+
+.like{
+    color: red;
+}
+//-----
+.unlike{
+    color: blue;
+}
+
+.getinfo{
+    display: none;
+}

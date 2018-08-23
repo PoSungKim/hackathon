@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'edit_asks/index'
+  get 'userrequests/index'
 
+  get 'userrequests/new'
+
+  get 'userrequests/ask'
+
+  get 'edit_asks/index'
   get 'edit_asks/ask'
 
   ##------resources :zizuminfos 보다 위에
   get 'zizuminfos/search'
   ##-------------------------------------
   
-  devise_scope :owner do
-    get 'owners/search' => 'owners/sessions#search' , as: 'search_path'
-  end
- 
-  devise_for :owners, path: 'owners', controllers: { sessions: "owners/sessions", registraions: 'owners/registrations'}
   resources :zizuminfos
   post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
   post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'
@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
-  resources :restaurants do
-    resources :allergies
-  end
+  resources :restaurants
   ##-------------------------------------------------------------------------------------------master//
 
   ### 로그인과 관리자 페이지 ### rails/db 관리자설정으로바꾸려면 config/initializer/rails_db 주석해제!
@@ -39,7 +37,15 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
-  devise_for :admins
+
+  ## for 사업자 ##
+  devise_scope :owner do
+    get 'owners/search' => 'owners/sessions#search' , as: 'search_path'
+  end
+  devise_for :owners, path: 'owners', controllers: { sessions: "owners/sessions", registraions: 'owners/registrations'}
+  get 'home/myrt' => 'home#myrt'
+
+  # devise_for :admins 관리자페이지 admin설정하려면 주석해제 +initializer/rails_admin도!
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #devise보다 아래위치
 
   ### 알림 ###
