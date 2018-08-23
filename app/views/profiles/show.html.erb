@@ -1,11 +1,27 @@
+<!-- Button Effect & Font Style -->
+<link rel="stylesheet" type="text/css" href="profiles.scss" />
+
+<style type="text/scss">
+  body { font-family: 'Jeju Myeongjo', serif; }
+  h1 { font-weight: bold; }
+</style>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1 style="text-align: center;">나만의 페이지</h1>
 
-<div class="row">
 
-  <div class="col-6">
-    <p>
+<!-- My Page : Open-->
+<body class="jeju">
+
+<!-- <h1 class="jeju" style="text-align: left; font-weight: bold;">My Page</h1> -->
+<br> <br>
+
+<div class="row jeju">
+  <!-- 프로필 이미지 -->
+  <div class="col-6 jeju">
+    <p align="center">
+      <br>
       <% if @profile.user.profileimage.url != nil %>
         <%= image_tag @profile.user.profileimage.url %> <br> 
       <% elsif @profile.user.gender == "female" && @profile.user.ages == "10대이하"%>
@@ -30,49 +46,54 @@
     </p>
   </div>
 
-  <div class="col-6">
-    <p>
-      <strong>회원님: </strong>
-      <%= @profile.user.name %> 
+  <!-- 개인 정보 창 -->
+  <div class="col-6 jeju">
+    <p>  <!-- user name -->
+      <strong> <%= @profile.user.name %> </strong> 님, 안녕하세요 !
       <%# (<%= @profile.user.nickname%>
     </p>
 
-    <p>
-      <strong>나이: </strong>
+    <p>  <!-- user ages -->
+      <strong>연령 : </strong>
       <%= @profile.user.ages %> 
     </p>
 
-    <p>
-      <strong>알레르기정보 </strong>
+    <p>  <!-- user allergy -->
+      <strong>주의해야 할 음식 : </strong>
       <%= @profile.user.allergy.gsub(',','') %> 
     </p>
+
+    <br>
+    <div align="right">
+      <button class="fill mbutton">  <!-- 수정 버튼 위치 2 -->
+        <%= link_to '개인정보 변경', edit_user_registration_path, :style=> "color:black; text-decoration: none;" %>
+      </button>
+    </div>
   </div>
 
-</div>
-
-<hr />
+</div> <!-- My Page : Close -->
 
 
-<div class="container">
-  <h3 id="spreadBtn1" style="text-align:center;">라이크한 식당들 (최근 3) 클릭하면 좁아짐</h3>
-    <div id="hiddenList1">
-      <div class="row">
-            <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(3).each do |zizum| %>
-              <div class="col"> 
-                <% if zizum.followed_by?(@profile.user) %>
-                  <p>
-                    <%= link_to(image_tag(zizum.image.thumb.url, style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
-                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %> <br>
-                    <% if @profile.user == current_user %>
-                      <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
-                    <% end %>
-                  </p>
+
+<!-- user activities -->
+<hr />  
+
+<div class="row jeju"> <!-- like - restaurants -->
+  <div class="col-12">
+    <h4 id="spreadBtn1"> <strong>내가 좋아한 식당</strong> (최근 5)</h4>
+      <ul id="hiddenList1">
+        <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
+          <li> 
+            <% if zizum.followed_by?(@profile.user) %>
+              <p>
+                <%= link_to "#{zizum.restaurant_name}  [#{zizum.zizum_name}]", zizuminfo_path(zizum.id) %>
+                <% if @profile.user == current_user %>
+                  <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
                 <% end %>
               </div>
             <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 </div>
 

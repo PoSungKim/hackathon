@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+### Full Page Scroll ###
+gem 'fullpage-rails'
 ### 프로파일 대체 이미지 기능 잼 ###
 gem 'rb-gravatar'
 

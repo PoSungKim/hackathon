@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def index
   ## 임시로 
     $rt_num = params[:rt_num]
@@ -16,6 +15,15 @@ class HomeController < ApplicationController
         else
            @result = "탈퇴자입니다. 챗봇으로 문의주세요!"    
         end
+      
+        if isBrand["response"]["body"]["totalCount"] == 0
+        redirect_to new_owner_session_path
+        elsif isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] == 1
+        redirect_to new_owner_registration_path
+        end 
       end  
+    @boards_num= Board.all.count
+    #@articles_num= params[:num]
   end
+
 end

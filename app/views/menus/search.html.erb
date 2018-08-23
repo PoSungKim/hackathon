@@ -1,5 +1,6 @@
 <h3>검색하기(알레르기 있다면 체크)</h3>
 <div class="original-check">
+<div id="default">
 <%= form_tag(menus_path, method: :get) do %>
     시/도 입력(ex. 서울특별시): 
     <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
@@ -166,4 +167,3 @@
     });
     
 </script>
-

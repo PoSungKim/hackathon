@@ -66,62 +66,8 @@ class MenusController < ApplicationController
      #--------------------search 에 맞게 메뉴 찾기---------------------
     
      @menus = Menu.where("#{:a1_maemil} <= ? AND #{:a2_mil} <= ? AND #{:a3_daedu} <= ? AND #{:a4_hodu} <= ? AND #{:a5_ddangkong} <= ? AND #{:a6_peach} <= ? AND #{:a7_tomato} <= ? AND #{:a8_piggogi} <= ? AND #{:a9_nanryu} <= ? AND #{:a10_milk} <= ? AND #{:a11_ddakgogi} <= ? AND #{:a12_shoigogi} <= ? AND #{:a13_saewoo} <= ? AND #{:a14_godeungeoh} <= ? AND #{:a15_honghap} <= ? AND #{:a16_junbok} <= ? AND #{:a17_gul} <= ? AND #{:a18_jogaeryu} <= ? AND #{:a19_gye} <= ? AND #{:a20_ohjingeoh} <= ? AND #{:a21_ahwangsan} <= ?", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21)
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-     @columns = Menu.column_names[2..22]
-     i = 0
-    
-      
-    # @menus.each do |menu|
-    #   puts menu.menu_name
-    #   puts "메밀" if menu.a1_maemil == -1
-    #   puts "밀" if menu.a2_mil == -1
-    #   puts "대두" if menu.a3_daedu == -1
-    #   puts "호두" if menu.a4_hodu == -1
-    #   puts "땅콩" if menu.a5_ddangkong == -1
-    #   puts "복수앙" if menu.a6_peach == -1
-    #   puts "토마토" if menu.a7_tomato == -1
-    #   puts "돼지고기" if menu.a8_piggogi == -1
-    #   puts "난류" if menu.a9_nanryu == -1
-    #   puts "우유" if menu.a10_milk == -1
-    #   puts "닭고기" if menu.a11_ddakgogi == -1
-    #   puts "쇠고기" if menu.a12_shoigogi == -1
-    #   puts "새우" if menu.a13_saewoo == -1
-    #   puts "고등어" if menu.a14_godeungeoh == -1
-    #   puts "홍합" if menu.a15_honghap == -1
-    #   puts "전복" if menu.a16_junbok == -1
-    #   puts "굴" if menu.a17_gul == -1
-    #   puts "조개류" if menu.a18_jogaeryu == -1
-    #   puts "게" if menu.a19_gye == -1
-    #   puts "오징어" if menu.a20_ohjingeoh == -1
-    #   puts "아황산" if menu.a21_ahwangsan == -1
-    #  end
 
-    #  @menus.each do |menu|
-    #   puts menu.menu_name
-    #   puts "메밀" if menu.a1_maemil == -2
-    #   puts "밀" if menu.a2_mil == -2
-    #   puts "대두" if menu.a3_daedu == -2
-    #   puts "호두" if menu.a4_hodu == -2
-    #   puts "땅콩" if menu.a5_ddangkong == -2
-    #   puts "복수앙" if menu.a6_peach == -2
-    #   puts "토마토" if menu.a7_tomato == -2
-    #   puts "돼지고기" if menu.a8_piggogi == -2
-    #   puts "난류" if menu.a9_nanryu == -2
-    #   puts "우유" if menu.a10_milk == -2
-    #   puts "닭고기" if menu.a11_ddakgogi == -2
-    #   puts "쇠고기" if menu.a12_shoigogi == -2
-    #   puts "새우" if menu.a13_saewoo == -2
-    #   puts "고등어" if menu.a14_godeungeoh == -2
-    #   puts "홍합" if menu.a15_honghap == -2
-    #   puts "전복" if menu.a16_junbok == -2
-    #   puts "굴" if menu.a17_gul == -2
-    #   puts "조개류" if menu.a18_jogaeryu == -2
-    #   puts "게" if menu.a19_gye == -2
-    #   puts "오징어" if menu.a20_ohjingeoh == -2
-    #   puts "아황산" if menu.a21_ahwangsan == -2
-    #  end
 
-     puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
      # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
     
      @restaurants = Restaurant.where(:restaurant_name => @menus.map(&:restaurant_name).uniq)
