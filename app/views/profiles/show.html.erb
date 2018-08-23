@@ -52,26 +52,28 @@
 
 <hr />
 
-<div class="row">
 
-  <div>
-    <h3 id="spreadBtn1">라이크한 식당들 (최근 5) 클릭하면 좁아짐</h3>
-      <div id="hiddenList1">
-        <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %> 
-            <% if zizum.followed_by?(@profile.user) %>
-              <p>
-                <%= image_tag zizum.image.url unless zizum.image.blank?%>
-                <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
-                <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
-                <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %>
-                <% if @profile.user == current_user %>
-                  <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+<div class="container">
+  <h3 id="spreadBtn1" style="text-align:center;">라이크한 식당들 (최근 3) 클릭하면 좁아짐</h3>
+    <div id="hiddenList1">
+      <div class="row">
+            <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(3).each do |zizum| %>
+              <div class="col"> 
+                <% if zizum.followed_by?(@profile.user) %>
+                  <p>
+                    <%= link_to(image_tag(zizum.image.thumb.url, style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
+                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
+                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
+                    <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %> <br>
+                    <% if @profile.user == current_user %>
+                      <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                    <% end %>
+                  </p>
                 <% end %>
-              </p>
+              </div>
             <% end %>
-        <% end %>
       </div>
-  </div>
+    </div>
 </div>
 
 <hr />
@@ -134,26 +136,4 @@
           }
       });
     }); 
-    $(document).ready(function(){
-        $("#spreadBtn2").click(function(){
-            if($("#hiddenList2").is(":visible")){
-              // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
-                $("#hiddenList2").slideUp();
-            }else{
-                // $("#spreadBtn2").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
-                $("#hiddenList2").slideDown();
-            }
-        });
-    }); 
-    $(document).ready(function(){
-        $("#spreadBtn3").click(function(){
-            if($("#hiddenList3").is(":visible")){
-              // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
-                $("#hiddenList3").slideUp();
-            }else{
-                // $("#spreadBtn3").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
-                $("#hiddenList3").slideDown();
-            }
-        });
-    });
 </script> 
