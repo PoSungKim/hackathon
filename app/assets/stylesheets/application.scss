@@ -1,4 +1,7 @@
 @import 'bootstrap';
+@import 'header.scss';
+@import 'main.scss';
+@import 'login.scss';
 
 //-- font 정리
 //나눔고딕 
@@ -11,112 +14,21 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
 
 
-
-//-----nav바
-.wholebackground {
-    background-color: #F2F1F0;
-}
-
-
-.navbarstyle {
-    position: fixed;
-    display: flex;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    font-family: 'Jeju Myeongjo', serif;
-    justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.5);
-    -webkit-trasition: 0.6s;
-    transition: 0.6s;
-    z-index:999;
-}
-
-.navbarcontent{
-    display: flex;
-    justify-content: space-around;
-    width: 40em;
-    align-items: left;
-}
-.navbarconent:hover{
-    color: #454338;
-}
-
 .jeju {
     font-family: 'Jeju Myeongjo', serif;
     color:#454338;
 }
-.logo {
-    width:100px;
-    height:30px;
-    margin-left: 28px;
+
+.irop {
+    font-family:'Noto Sans KR', sans-serif;
+    color:#454338;
 }
-//------
 
 
 //------main 관련
-.mainbg {
-    background: url('mainbg.png')  no-repeat center center fixed;   
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;  
-}
-
-.indexlogo {
-    width:400px;
-    height:150px;
-    display:flex;
-    justify-content: center;
-    margin-top:15%;
-    margin-bottom:40px;
-}
-
-.indexcontent{
-    display:flex;
-    justify-content: space-evenly;
-}
-
-.mainbutton {
-    border: none;
-    width: 150px;
-    height: 48px;
-    background-color: #E2D6CF;
-    font-family: 'KoPubDotumMedium';
-}
-
 
 //----login 페이지 관련
-.loginimage{
-    left:0;
-    height:100%;
-    width:35%;
-}
 
-.logincontent{
-    display:flex;
-    justify-content: left;
-}
-
-.loginform {
-    padding-left:50px;
-    padding-top:50px;
-}
-
-.loginbutton {
-    position: absolute;
-    right: 10em;
-    bottom: 1.23rem;
-    background-color: white;
-    width:20%;
-    height:13%;
-}
-
-.snslogin {
-    position: absolute;
-}
 
 //-----
 .unlike{

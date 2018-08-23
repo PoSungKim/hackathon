@@ -13,5 +13,82 @@
 
 
 
+<!--공지 팝업창 수정 필요 -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>새로운 식당이 업데이트 되었습니다.</h4><br/>
+      <h6>8월22일자: </h6>
+    <button id="no">오늘하루 보지않기</button>
+  </div>
+</div>
+
+<style> 
+/* 임시 ***************/
+#no{
+  width:200px;
+  margin-left:38%;
+}
+/***********************/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 30%;
+    margin-right:100px;
+    margin-left:20px;
+}
+
+/* The Close Button */
+.close {
+    text-align: right;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+<% if @boadrs_num != 0  %>
+<script>
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName("close")[0];
+  var later = document.getElementById("no")
+  span.onclick = function() {
+          modal.style.display = "none";   
+  }
+  later.onclick = function() {
+        modal.style.display = "none";
+  }    
+  // page 로드시 팝업창  
+  function fnShowPopup() {
+      // alert('');
+      modal.style.display = "block"; 
+  }
+  $(document).ready(function () {
+      setTimeout(fnShowPopup, 300); 
+  });
+  
+</script>
+<% end  %>
+
+
 
 

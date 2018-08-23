@@ -1,0 +1,28 @@
+.loginimage{
+    left:0;
+    height:100%;
+    width:35%;
+}
+
+.logincontent{
+    display:flex;
+    justify-content: left;
+}
+
+.loginform {
+    padding-left:50px;
+    padding-top:50px;
+}
+
+.loginbutton {
+    position: absolute;
+    right: 10em;
+    bottom: 1.23rem;
+    background-color: white;
+    width:20%;
+    height:13%;
+}
+
+.snslogin {
+    position: absolute;
+}
