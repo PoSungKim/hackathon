@@ -1,26 +1,43 @@
+<!-- 글꼴 스타일 -->
+<style type="text/css">
+  body { font-family: 'Jeju Myeongjo', serif; }
+  h1 { font-weight: bold; }
+</style>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Zizuminfos</h1>
+<body>
+  <h1>Search by Restaurant . . .</h1>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  
+  <!-- Search Result -->
+  <p> <strong><%=params[:restaurant_name]%></strong> 로 검색 결과
+   : <strong><%=@zizums.length%> 개</strong>의 지점을 찾았습니다.</p> <br>
 
-<h1>Restaurants</h1>
-    <h3>검색 결과 : <%=@zizums.length%>개</h3>
-    <div class="shops" >
-      <% @zizums.each do |zizum| %>
-        <div class="card" style="width: 20rem;">
-          <div class="card-body">
-            <%# ajax로 전송할 레스토랑 이름%>
-            <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
-            <h3><%=zizum.zizum_name%></h3>
-            <%# display:none 하고 옆으로 메뉴 띄울 것임%>
-            <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
-            <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
-          </div>
+  <!-- Informations -->
+  <div class="shops">
+    <% @zizums.each do |zizum| %>
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <%# ajax로 전송할 레스토랑 이름%>
+          <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
+          <h3><%=zizum.zizum_name%></h3>
+          <%# display:none 하고 옆으로 메뉴 띄울 것임%>
+          <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
+          <p class="card-text"><%=link_to '식당상세페이지',zizuminfo_path(id: zizum.id)%>
         </div>
-      <% end %>
-    </div>
-<br>
+      </div>
+    <% end %>
+  </div>  <!-- shops : close --> <br>
 
 
-<%= link_to 'New Zizuminfo', new_zizuminfo_path %>
+  <!-- upload new zizum information -->
+  <p align="right"> >>  사장님이신가요? 
+  <%= link_to '식당 등록하기', new_zizuminfo_path %>
+  를 통해 식당 정보를 업로드해 주세요.</p>
+
+
+
+  </body>

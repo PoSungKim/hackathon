@@ -1,5 +1,19 @@
-<h3>식당으로 검색하기</h3>
-<%= form_tag(zizuminfos_path, method: :get) do %>
-    <%= text_field_tag :restaurant_name, params[:restaurant_name] %>
-    <%= submit_tag 'Search'%>
-<% end %>
+<!-- 글꼴 스타일 -->
+<style type="text/css">
+  body { font-family: 'Jeju Myeongjo', serif; }
+  h1, h4 { font-weight: bold; }
+</style>
+
+<p></p>
+
+<h1>Search by Restaurant . . .</h1>
+<br> <br> <br>
+
+
+<div align="center" vertical-align="middle">
+    <%= form_tag(zizuminfos_path, method: :get) do %>
+        <%= text_field_tag :restaurant_name, params[:restaurant_name] %> 
+        <br> <br>
+        <%= submit_tag 'Search'%>
+    <% end %>
+</div>
