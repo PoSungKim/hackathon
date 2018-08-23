@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: "",    null: false
     t.integer  "phonenum",                               null: false
+    t.string   "registerimg"
     t.string   "shop_name"
     t.integer  "shop_num"
     t.text     "shop_info"
