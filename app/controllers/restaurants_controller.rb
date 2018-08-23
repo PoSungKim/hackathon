@@ -74,7 +74,7 @@ class RestaurantsController < ApplicationController
     Menu.Subway
     Menu.Momstouch
     puts "crwaling update finished!"
-    redirect_to(:back)
+    redirect_to userrequests_index_path
   end
 
 
