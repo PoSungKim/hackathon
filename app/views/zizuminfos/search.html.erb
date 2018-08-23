@@ -6,14 +6,18 @@
 
 <p></p>
 
-<h1>Search by Restaurant . . .</h1>
-<br> <br> <br>
+<div class="rest">
+    <h1>Search by Restaurant . . .</h1>
+    <br> <br> <br>
 
 
-<div align="center" vertical-align="middle">
-    <%= form_tag(zizuminfos_path, method: :get) do %>
-        <%= text_field_tag :restaurant_name, params[:restaurant_name] %> 
-        <br> <br>
-        <%= submit_tag 'Search'%>
-    <% end %>
+
+    <div align="center" vertical-align="middle">
+        <%= form_tag(zizuminfos_path, method: :get) do %>
+            <%= text_field_tag :restaurant_name, params[:restaurant_name] %> 
+            <br> <br>
+            <%= submit_tag 'Search'%>
+        <% end %>
+    </div>
+
 </div>
