@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="profiles.scss" />
 
 <style type="text/scss">
-  * { font-family: 'Jeju Myeongjo', serif; }
+  body { font-family: 'Jeju Myeongjo', serif; }
   h1 { font-weight: bold; }
 </style>
 
@@ -12,14 +12,14 @@
 
 
 <!-- My Page : Open-->
+<body class="jeju">
 
+<h1 class="jeju" style="text-align: center;">나만의 페이지</h1> 
+<br> <br> <br>
 
-<h1 style="text-align: center;">나만의 페이지</h1> 
-<br> <br>
-
-<div class="row">
+<div class="row jeju">
   <!-- 프로필 이미지 -->
-  <div class="col-6">
+  <div class="col-6 jeju">
     <p align="center">
       <br>
       <% if @profile.user.profileimage.url != nil %>
@@ -30,7 +30,7 @@
   </div>
 
   <!-- 개인 정보 창 -->
-  <div class="col-6">
+  <div class="col-6 jeju">
     <p>  <!-- user name -->
       <strong> <%= @profile.user.name %> </strong> 님, 안녕하세요 !
       <%# (<%= @profile.user.nickname%>
@@ -61,9 +61,9 @@
 <!-- user activities -->
 <hr />  
 
-<div class="row"> <!-- like - restaurants -->
+<div class="row jeju"> <!-- like - restaurants -->
   <div class="col-12">
-    <h4 id="spreadBtn1">라이크한 식당들 (최근 5) 클릭하면 좁아짐</h4>
+    <h4 id="spreadBtn1"> <strong>내가 좋아한 식당 (최근 5) </strong> : 클릭하면 좁아짐</h4>
       <ul id="hiddenList1">
         <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
           <li> 
@@ -81,7 +81,7 @@
   </div>
 </div>  <!-- like - restaurants : close -->
 
-
+</body>
 <!-- Market Close : UNACTIVATED -->
 
 <!-- <hr />

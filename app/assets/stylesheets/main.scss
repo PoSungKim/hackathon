@@ -1,0 +1,30 @@
+.mainbg {
+    background: url('mainbg.png')  no-repeat center center fixed;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
+}
+
+.indexlogo {
+    width:400px;
+    height:150px;
+    display:flex;
+    justify-content: center;
+    margin-top:15%;
+    margin-bottom:40px;
+}
+
+.indexcontent{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.mainbutton {
+    border: none;
+    width: 150px;
+    height: 48px;
+    background-color: #E2D6CF;
+    font-family: 'KoPubDotumMedium';
+}
+

@@ -4,6 +4,15 @@ Rails.application.routes.draw do
 
   get 'edit_asks/ask'
 
+  ##------resources :zizuminfos 보다 위에
+  get 'zizuminfos/search'
+  ##-------------------------------------
+  
+  devise_scope :owner do
+    get 'owners/search' => 'owners/sessions#search' , as: 'search_path'
+  end
+ 
+  devise_for :owners, path: 'owners', controllers: { sessions: "owners/sessions", registraions: 'owners/registrations'}
   resources :zizuminfos
   post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
   post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'

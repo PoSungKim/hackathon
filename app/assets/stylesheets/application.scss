@@ -1,5 +1,8 @@
 @import 'bootstrap';
 @import 'profiles.scss';
+@import 'header.scss';
+@import 'main.scss';
+@import 'login.scss';
 
 //-- font 정리
 //나눔고딕 
@@ -12,112 +15,18 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
 
 
-
-//-----nav바
-.wholebackground {
-    background-color: #F2F1F0;
-}
-
-
-.navbarstyle {
-    position: fixed;
-    display: flex;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    font-family: 'Jeju Myeongjo', serif;
-    justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.5);
-    -webkit-trasition: 0.6s;
-    transition: 0.6s;
-    z-index:999;
-}
-
-.navbarcontent{
-    display: flex;
-    justify-content: space-around;
-    width: 40em;
-    align-items: left;
-}
-.navbarconent:hover{
-    color: #454338;
-}
-
 .jeju {
     font-family: 'Jeju Myeongjo', serif;
     color:#454338;
 }
-.logo {
-    width:100px;
-    height:30px;
-    margin-left: 28px;
-}
-//------
 
-
-
-//------main 관련
-.mainbg {
-    background: url('mainbg.png')  no-repeat center center fixed;   
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;  
+.irop {
+    font-family:'Noto Sans KR', sans-serif;
+    color:#454338;
 }
 
-.indexlogo {
-    width:400px;
-    height:150px;
-    display:flex;
-    justify-content: center;
-    margin-top:130px;
-    margin-bottom:40px;
-}
 
-.indexcontent{
-    display:flex;
-    justify-content: space-evenly;
-}
-
-.mainbutton {
-    border: none;
-    width: 150px;
-    height: 48px;
-    background-color: #E2D6CF;
-    font-family: 'KoPubDotumMedium';
-}
-
-//-------
-
-
-//----login 페이지 관련
-.loginimage{
-    left:0;
-    height:100%;
-    width:35%;
-}
-
-.logincontent{
-    display:flex;
-}
-
-.loginform {
-    padding-left:50px;
-    padding-top:50px;
-    display:flex;
-    align-content: space-around;
-}
-
-.icon{
-    
-}
-
-.like{
-    color: red;
-}
-
+//-----
 .unlike{
     color: blue;
 }
@@ -125,114 +34,3 @@
 .getinfo{
     display: none;
 }
-
-
-
-
-// // Button Effets 전체 
-
-
-// .fill:hover,
-// .fill:focus {
-//   box-shadow: inset 0 0 0 2em var(--hover);
-// }
-
-// // Animate the size, outside
-// .pulse:hover, 
-// .pulse:focus {
-//   animation: pulse 1s;
-//   box-shadow: 0 0 0 2em rgba(#fff,0);
-// }
-
-// @keyframes pulse {
-//   0% { box-shadow: 0 0 0 0 var(--hover); }
-// }
-
-// // Stack multiple shadows, one from the left, the other from the right
-// .close:hover,
-// .close:focus {
-//   box-shadow: 
-//     inset -3.5em 0 0 0 var(--hover),
-//     inset 3.5em 0 0 0 var(--hover);  
-// }
-
-// // Size can also be negative; see how it's smaller than the element
-// .raise:hover,
-// .raise:focus {
-//   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-//   transform: translateY(-0.25em);
-// }
-
-// // Animating from the bottom
-// .up:hover,
-// .up:focus {
-//   box-shadow: inset 0 -3.25em 0 0 var(--hover);
-// }
-
-// // And from the left
-// .slide:hover,
-// .slide:focus {
-//   box-shadow: inset 6.5em 0 0 0 var(--hover);
-// }
-
-// // Multiple shadows, one on the outside, another on the inside
-// .offset {  
-//   box-shadow: 
-//     0.3em 0.3em 0 0 var(--color),
-//     inset 0.3em 0.3em 0 0 var(--color);
-  
-//   &:hover,
-//   &:focus {
-//     box-shadow: 
-//       0 0 0 0 var(--hover),
-//       inset 6em 3.5em 0 0 var(--hover);
-//   }
-// }
-
-// //=== Set button colors
-// // If you wonder why use Sass vars or CSS custom properties...
-//   // Make a map with the class names and matching colors
-// $colors: (
-//   fill :  #8fc866,
-//   // fill: #a972cb,
-//   pulse: #ef6eae, 
-//   close: #ff7f82, 
-//   raise: #ffa260, 
-//   up: #e4cb58, 
-//   slide: #8fc866, 
-//   offset: #19bc8b
-// );
-
-// // Sass variables compile to a static string; CSS variables are dynamic and inherited
-//   // Loop through the map and set CSS custom properties using Sass variables
-// @each $button, $color in $colors {
-//   .#{$button} {
-//     --color: #{$color};
-//     --hover: #{adjust-hue($color, 45deg)};
-//   }
-// }
-
-// // Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
-// button {  
-//   color: var(--color);
-//   transition: 0.25s;
-  
-//   &:hover,
-//   &:focus { 
-//     border-color: var(--hover);
-//     color: #fff;
-//   }
-// }
-
-// //=== Pen styling, ignore
-
-
-// // Basic button styles
-// button {
-//   background: none;
-//   border: 2px solid;
-//   font: inherit;
-//   line-height: 1;
-//   margin: 0.5em;
-//   padding: 1em 2em;
-// }
