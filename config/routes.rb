@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
+  get 'home/about'
 
   #----------resouces :restaurants 보다 위에 가게 해야 함! --------------------
   get 'restaurants/search' => "restaurants#search"
