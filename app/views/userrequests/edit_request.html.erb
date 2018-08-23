@@ -10,11 +10,11 @@
     <%= f.hidden_field :user_id, value: @uid%>
   </div> 
 
-  <!--추가, 수정, 삭제-->
+  <!--수정, 삭제, 삭제면 아래 전부안보이게 하기-->
   <div class="field">
-    <%= f.label :request_type %>
-    <%= f.text_field :request_type%>
+    <%= f.select_field :request_type, options_for_select(["수정", "삭제"])%>
   </div> 
+
 
   <div class="field">
     <%= f.label :menu_name%>

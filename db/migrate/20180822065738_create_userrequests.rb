@@ -1,8 +1,8 @@
 class CreateUserrequests < ActiveRecord::Migration[5.0]
   def change
     create_table :userrequests do |t|
-      #추가 : 1, 수정 : 2, 삭제 : -1
-      t.integer :request_type
+      #추가, 수정, 삭제
+      t.string :request_type
 
       #추가 / 수정 요청자 정보
       t.string :uid
