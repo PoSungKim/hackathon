@@ -10,15 +10,19 @@ Rails.application.routes.draw do
 
   get 'edit_asks/ask'
 
+  ##------resources :zizuminfos 보다 위에
+  get 'zizuminfos/search'
+  ##-------------------------------------
+  
   resources :zizuminfos
   post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
   post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'
 
+  
   get 'home/index'
   root 'home#index'
 
   #----------resouces :restaurants 보다 위에 가게 해야 함! --------------------
-  get 'restaurants/search' => "restaurants#search"
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
   get 'menus/index' => "menus#index", as: 'menus'

@@ -153,10 +153,15 @@ ActiveRecord::Schema.define(version: 20180822065738) do
   end
 
   create_table "userrequests", force: :cascade do |t|
+<<<<<<< HEAD
     t.string   "request_type"
     t.string   "uid"
     t.text     "memo"
     t.string   "status"
+=======
+    t.integer  "request_type"
+    t.string   "uid"
+>>>>>>> 0e1754f38c8ed1923a58bfbfd87e1bf782a704e4
     t.string   "menu_name"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"

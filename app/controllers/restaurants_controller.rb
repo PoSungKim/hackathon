@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.where("#{:restaurant_name} LIKE ?", params[:restaurant_name])
+   @restaurants = Restaurant.all
   end
 
   # GET /restaurants/1
