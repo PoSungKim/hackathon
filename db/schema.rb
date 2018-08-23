@@ -66,17 +66,6 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "menumatches", force: :cascade do |t|
-    t.integer  "restaurant_id"
-    t.string   "restaurant_name"
-    t.integer  "menu_id"
-    t.string   "menu_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["menu_id"], name: "index_menumatches_on_menu_id"
-    t.index ["restaurant_id"], name: "index_menumatches_on_restaurant_id"
-  end
-
   create_table "menus", force: :cascade do |t|
     t.string   "menu_name"
     t.integer  "a1_maemil"
@@ -100,10 +89,12 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.integer  "a19_gye"
     t.integer  "a20_ohjingeoh"
     t.integer  "a21_ahwangsan"
+    t.integer  "restaurant_id"
     t.string   "restaurant_name"
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
   create_table "new_alarms", force: :cascade do |t|
@@ -191,8 +182,10 @@ ActiveRecord::Schema.define(version: 20180822065738) do
   end
 
   create_table "userrequests", force: :cascade do |t|
-    t.integer  "request_type"
+    t.string   "request_type"
     t.string   "uid"
+    t.text     "memo"
+    t.string   "status"
     t.string   "menu_name"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
@@ -220,7 +213,6 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["restaurant_id"], name: "index_userrequests_on_restaurant_id"
   end
 
   create_table "users", force: :cascade do |t|
