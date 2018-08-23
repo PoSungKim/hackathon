@@ -7,18 +7,18 @@
 
 <!--레스토랑 추가 링크, 메뉴 추가 링크, 승인 요청 내역(변경 전, 후), 승인 버튼-->
 <hr/>
+
 <!--추가테이블-->
-<%= form_tag userrequests_permit_path do %>
+<%= form_tag userrequests_permit_path, method: :post do %>
   <p>
     추가
-    
     <%= submit_tag '승인' %>
     <%= submit_tag '반려처리' %>
   </p>
   <table>
     <thead>
       <tr>
-          <th></th>
+          <th>체크</th>
           <th>요청</th>
           <th>요청자</th>
           <th>식당</th>
@@ -50,7 +50,7 @@
     <tbody>  
       <% @add_requests.each do |r| %>
         <tr>
-          <td><%= check_box_tag 'permit_ids[]', r.id %></td>
+          <td><%= check_box_tag 'permit_ids[]', r.id, true%></td>
           <td><%= r.request_type %></td>
           <td><%= r.uid %></td>
           <td><%= r.restaurant_name%></td>
@@ -83,8 +83,9 @@
   </table>
 <% end %>
 <hr/>
+
 <!--수정요청 테이블-->
-<%= form_tag userrequests_permit_path do %>
+<%= form_tag userrequests_permit_path, method: :post do %>
   <p>
     수정
     <%= submit_tag '승인' %>
@@ -93,7 +94,7 @@
   <table>
     <thead>
       <tr>
-          <th>ID</th>
+          <th>체크</th>
           <th>요청</th>
           <th>요청자</th>
           <th>식당</th>
@@ -126,7 +127,7 @@
     <tbody>
       <% @edit_requests.each do |r| %>
         <tr>
-          <td><%= r.id %></td>
+          <td><%= check_box_tag 'permit_ids[]', r.id%></td>
           <td><%= r.request_type %></td>
           <td><%= r.uid %></td>
           <td><%= r.restaurant_name%></td>
@@ -160,7 +161,7 @@
 <% end %>
 <hr/>
 <!--삭제요청 테이블-->
-<%= form_tag userrequests_permit_path do %>
+<%= form_tag userrequests_permit_path, method: :post do %>
   <p>
     삭제
     <%= submit_tag '승인' %>
@@ -169,7 +170,7 @@
   <table>
     <thead>
       <tr>
-          <th>ID</th>
+          <th>체크</th>
           <th>요청</th>
           <th>요청자</th>
           <th>식당</th>
@@ -202,7 +203,7 @@
     <tbody>
       <% @delete_requests.each do |r| %>
         <tr>
-          <td><%= r.id %></td>
+          <td><%= check_box_tag 'permit_ids[]', r.id%></td>
           <td><%= r.request_type %></td>
           <td><%= r.uid %></td>
           <td><%= r.restaurant_name%></td>
