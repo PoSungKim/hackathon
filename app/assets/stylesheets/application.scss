@@ -11,7 +11,7 @@
 //제주명조
 @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
 //이롭게바탕
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
+@import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
 
 
 .jeju {
@@ -20,15 +20,9 @@
 }
 
 .irop {
-    font-family:'Noto Sans KR', sans-serif;
+    font-family: 'Iropke Batang', serif; 
     color:#454338;
 }
-
-
-//------main 관련
-
-//----login 페이지 관련
-
 
 //-----
 .unlike{
