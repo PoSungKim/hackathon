@@ -1,29 +1,24 @@
-<%= form_for(menu) do |f| %>
-  <% if menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
-      <ul>
-      <% menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @userrequest, url: {action: "create"}, html: {class: "클래스이름 여기!"} do |f| %>
   
+  <!--메뉴 아이디는 요청자가 수정 불가-->
   <div class="field">
-    <%= f.label :menu_name %>
-    <%= f.text_field :menu_name%>
+    <%= f.hidden_field :restaurant_id, value: @r_id%>   
+  </div> 
+
+  <!--사용자 아이디 자동 입력-->
+  <div class="field">  
+    <%= f.hidden_field :user_id, value: @uid%>
+  </div> 
+
+  <!--추가, 수정, 삭제-->
+  <div class="field">
+    <%= f.label :request_type %>
+    <%= f.text_field :request_type%>
   </div> 
 
   <div class="field">
-    <%= f.label :restaurant_name %>
-    <%= f.text_field :restaurant_name%>
-  </div> 
-
-  <div class="field">
-    <%= f.label :restaurant_id %>
-    <%= f.text_field :restaurant_id, value: 1%>
+    <%= f.label :menu_name%>
+    <%= f.text_field :menu_name %>
   </div> 
 
   <!--알레르기 정보-->
@@ -201,6 +196,7 @@
     <%= f.label :a15_honghap, '제공안함'%>
     <%= f.radio_button :a15_honghap, -1%>
   </div>
+
   <div class="field">
     <p>전복</p>
     <%= f.label :a16_junbok, '포함'%>
@@ -282,4 +278,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

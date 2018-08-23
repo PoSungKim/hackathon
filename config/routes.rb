@@ -1,28 +1,35 @@
 Rails.application.routes.draw do
 
+  get 'userrequests/index'
+
+  get 'userrequests/new'
+
+  get 'userrequests/ask'
+
   get 'edit_asks/index'
 
   get 'edit_asks/ask'
 
+  ##------resources :zizuminfos 보다 위에
+  get 'zizuminfos/search'
+  ##-------------------------------------
+  
   resources :zizuminfos
   post '/zizuminfos/:id/follow', to: 'follows#zizum_back_follow_toggle', as: 'zizum_back_follow'
   post '/menus/index/params', to: 'follows#zizum_front_follow_toggle', as: 'zizum_front_follow'
 
+  
   get 'home/index'
   root 'home#index'
   get 'home/about'
 
   #----------resouces :restaurants 보다 위에 가게 해야 함! --------------------
-  get 'restaurants/search' => "restaurants#search"
   get 'menus/search' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
-  # get 'allergies/index' => "allergies#index", as: 'allergies' 
   get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
-  resources :restaurants do
-    resources :allergies
-  end
+
   ##-------------------------------------------------------------------------------------------master//
 
   ### 로그인과 관리자 페이지 ### rails/db 관리자설정으로바꾸려면 config/initializer/rails_db 주석해제!
@@ -30,7 +37,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
-  devise_for :admins
+  #devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #devise보다 아래위치
 
   ### 알림 ###
@@ -57,5 +64,19 @@ Rails.application.routes.draw do
 
   ### 크롤링 ###
   get '/crawling' => 'restaurants#crawling'
+
+  ### 수정 / 삭제 요청 ###
+  #요청 확인
+  get '/userrequests' => 'userrequests#index'
+  #메뉴 추가 요청
+  get '/userrequests/new_request' => 'userrequests#new_request'
+  post '/userrequests/create' => 'userrequests#create'
+  #메뉴 수청 / 삭제 요청
+  get '/userrequests/edit_request' => 'userrequests#edit_request'
+  post '/userrequests/edit_request' => 'userrequests#edit_request'
+  #승인
+  post '/userrequests/permit' => 'userrequests#permit'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

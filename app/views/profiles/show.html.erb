@@ -7,8 +7,18 @@
   <div class="col-6">
     <p>
       <% if @profile.user.profileimage.url != nil %>
-      <%= image_tag @profile.user.profileimage.url %> <br> <%end %>
-      <%= link_to '개인정보 변경', edit_user_registration_path %> 
+        <%= image_tag @profile.user.profileimage.url %> <br> 
+      <% elsif @profile.user.gender == "여" || @profile.user.ages == "10대이하"%>
+        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png") %><br>
+      <% elsif @profile.user.gender == "여" || @profile.user.ages == "40-50대"%>
+        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png") %><br>
+        
+      <% elsif @profile.user.gender == "남" || @profile.user.ages == "10대이하"%>
+        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png") %><br>
+      <% elsif @profile.user.gender == "남" || @profile.user.ages == "40-50대"%>
+        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png") %><br>
+      <% end %>
+        <%= link_to '개인정보/이미지 업데이트', edit_user_registration_path %> 
     </p>
   </div>
 
