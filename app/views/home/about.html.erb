@@ -1,3 +1,17 @@
+<!-- full page scroll -->
+<link rel="stylesheet" type="text/css" href="fullpage.css" />
+
+<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "easeInOutCubic". -->
+<script src="vendors/easings.min.js"></script>
+
+
+<!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
+<script type="text/javascript" src="vendors/scrolloverflow.min.js"></script>
+<script type="text/javascript" src="fullpage.js"></script>
+
+
+
+
 <!-- 글꼴 스타일 -->
 <style type="text/css">
   body { font-family: 'Jeju Myeongjo', serif; }
@@ -7,6 +21,8 @@
 <!-- 헬푸의 철학과 사명 -->
 <body>
 
+<div id="fullpage">  <!-- full page scroll : open -->
+<div class="slide" data-anchor="slide1">  <!-- full page scroll - slide 1 : open -->
 <div class="container">  <!-- About의 내용물을 담는 container div -->
   <h1>About</h1>
   <h6 style="letter-spacing:1.5px">'걱정없식'을 만드는 팀 - '헬푸' 이야기</h6>
@@ -88,6 +104,7 @@
     </div>  <!-- 네 번째 단 마감 -->   
 
 </div>  <!-- Carousel : close -->
+</div>  <!-- full page scroll - slide 1 : close -->
 
   
 
@@ -96,6 +113,7 @@
 
 
 <!-- 헬푸를 만드는 사람들 -->
+<div class="slide fp-auto-height" data-anchor="slide2">  <!-- full page scroll - slide 2 : open -->
 <div  style="show-on-scroll">
   <h1>Members</h1>
   <h6 style="letter-spacing:1.5px">헬푸를 만드는 사람들</h6>
@@ -137,8 +155,28 @@
     </div>
   </figure>
 </div>
-</div>
+</div>  <!-- full page scroll - slide 2 : close -->
+
+</div>  <!-- div container : close -->
+</div>  <!-- full page scroll : close -->
+
+
+<script type="text/javascript">
+  new fullpage('#fullpage', {
+	  //options here
+	  autoScrolling:true,
+	  scrollHorizontally: true
+  });
+
+  //methods
+  fullpage_api.setAllowScrolling(false);
+</script>
+
+
 </body>
+
+
+
 
 <br> <br> <br> <br>
 <footer class="mastfoot mt-auto" margin-top="auto" align="center">

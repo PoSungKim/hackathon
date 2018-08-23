@@ -116,6 +116,8 @@ GEM
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
     formatador (0.2.5)
+    fullpage-rails (0.0.1)
+      jquery-rails (>= 1.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -329,6 +331,7 @@ DEPENDENCIES
   devise
   figaro
   fog-aws
+  fullpage-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
