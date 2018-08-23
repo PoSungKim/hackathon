@@ -31,6 +31,11 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant_name = @restaurant.restaurant_name
+      ## for notification
+      Board.create!(content: "새로운 식당 #{@restaurant_name}가 등록되었습니다.") # 워딩 수정하기
+      # link: request.referrer #수정하기 해당 article path로
+  
 
     respond_to do |format|
       if @restaurant.save
@@ -81,8 +86,7 @@ class RestaurantsController < ApplicationController
     puts "\n\nsubway menu finished\n\n"
     # sleep 1.5
     Menu.Momstouch
-    puts "\n\nmomstouch menu finished\n\n"
-    # sleep 1.5
+    puts "crwaling update finished!"
     redirect_to userrequests_index_path
   end
 

@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name",                   default: "",    null: false
     t.integer  "phonenum",                               null: false
+    t.string   "registerimg"
     t.string   "shop_name"
     t.integer  "shop_num"
     t.text     "shop_info"
@@ -182,8 +183,10 @@ ActiveRecord::Schema.define(version: 20180822065738) do
   end
 
   create_table "userrequests", force: :cascade do |t|
-    t.integer  "request_type"
+    t.string   "request_type"
     t.string   "uid"
+    t.text     "memo"
+    t.string   "status"
     t.string   "menu_name"
     t.integer  "a1_maemil"
     t.integer  "a2_mil"
@@ -211,7 +214,6 @@ ActiveRecord::Schema.define(version: 20180822065738) do
     t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["restaurant_id"], name: "index_userrequests_on_restaurant_id"
   end
 
   create_table "users", force: :cascade do |t|

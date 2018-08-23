@@ -5,8 +5,9 @@
 @import 'login.scss';
 @import 'join.scss';
 
-
 //-- font 정리
+//나눔고딕 
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 //Kopub돋움
 @font-face { font-family: 'KoPubDotumMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff'); font-weight: normal; font-style: normal; }
 //제주명조
@@ -23,22 +24,6 @@
     border-color: black;
 }
 
-.shops{
-    margin: 10px;
-    border-style: solid;
-    border-color: black;
-    width: 600px;
-    height: 700px;
-    overflow-y: scroll;
-}
-
-.hideMenu{
-    display: none;
-}
-
-.card{
-    margin: 15px;
-}
 
 .allergy{
     width: 180px;
@@ -56,14 +41,14 @@
     visibility: hidden;
 }
 
-.icon{
-    
-}
 
 .like{
     color: red;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> adc7f61721fa15581cfce67178c54e35c91b0c69
 
 
 .jeju {
@@ -84,3 +69,21 @@
 .getinfo{
     display: none;
 }
+
+.shops{
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+    width: 600px;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.hideMenu{
+    display: none;
+}
+
+.card{
+    margin: 15px;
+}
+

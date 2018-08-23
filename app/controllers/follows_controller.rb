@@ -35,9 +35,9 @@ class FollowsController < ApplicationController
     def zizum_front_follow_toggle
 
         @zizum = Zizuminfo.find(params[:id])
+        
         if @zizum.followed_by?(current_user)
             current_user.stop_following(@zizum)
-
         else !@zizum.followed_by?(current_user)
             current_user.follow(@zizum)
         end 
@@ -47,11 +47,13 @@ class FollowsController < ApplicationController
     def zizum_back_follow_toggle
 
         @zizum = Zizuminfo.find(params[:id])
+        
+        # where(:restaurant_name => @restaurants.map(&:restaurant_name)
         if @zizum.followed_by?(current_user)
             current_user.stop_following(@zizum)
 
         else !@zizum.followed_by?(current_user)
-            current_user.follow(@zizum)
+            current_user.follow(@zizum)          
         end 
             redirect_to zizuminfo_url(@zizum.id) 
     end

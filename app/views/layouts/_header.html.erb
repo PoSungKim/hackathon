@@ -14,6 +14,8 @@
                 <% elsif !current_user.profile.nil? %>
                     <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
                 <% end %>
+            <% elsif owner_signed_in?%>
+                <%= link_to "나의 식당관리", home_myrt_path,  class:"jeju", :style=>"text-decoration: none; color: #454338;" %>    
             <% end %>
         </div>
         <!-- 로그인/로그아웃 -->

@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
     # user와 identity가 nil이 아니라면 받는다
     identity = Identity.find_for_oauth(auth)
     user = signed_in_resource ? signed_in_resource : identity.user
- 
     # user가 nil이라면 새로 만든다
     if user.nil?
       # 이미 있는 이메일인지 확인한다
@@ -52,9 +51,10 @@ class User < ActiveRecord::Base
               )
             end
           user.save!
-        end
-      end
-    end
+        end #unless
+      end #if
+      Profile.create!(user_id: user.id)
+    end #def
  
     if identity.user != user
       identity.user = user

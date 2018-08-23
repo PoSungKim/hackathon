@@ -9,7 +9,8 @@ class DeviseCreateOwners < ActiveRecord::Migration[5.0]
       
       #이름/폰번호
       t.string :name, null:false, default: ""
-      t.integer :phonenum, null:false    
+      t.integer :phonenum, null:false  
+      t.string :registerimg  
       #가게정보(이름,번호,간단설명)/메뉴등록은(restaurants에서)
       t.string :shop_name
       t.integer :shop_num
