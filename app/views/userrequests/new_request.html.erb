@@ -1,4 +1,7 @@
+<p><%=Restaurant.where(id: @r_id)%> 메뉴 추가 요청</p>
+
 <%= form_for @userrequest, url: {action: "create"}, html: {class: "클래스이름 여기!"} do |f| %>
+  <!--#######################사용자가 볼 수 없는 영역 시작################-->
   <!--메뉴 아이디는 요청자가 수정 불가-->
   <div class="field">
     <%= f.hidden_field :restaurant_id, value: @r_id%>   
@@ -6,15 +9,20 @@
 
   <!--사용자 아이디 자동 입력-->
   <div class="field">  
-    <%= f.hidden_field :user_id, value: @uid%>
+    <%= f.hidden_field :uid, value: current_user.id%>
   </div> 
 
   <!--추가, 수정, 삭제-->
   <div class="field">
-    <%= f.label :request_type %>
-    <%= f.text_field :request_type%>
+    <%= f.hidden_field :request_type, value: "추가"%>
   </div> 
 
+   <div class="field">
+    <%= f.hidden_field :status, value: "미처리"%>
+  </div> 
+  <!--######################사용자가 볼 수 없는 영역 끝#######################3-->
+
+  <!--메뉴 이름-->
   <div class="field">
     <%= f.label :menu_name %>
     <%= f.text_field :menu_name%>
@@ -272,6 +280,10 @@
     <%= f.label :image %>
     <%= f.file_field :image,
         accept: 'image/png, image/gif, image/jpeg'%>
+  </div>
+
+  <div>
+    <%=f.text_area(memo: "요청 사유 및 전달사항을 적어주세요", size: "24x6") %>
   </div>
 
   <div class="actions">

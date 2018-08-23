@@ -22,7 +22,7 @@ class Zizuminfo < ApplicationRecord
                 zizum_name = r.css(':nth-child(2)').text
                 
                 #지점 정보가 없을 경우에는 재생성,있을 경우에는 update
-                zizum = Zizuminfo.where(zizum_name: zizum_name)[0]
+                zizum = Zizuminfo.where(restaurant_name: "서브웨이", zizum_name: zizum_name)[0]
 
                 if zizum.nil?
                     zizum = Zizuminfo.new
@@ -78,7 +78,7 @@ class Zizuminfo < ApplicationRecord
                 zizum_name = r.css(':nth-child(2)').text
                 
                 #지점 정보가 없을 경우에는 재생성,있을 경우에는 update
-                zizum = Zizuminfo.where(zizum_name: zizum_name)[0]
+                zizum = Zizuminfo.where(restaurant_name: "맘스터치", zizum_name: zizum_name)[0]
 
                 if zizum.nil?
                     zizum = Zizuminfo.new

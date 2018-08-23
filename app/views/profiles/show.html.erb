@@ -78,50 +78,31 @@
 
 <hr />
 
-<!-- 
-<% if false %>
 
-<div class="row">
+<table>
+  <thead>
+    <tr>
+        <th>요청</th>
+        <th>식당</th>
+        <th>메뉴이름</th>
+        <th>전달사항</th>
+        <th>요청일</th>
+    </tr>
+  </thead>
 
-  <div class="col-12">
-    <h3 id="spreadBtn2">라이크한 게시글 (최근 5) 클릭하면 좁아짐</h3>
-      <ul id="hiddenList2">
-        <% @profile.user.following_by_type('Article').order("created_at desc").limit(5).each do |article| %>
-          <li> <% if article.articleimage.thumb.url != nil %>
-            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %>
-            <% if @profile.user == current_user %> 
-              <%= link_to fa_icon('trash'), article_follow_destroy_path(article.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-  </div>
-</div>
+  <tbody>
+    <% @user_requests.each do |r| %>
+      <tr>
+        <td><%= r.request_type %></td>
+        <td><%= r.restaurant_name%></td>
+        <td><%= r.menu_name%></td>
+        <td><%= r.memo%></td>
+        <td><%= r.created_at%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<hr />
-
-<div class="row">
-  <div class="col-12">
-    <h3 id="spreadBtn3">자신이 쓴 게시글 (최근 5) 클릭하면 좁아짐</h3>
-      <ul id="hiddenList3">
-        <% @profile.user.articles.order("created_at desc").limit(5).each do |article| %>
-          <li>  <% if article.articleimage.thumb.url != nil %>
-            <%= link_to image_tag(article.articleimage.thumb.url), article_path(article.id) %> <br><% end %>
-            <%= link_to article.title, article_path(article.id) %>
-            <% if @profile.user == current_user %>  
-              <%= link_to fa_icon('trash'), article_destroy_path(article.id), method: :DELETE, data: {confirm: '게시물을 삭제하시겠습니까?'} %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-  </div>
-</div>
-
-<% end %>
-
-<hr />
--->
 
 <script>
 
