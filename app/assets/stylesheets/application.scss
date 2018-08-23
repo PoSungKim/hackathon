@@ -56,7 +56,6 @@
 //------
 
 
-
 //------main 관련
 .mainbg {
     background: url('mainbg.png')  no-repeat center center fixed;   
@@ -71,7 +70,7 @@
     height:150px;
     display:flex;
     justify-content: center;
-    margin-top:130px;
+    margin-top:15%;
     margin-bottom:40px;
 }
 
@@ -88,8 +87,6 @@
     font-family: 'KoPubDotumMedium';
 }
 
-//-------
-
 
 //----login 페이지 관련
 .loginimage{
@@ -100,12 +97,32 @@
 
 .logincontent{
     display:flex;
+    justify-content: left;
 }
 
 .loginform {
     padding-left:50px;
     padding-top:50px;
-    display:flex;
-    align-content: space-around;
 }
 
+.loginbutton {
+    position: absolute;
+    right: 10em;
+    bottom: 1.23rem;
+    background-color: white;
+    width:20%;
+    height:13%;
+}
+
+.snslogin {
+    position: absolute;
+}
+
+//-----
+.unlike{
+    color: blue;
+}
+
+.getinfo{
+    display: none;
+}
