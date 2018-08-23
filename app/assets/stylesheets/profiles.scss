@@ -91,6 +91,14 @@ $colors: (
 );
 
 // Sass variables compile to a static string; CSS variables are dynamic and inhe
+@each $mbutton, $color in $colors {
+  .#{$mbutton} {
+    --color: #{$color};
+    // --hover: #{adjust-hue($color, 45deg)};
+    --hover: #{adjust-hue($color, 20deg)};
+  }
+}
+
 
 // Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
 button {  
@@ -100,7 +108,7 @@ button {
   &:hover,
   &:focus { 
     border-color: var(--hover);
-    color: #fff;
+    color: #FFF;
   }
 }
 
