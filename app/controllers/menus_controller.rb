@@ -124,14 +124,13 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
 
- # -------------------메뉴(@menus)가 속한 식당 찾기.----------------
+ # -------------------메뉴추가시 알림----------------
     @restaurant = @menu.restaurant_id #메뉴의 레스토랑아이디
     @zizums = Zizuminfo.where(:restaurant_id => @restaurant) #해당레스토랑아이디를 가지는 지점들찾기
     @zizums_num =  Zizuminfo.where(:restaurant_id => @restaurant).count
     @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
 
     for n in 0...@zizums_num
-     #zizuminfo.follower니까 그zizum을포함한 식당일경우
     #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
       @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
         @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
@@ -172,12 +171,10 @@ class MenusController < ApplicationController
  @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
 
  for n in 0...@zizums_num
-  #zizuminfo.follower니까 그zizum을포함한 식당일경우
- #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
-   @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+   @zizums[n].followers.each do |follower|
      @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
      content:"#{@rt_name}의 메뉴가 수정되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
-     link: request.referrer #수정하기 해당 article path로
+     link: request.referrer 
    end
  end
   end
@@ -194,9 +191,7 @@ class MenusController < ApplicationController
     @rt_name = Restaurant.where(:id => @restaurant).pluck(:restaurant_name)
    
     for n in 0...@zizums_num
-     #zizuminfo.follower니까 그zizum을포함한 식당일경우
-    #메뉴추가알림 메뉴는 restaurant랑 연동//좋아요는 zizuminfo랑연동//
-      @zizums[n].followers.each do |follower| ##restaurant의 zizum 팔로워// 메뉴가 속한 식당을 찾고 그 지점을 찾기
+      @zizums[n].followers.each do |follower| 
         @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
         content:"#{@rt_name}의 메뉴가 삭제되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
         link: request.referrer #수정하기 해당 article path로

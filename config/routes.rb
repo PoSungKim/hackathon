@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get 'menus/index' => "menus#index", as: 'menus'
 
   resources :menus #메뉴
-
   resources :restaurants
   ##-------------------------------------------------------------------------------------------master//
 
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
     get 'owners/search' => 'owners/sessions#search' , as: 'search_path'
   end
   devise_for :owners, path: 'owners', controllers: { sessions: "owners/sessions", registraions: 'owners/registrations'}
+  get 'home/myrt' => 'home#myrt'
 
   # devise_for :admins 관리자페이지 admin설정하려면 주석해제 +initializer/rails_admin도!
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #devise보다 아래위치

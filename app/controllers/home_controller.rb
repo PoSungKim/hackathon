@@ -23,7 +23,6 @@ class HomeController < ApplicationController
         redirect_to new_owner_registration_path
         end 
       end  
-    @boards_num= Board.all.count
     #@articles_num= params[:num]
     # $notice=Board.last(3).pluck(:content)
     @date = Date.today
@@ -31,6 +30,10 @@ class HomeController < ApplicationController
     @today_contents = Board.where(created_at: @date.midnight .. @date.end_of_day).pluck(:content)
   
 
+  end
+
+  def myrt
+    @owner = current_owner
   end
 
 end

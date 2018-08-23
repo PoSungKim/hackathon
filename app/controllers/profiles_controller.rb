@@ -16,7 +16,8 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @profile.user = current_user
-    @profile.save
+    @profile.user_id = current_user.id
+    @profile.save!
 
     redirect_to profile_path(@profile.id)
   end
