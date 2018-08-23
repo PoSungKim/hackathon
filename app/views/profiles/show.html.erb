@@ -14,8 +14,8 @@
 <!-- My Page : Open-->
 <body class="jeju">
 
-<h1 class="jeju" style="text-align: center;">나만의 페이지</h1> 
-<br> <br> <br>
+<!-- <h1 class="jeju" style="text-align: left; font-weight: bold;">My Page</h1> -->
+<br> <br>
 
 <div class="row jeju">
   <!-- 프로필 이미지 -->
@@ -63,7 +63,7 @@
 
 <div class="row jeju"> <!-- like - restaurants -->
   <div class="col-12">
-    <h4 id="spreadBtn1"> <strong>내가 좋아한 식당 (최근 5) </strong> : 클릭하면 좁아짐</h4>
+    <h4 id="spreadBtn1"> <strong>내가 좋아한 식당</strong> (최근 5)</h4>
       <ul id="hiddenList1">
         <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(5).each do |zizum| %>
           <li> 
