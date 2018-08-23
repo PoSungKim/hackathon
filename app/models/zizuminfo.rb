@@ -5,6 +5,8 @@ class Zizuminfo < ApplicationRecord
 
     validates :zizum_name, :uniqueness => true
 
+    acts_as_followable
+
     #서브웨이
     def self.Subway
         #restaurant table 상 본점 id
