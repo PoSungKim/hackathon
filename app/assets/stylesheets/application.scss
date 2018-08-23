@@ -1,47 +1,118 @@
 @import 'bootstrap';
 
-#menuBox{
-    margin: 10px;
-    width: 300px;
-    height: 500px;
-    overflow-y: scroll;
-    border-style: solid;
-    border-color: black;
+//-- font 정리
+//나눔고딕 
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+//Kopub돋움
+@font-face { font-family: 'KoPubDotumMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff'); font-weight: normal; font-style: normal; }
+//제주명조
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
+//이롭게바탕
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
+
+
+
+//-----nav바
+.wholebackground {
+    background-color: #F2F1F0;
 }
 
-.shops{
-    margin: 10px;
-    border-style: solid;
-    border-color: black;
-    width: 600px;
-    height: 700px;
-    overflow-y: scroll;
+
+.navbarstyle {
+    position: fixed;
+    display: flex;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Jeju Myeongjo', serif;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-trasition: 0.6s;
+    transition: 0.6s;
+    z-index:999;
 }
+
+.navbarcontent{
+    display: flex;
+    justify-content: space-around;
+    width: 40em;
+    align-items: left;
+}
+.navbarconent:hover{
+    color: #454338;
+}
+
+.jeju {
+    font-family: 'Jeju Myeongjo', serif;
+    color:#454338;
+}
+.logo {
+    width:100px;
+    height:30px;
+    margin-left: 28px;
+}
+//------
+
+
+
+//------main 관련
+.mainbg {
+    background: url('mainbg.png')  no-repeat center center fixed;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
+}
+
+.indexlogo {
+    width:400px;
+    height:150px;
+    display:flex;
+    justify-content: center;
+    margin-top:40%;
+    margin-bottom:40px;
+}
+
+.indexcontent{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.mainbutton {
+    border: none;
+    width: 150px;
+    height: 48px;
+    background-color: #E2D6CF;
+    font-family: 'KoPubDotumMedium';
+}
+
+//-------
+
+
+//----login 페이지 관련
+.loginimage{
+    left:0;
+    height:100%;
+    width:35%;
+}
+
+.logincontent{
+    display:flex;
+}
+
+.loginform {
+    padding-left:50px;
+    padding-top:50px;
+    display:flex;
+    align-content: space-around;
+}
+//-----search
 
 .hideMenu{
     display: none;
 }
-
-.card{
-    margin: 15px;
-}
-
-.allergy{
-    width: 180px;
-}
-
-.allergy-check{
-    visibility:hidden;
-}
-
-.experiment{
-    background-color:rgb(56, 56, 56);
-    color: white;
-}
-.sigungu-enter{
-    visibility: hidden;
-}
-
 .icon{
     
 }
