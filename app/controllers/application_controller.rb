@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  
   protected
  
   def configure_permitted_parameters
@@ -14,18 +13,4 @@ class ApplicationController < ActionController::Base
   # def current_user
     # devise_current_user || current_owner
   # end
-
-  def after_update_path_for(resource)
-    redirect_to new_profile_path_url
-  end
-
-  # The path used after sign up.
- def after_sign_up_path_for(resource)
-  redirect_to new_profile_path_url
-  end
-
-  # The path used after sign up for inactive accounts.
-   def after_inactive_sign_up_path_for(resource)
-    redirect_to new_profile_path_url
-   end
 end

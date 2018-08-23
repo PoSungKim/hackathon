@@ -27,10 +27,10 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @identity.provider == "kakao" || "facebook" || "google_oauth2" and @user.sign_in_count == 1 #소셜로 첫가입하면 editsns페이지로/맨첫수정페이지
         editsns_path
       else #로그인/일반회원가입은 프로필페이지
-        new_profile_path
+        home_index_path
       end  
     else
-      new_profile_path
+      home_index_path
     end
   end
 end

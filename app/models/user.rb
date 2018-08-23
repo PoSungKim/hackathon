@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
               )
             end
           user.save!
-        end #unless
-      end #if
-      Profile.create!(user_id: user.id)
+        end #if
+      end #unless
+     #Profile.create!(user_id: user.id)
     end #def
  
     if identity.user != user
