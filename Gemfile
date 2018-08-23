@@ -7,6 +7,8 @@ end
 
 ### Full Page Scroll ###
 gem 'fullpage-rails'
+### 프로파일 대체 이미지 기능 잼 ###
+gem 'rb-gravatar'
 
 ### 카드안 라이크 기능 ###
 gem 'axios_rails'

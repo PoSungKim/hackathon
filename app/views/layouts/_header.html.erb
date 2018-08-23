@@ -3,9 +3,9 @@
             <%= image_tag 'logo.png', class:"logo" %>
          <% end %></div>
     <div class="navbarcontent"> 
-        <div><%= link_to "About", home_about_path, class:"headerfont", :style=>"text-decoration: none;  color: #454338" %>        </div>
-        <div><%= link_to "Restaurant",  zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338" %></div>
-        <div>Filtering</div>
+        <div><%= link_to "About", home_about_path, class:"headerfont", :style=>"text-decoration: none;  color: #454338;" %>        </div>
+        <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
+        <div><%= link_to "Filtering", menus_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
         <div>
         <!-- 마이페이지 -->
             <% if user_signed_in? %> 
