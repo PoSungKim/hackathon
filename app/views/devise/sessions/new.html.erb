@@ -1,53 +1,53 @@
-<div class="logincontent">
+<div class="logincontent irop">
   <%= image_tag 'login.jpg', class:"loginimage" %>
   <div class="loginform">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div>
         <div>
-          <%= f.label "이메일" %><br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",  required: false %>
+          <%= f.label "이메일", class:"loginfont" %><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",  required: false ,class:"logininputform" %>
         </div>
-        <div>
-          <%= f.label "비밀번호" %><br>
-          <%= f.email_field :email, required: false, input_html: { autocomplete: "current-password"} %>
+        <br>
+        <div style="margin-bottom:2em">
+          <%= f.label "비밀번호", class:"loginfont" %><br>
+          <%= f.password_field :password, required: false, input_html: { autocomplete: "current-password"},class:"logininputform" %>
         </div>
-        <div class="irop">
-          <%= f.label "이메일 기억하기" %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <div class="loginoption">
+            <%= render "devise/shared/links", class:"loginbutton" %> 
         </div>
       </div>
 
-      <div>
+      <div class="snslogin">
         <%- if devise_mapping.omniauthable? %>
           <%- resource_class.omniauth_providers.each do |provider| %>
             <%- if OmniAuth::Utils.camelize(provider) == "Kakao"  %> 
-              <div class= "kakao">
-                <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+              <div>
+                <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                <i class="fab fa-kickstarter kakao"></i>
+                <% end %><br />
               </div>
             <%- elsif OmniAuth::Utils.camelize(provider) == "GoogleOauth2"  %>  
-              <div class= "google">
-                <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)%>
+              <div>
+                <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                <i class="fab fa-facebook-square facebook"></i><% end %>
                 <br />
               </div>
             <%- elsif OmniAuth::Utils.camelize(provider) == "Facebook"  %>  
-              <div class= "facebook">
-                <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+              <div>
+                <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                <i class="fab fa-google-plus-square google"></i><% end %><br />
               </div> 
              <% end %>  
           <% end -%>
         <% end -%>
-        <div>
-          <%= f.button :submit, "Log In", class: "loginbutton jeju" %>
-        </div>
+      </div>
+      <div>
+        <%= f.button :submit, "Log In", class: "loginbutton"  %>
       </div>
 
-      <div>
-          <%= render "devise/shared/links", class:"loginbutton" %> 
-      </div>
+      
     <% end %>
     
     
   </div>
 </div>
-
-

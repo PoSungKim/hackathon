@@ -90,15 +90,7 @@ $colors: (
   // offset: #19bc8b
 );
 
-// Sass variables compile to a static string; CSS variables are dynamic and inherited
-  // Loop through the map and set CSS custom properties using Sass variables
-@each $button, $color in $colors {
-  .#{$button} {
-    --color: #{$color};
-    //--hover: #{adjust-hue($color, 15deg)};
-    --hover: #{$color};
-  }
-}
+// Sass variables compile to a static string; CSS variables are dynamic and inhe
 
 // Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
 button {  

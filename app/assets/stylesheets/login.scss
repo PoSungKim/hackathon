@@ -24,5 +24,46 @@
 }
 
 .snslogin {
+    display:flex;
+    justify-content: center;
+    right: 155px;
+    bottom: 110px;
     position: absolute;
+}
+
+.logininputform {
+    border:none;
+    background-color: white;
+    border-radius: 3em;
+    height:2.5em;
+    width:25em;
+    padding: 1em;
+    text-decoration: none;
+}
+
+.loginoption{
+    text-align: right;
+}
+
+.loginfont{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.google {
+    font-size:2em;
+    color: #DE4E43;
+    margin: 5px;
+}
+
+.facebook {
+    font-size: 2em;
+    color: #3B5999;
+    margin: 5px;
+}
+
+.kakao {
+    font-size: 2em;
+    color: #FEEA00;
+    margin: 4px;
 }
