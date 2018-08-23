@@ -74,11 +74,20 @@ class RestaurantsController < ApplicationController
 
   def crawling
     Restaurant.RestaurantName
+    puts "\n\nrestaurant name finished\n\n"
+    # sleep 1.5
     Zizuminfo.Subway
+    puts "\n\nsubway zizum finished\n\n"
+    # sleep 1.5
     Zizuminfo.Momstouch
+    puts "\n\nmomstouch zizum finished\n\n"
+    # sleep 1.5
     Menu.Subway
+    puts "\n\nsubway menu finished\n\n"
+    # sleep 1.5
     Menu.Momstouch
-    puts "crwaling update finished!"
+    puts "\n\nmomstouch menu finished\n\n"
+    # sleep 1.5
     redirect_to userrequests_index_path
   end
 
@@ -91,6 +100,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:restaurant_name, :a1_maemil,:a2_mil,:a3_daedu,:a4_hodu,:a5_ddangkong,:a6_peach,:a7_tomato,:a8_piggogi, :a9_nanryu, :a10_milk, :a11_ddakgogi, :a12_shoigogi, :a13_saewoo, :a14_godeungeoh, :a15_honghap, :a16_junbok, :a17_gul, :a18_jogaeryu, :a19_gye, :a20_ohjingeoh, :a21_ahwangsan, :image)
+      params.require(:restaurant).permit(:restaurant_id, :restaurant_name, :a1_maemil,:a2_mil,:a3_daedu,:a4_hodu,:a5_ddangkong,:a6_peach,:a7_tomato,:a8_piggogi, :a9_nanryu, :a10_milk, :a11_ddakgogi, :a12_shoigogi, :a13_saewoo, :a14_godeungeoh, :a15_honghap, :a16_junbok, :a17_gul, :a18_jogaeryu, :a19_gye, :a20_ohjingeoh, :a21_ahwangsan, :image)
     end
 end

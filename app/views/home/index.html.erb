@@ -1,19 +1,26 @@
-
+<br> <br>
 <body>
     <div>
         <div class="indexcontent">
             <%= image_tag 'logo.png', class:"indexlogo" %>
         </div>
-        <div class="indexcontent">
-            <button class="mainbutton"><%= link_to '식당으로 검색', zizuminfos_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
-             <button class="mainbutton"><%= link_to '알레르기 검색', menus_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
+        <div class="indexcontent" style="jeju">
+            <button class="mainbutton"><%= link_to '식당으로 검색',  zizuminfos_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
+            <button class="mainbutton"><%= link_to '알레르기 검색', menus_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
+
+    <!--크롤링 링크-->
+    <%= link_to "크롤링 업데이트", "/crawling"%>
+
 </body>
-<%# <marquee>공지사항입니다</marquee>  %>
-<!--공지 팝업창 그날 하루 올라온 식당만.(수정가능)ㅇ-->
- <div id="myModal" class="modal">
+
+
+
+
+
+<!--공지 팝업창 수정 필요 -->
+<div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h5>새로운 식당이 업데이트 되었습니다.</h5>

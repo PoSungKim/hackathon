@@ -1,0 +1,69 @@
+.loginimage{
+    left:0;
+    height:100%;
+    width:35%;
+}
+
+.logincontent{
+    display:flex;
+    justify-content: left;
+}
+
+.loginform {
+    padding-left:50px;
+    padding-top:50px;
+}
+
+.loginbutton {
+    position: absolute;
+    right: 10em;
+    bottom: 1.23rem;
+    background-color: white;
+    width:20%;
+    height:13%;
+}
+
+.snslogin {
+    display:flex;
+    justify-content: center;
+    right: 155px;
+    bottom: 110px;
+    position: absolute;
+}
+
+.logininputform {
+    border:none;
+    background-color: white;
+    border-radius: 3em;
+    height:2.5em;
+    width:25em;
+    padding: 1em;
+    text-decoration: none;
+}
+
+.loginoption{
+    text-align: right;
+}
+
+.loginfont{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.google {
+    font-size:2em;
+    color: #DE4E43;
+    margin: 5px;
+}
+
+.facebook {
+    font-size: 2em;
+    color: #3B5999;
+    margin: 5px;
+}
+
+.kakao {
+    font-size: 2em;
+    color: #FEEA00;
+    margin: 4px;
+}

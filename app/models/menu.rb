@@ -16,15 +16,15 @@ class Menu < ApplicationRecord
 
         rows.each do |r|
             m_name = r.css('th').text
+            r_name = "서브웨이"
             
             if Menu.where(menu_name: m_name)[0].nil?
                 a_info = Menu.new
             else
-                a_info = Menu.where(menu_name: m_name)[0]
+                a_info = Menu.where(restaurant_name: r_name, menu_name: m_name)[0]
             end
 
             #레스토랑
-            r_name = "서브웨이"
             a_info.restaurant_name = r_name
             a_info.restaurant_id = Restaurant.where(restaurant_name: r_name)[0].id
 
@@ -156,16 +156,16 @@ class Menu < ApplicationRecord
         rows = data.css('.table_allergy tbody tr')
 
         rows.each do |r|
+            r_name = "맘스터치"
             m_name = r.css(':nth-child(1)').text
             
             if Menu.where(menu_name: m_name)[0].nil?
                 a_info = Menu.new
             else
-                a_info = Menu.where(menu_name: m_name)[0]
+                a_info = Menu.where(restaurant_name: r_name, menu_name: m_name)[0]
             end
 
             #레스토랑
-            r_name = "맘스터치"
             a_info.restaurant_name = r_name
             a_info.restaurant_id = Restaurant.where(restaurant_name: r_name)[0].id
 

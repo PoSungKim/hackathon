@@ -3,16 +3,16 @@
             <%= image_tag 'logo.png', class:"logo" %>
          <% end %></div>
     <div class="navbarcontent"> 
-        <div><%= link_to "About", home_about_path, class:"jeju", :style=>"text-decoration: none;  color: #454338;" %>        </div>
-        <div><%= link_to "Restaurant", zizuminfos_search_path, class:"jeju", :style=>"text-decoration: none; color: #454338;" %></div>
-        <div><%= link_to "Filtering", menus_path, class: "jeju", :style=>"text-decoration: none; color: #454338;" %></div>
+        <div><%= link_to "About", home_about_path, class:"headerfont", :style=>"text-decoration: none;  color: #454338;" %>        </div>
+        <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
+        <div><%= link_to "Filtering", menus_search_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
         <div>
         <!-- 마이페이지 -->
             <% if user_signed_in? %> 
                 <% if current_user.profile.nil? %> 
-                    <%= link_to "My Page", new_profile_path(@profile), class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                    <%= link_to "My Page", new_profile_path(@profile), class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
                 <% elsif !current_user.profile.nil? %>
-                    <%= link_to "My Page", profile_path(current_user.profile.id), class:"jeju", :style=>"text-decoration: none; color: #454338;"  %>
+                    <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
                 <% end %>
             <% elsif owner_signed_in?%>
                 <%= link_to "나의 식당관리", home_myrt_path,  class:"jeju", :style=>"text-decoration: none; color: #454338;" %>    
@@ -37,10 +37,13 @@
                     <%= render partial: "new_alarms/new_alarm", collection: current_user.new_alarms.unread_by(current_user) %>
                     <%= link_to '<b>X</b>'.html_safe, new_alarms_read_all_path %>
                 </div>
-            <% end %>
+            <% end %>    
         </div>
+
     </div>
 </div>
+
+
 
 <script>
 $(document).scroll(function() {
@@ -50,3 +53,5 @@ $(document).scroll(function() {
         $('#navbar').css('background-color','rgba(255, 255, 255, 1)');
 });
 </script>
+
+

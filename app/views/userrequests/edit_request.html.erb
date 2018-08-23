@@ -1,21 +1,28 @@
-<%= form_for @userrequest, url: {action: "create"}, html: {class: "클래스이름 여기!"} do |f| %>
-  
-  <!--메뉴 아이디는 요청자가 수정 불가-->
-  <div class="field">
-    <%= f.hidden_field :restaurant_id, value: @r_id%>   
-  </div> 
+<p><%=@userrequest.restaurant_name%> 메뉴 추가/삭제 요청</p>
 
+<%= form_for @userrequest, url: {action: "create"}, html: {class: "클래스이름 여기!"} do |f| %>
+  <!--#######################사용자가 볼 수 없는 영역 시작################-->
   <!--사용자 아이디 자동 입력-->
   <div class="field">  
-    <%= f.hidden_field :user_id, value: @uid%>
+    <%= f.hidden_field :uid, value: current_user.id%>
   </div> 
-
-  <!--추가, 수정, 삭제-->
   <div class="field">
-    <%= f.label :request_type %>
-    <%= f.text_field :request_type%>
+    <%= f.hidden_field :status, value: "미처리"%> 
   </div> 
+    <div class="field">
+    <%= f.hidden_field :restaurant_id%> 
+  </div> 
+    <div class="field">
+    <%= f.hidden_field :restaurant_name%> 
+  </div> 
+  <!--######################사용자가 볼 수 없는 영역 끝#######################-->
 
+  <!--수정, 삭제, 삭제면 아래 전부안보이게 하기-->
+  <div class="field">
+    <%= f.select(:request_type, ["수정","삭제"], {prompt: "--수정 / 삭제 선택--"}, {:class => "some_class"}) %>
+  </div> 
+  
+  <!--메뉴이름-->
   <div class="field">
     <%= f.label :menu_name%>
     <%= f.text_field :menu_name %>
@@ -275,6 +282,10 @@
         accept: 'image/png, image/gif, image/jpeg'%>
   </div>
 
+  <div>
+    <%=f.text_area :memo, size: "24x6", placeholder: "placeholder text" %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
