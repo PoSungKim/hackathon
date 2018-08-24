@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
               user = User.new(
                 profileimage: auth.info.image,
                 ## AWS S3와 연동할 때 프로필 이미지를 저장하기 위해 필요한 부분
-                remote_profileimage_url: auth.info.image.gsub('http://','https://'),
+                # remote_profileimage_url: auth.info.image.gsub('http://','https://'),
                 name: auth.info.name,
                 password: Devise.friendly_token[0,20]
               )
@@ -46,14 +46,14 @@ class User < ActiveRecord::Base
                 gender: auth.extra.raw_info.gender,
                 # is_female: auth.extra.raw_info.gender == "female" ? false : true,              
                 profileimage: auth.info.image,
-                remote_profileimage_url: auth.info.image.gsub('http://','https://'),
+                # remote_profileimage_url: auth.info.image.gsub('http://','https://'),
                 password: Devise.friendly_token[0,20]
               )
             end
           user.save!
-        end #unless
-      end #if
-      Profile.create!(user_id: user.id)
+        end #if
+      end #unless
+     Profile.create!(user_id: user.id)
     end #def
  
     if identity.user != user
@@ -87,6 +87,7 @@ class User < ActiveRecord::Base
     result = update_attributes(params)
     clean_up_passwords
     result
+  
   end
 
   def verify_password_and_update(params)

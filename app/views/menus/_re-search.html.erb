@@ -1,12 +1,12 @@
 <%= form_tag(menus_path, method: :get) do %>
     시/도 입력(ex. 서울특별시): 
-    <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
+    <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %> 
     <select name="sido">
         <option value="<%=params[:sido]%>"><%=params[:sido]%></option>
         <option value="서울특별시" class="sido-opt">서울특별시</option>
         <option value="부산광역시" class="sido-opt">부산광역시</option>
         <option value="대구광역시" class="sido-opt">대구광역시</option> 
-        <option value="인천광역시" class="sido-opt">인천광역시</option>     
+        <option value="인천광역시" class="sido-opt">인천광역시</option> 
         <option value="광주광역시" class="sido-opt">광주광역시</option>
         <option value="대전광역시" class="sido-opt">대전광역시</option>
         <option value="세종특별자치시" class="sido-opt">세종특별자치시</option> 
@@ -24,12 +24,9 @@
     시/군/구 입력(ex. 용산구):
     <button type="button" class="jikjup">직접 입력</button>
     <button type="button" class="all">전체 선택</button>
-
     <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
     <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter m-3",:id => "location", :placeholder => "시군구 직접 입력"%>
     <br>
-    <br>
-    
     <div class="d-flex justify-content-between">
         <div>
             <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
@@ -38,8 +35,9 @@
                 <%= check_box_tag :a10_milk, true, checked = params[:a10_milk]%> 우유<br>
             </div>
         </div>
+
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류 <i class="fas fa-caret-down"></i></button></div>
             <div class="allergy-check">
                 <%= check_box_tag :a6_peach, true, checked = params[:a6_peach]%> 복숭아<br>
                 <%= check_box_tag :a7_tomato, true, checked = params[:a7_tomato]%> 토마토<br>
@@ -48,16 +46,18 @@
                 <%= check_box_tag :a3_daedu, true, checked = params[:a3_daedu]%> 대두(콩)<br>
             </div>
         </div>
+
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류 <i class="fas fa-caret-down"></i></button></div>
             <div class="allergy-check">
                 <%= check_box_tag :a11_ddakgogi, true, checked = params[:a11_ddakgogi]%> 닭고기<br>
                 <%= check_box_tag :a12_shoigogi, true, checked = params[:a12_shoigogi]%> 쇠고기<br>
                 <%= check_box_tag :a8_piggogi, true, checked = params[:a8_piggogi]%> 돼지고기<br>
             </div>
         </div>
+
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류  <i class="fas fa-caret-down"></i></button></div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류 <i class="fas fa-caret-down"></i></button></div>
             <div class="allergy-check">
                 <%= check_box_tag :a13_saewoo, true, checked = params[:a13_saewoo]%> 새우<br>
                 <%= check_box_tag :a14_godeungeoh, true, checked = params[:a14_godeungeoh]%> 고등어<br>
@@ -69,8 +69,9 @@
                 <%= check_box_tag :a20_ohjingeoh, true, checked = params[:a20_ohjingeoh]%> 오징어<br>
             </div>
         </div>
+
         <div>
-            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타  <i class="fas fa-caret-down"></i></button></div>
+            <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타 <i class="fas fa-caret-down"></i></button></div>
             <div class="allergy-check">
                 <%= check_box_tag :a4_hodu, true, checked = params[:a4_hodu]%> 호두<br>
                 <%= check_box_tag :a5_ddangkong, true, checked = params[:a5_ddangkong]%> 땅콩<br>
@@ -79,4 +80,4 @@
         </div>
         <%= submit_tag 'Search'%>
     </div>
-<%end%>
+<%end%> 

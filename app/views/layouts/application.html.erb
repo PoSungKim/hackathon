@@ -39,7 +39,6 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
 }
 }
 // -->
-</script>
   </head>
 
   <body id="whole" class="container wholebackground" style="text-decoration: none;">
@@ -49,6 +48,21 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
   </body>
 
   <script>
+
+ jQuery(function($) {
+        if (window.location.pathname == '/' ) { 
+        $("#whole").addClass("mainbg" ); } 
+        $("body").css("display", "none");
+        $("body").fadeIn(1000);
+        $("a.transition").click(function(event){
+          event.preventDefault();
+          linkLocation = this.href;
+        $("body").fadeOut(500, redirectPage);
+        });
+        function redirectPage() {
+        window.location = linkLocation;
+        }
+      });
 
    //Channel Plugin Scripts -->
   ;window.channelPluginSettings = {
@@ -91,27 +105,10 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
     }
   })();
 // End Channel Plugin -->
-
-      jQuery(function($) {
-        if (window.location.pathname == '/' ) { 
-        $("#whole").addClass("mainbg" ); } 
-        $("body").css("display", "none");
-        $("body").fadeIn(1000);
-        $("a.transition").click(function(event){
-          event.preventDefault();
-          linkLocation = this.href;
-        $("body").fadeOut(500, redirectPage);
-        });
-        function redirectPage() {
-          window.location = linkLocation;
-        }
-      });
+     
     </script>
   
   
 
 
 </html>
-
-
-
