@@ -20,7 +20,7 @@
                <div>     <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
                 <% end %>
             <% elsif owner_signed_in?%>
-            <div>    <%= link_to "나의 식당관리", home_myrt_path,  class:"jeju", :style=>"text-decoration: none; color: #454338;" %>    
+                <%= link_to "나의 식당관리", home_myrt_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>    
             <% end %>
     
 
@@ -47,11 +47,11 @@
         <!-- 로그인/로그아웃 -->
         <div>
             <% if !user_signed_in? && !owner_signed_in? %> 
-                <%= link_to "Log In", new_user_session_path, class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                <%= link_to "Log In", new_user_session_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
             <% elsif user_signed_in?%>
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"jeju", :style=>"text-decoration: none; color: #454338;" %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
              <% elsif owner_signed_in?%>
-                <%= link_to "로그아웃", destroy_owner_session_path, method: :delete, class:"jeju", :style=>"text-decoration: none; color: #454338;" %>     
+                <%= link_to "로그아웃", destroy_owner_session_path, method: :delete, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>     
             <% end %>
         </div>
     </div>
