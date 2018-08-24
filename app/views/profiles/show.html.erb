@@ -86,7 +86,7 @@
               <div class="col"> 
                 <% if zizum.followed_by?(@profile.user) %>
                   <p>
-                    <%= link_to(image_tag(zizum.image.thumb.url, style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
+                    <%= link_to(image_tag(zizum.image.thumb.url, class: "zizum_image", style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
                     <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
                     <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
                     <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %> <br>
