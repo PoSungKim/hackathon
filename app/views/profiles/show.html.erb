@@ -84,15 +84,26 @@
               <div class="col-3 jeju"> 
                 <% if zizum.followed_by?(@profile.user) %>
                     <%= link_to(image_tag(zizum.image.url, class: "round", style: "width: 100%; height:auto"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <hr />
-                  <p>
-                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id), :style=> "margin-right: 47%; color:black; text-decoration: none; font-size: 150%" %>                    
-                    <%= fa_icon('heart', class: "like icon", style: "height: 100%;") %>
-                    <% if @profile.user == current_user %>
-                      <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
-                    <% end %>
-                     <br>
-                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id), :style=> "color:black; text-decoration: none; font-size: 110%"%> <br>
-                  </p>
+                  <div class="row">
+                    <div class="col-6" align = left>
+                        <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id), :style=> "margin-right: 5%; color:black; text-decoration: none; font-size: 150%" %>                    
+                    </div>
+                    <div class="col-6" align = right>
+                        <%= fa_icon('heart', class: "like icon fa-lg", style: "height: 100%;") %>                  
+                        x <%= zizum.followers_count %>
+                    </div>    
+                  </div>
+                  <div class = "row">
+                    <div class="col-10" align = left>
+                        <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id), :style=> "margin-right: 16%; color:black; text-decoration: none; font-size: 100%"%>
+                    </div>
+                    <div class="col-2" align = right>    
+                        <% if @profile.user == current_user %>
+                          <%= link_to fa_icon('trash', class: "fa-lg"), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
+                        <% end %>
+                    </div>
+                  </div>
+                  <br>
                 <% end %>
               </div>
             <% end %>
