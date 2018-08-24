@@ -38,11 +38,11 @@ Rails.application.routes.draw do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
 
-  #get '/profiles/:id' => 'profiles#show', as: :user_root # creates user_root_path
-
-  #namespace :user do
-  #  root 'profiles#show' # creates user_root_path
-  #end
+  get '/profiles/new' => 'profiles#new', as: :user_root # creates user_root_path
+  # get '/profiles/:user_id' => 'profiles#show', as: :user_root
+  namespace :user do
+    root 'profiles#new' # creates user_root_path
+  end
 
   ## for 사업자 ##
   devise_scope :owner do
@@ -76,6 +76,20 @@ Rails.application.routes.draw do
 
   ### 크롤링 ###
   get '/crawling' => 'restaurants#crawling'
+  
+  ### 수정 / 삭제 요청 ###
+  #요청 확인
+  get '/userrequests' => 'userrequests#index'
+  #메뉴 추가 요청
+  get '/userrequests/new_request' => 'userrequests#new_request'
+  post '/userrequests/create' => 'userrequests#create'
+  #메뉴 수청 / 삭제 요청
+  get '/userrequests/edit_request' => 'userrequests#edit_request'
+  post '/userrequests/edit_request' => 'userrequests#edit_request'
+  #승인
+  post '/userrequests/permit' => 'userrequests#permit'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   ## 수정 / 삭제 요청 ###
   #요청 확인

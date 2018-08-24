@@ -1,7 +1,12 @@
-.joinwholebox {
+.joincontent{
     display:flex;
+    justify-content: left;
 }
 
-.joinleftfirstbox {
-    background-color: #E7E7E3;
+
+.joinform {
+    padding-left:50px;
+    width: 70%;
 }
+
+.effect-16{border: 0; padding: 4px 0; border-bottom: 1px solid #ccc; background-color: transparent;}

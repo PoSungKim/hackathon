@@ -31,7 +31,7 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         profile_path(@profile_id)
       end  
     else
-     home_index_path
+      profile_path(@profile_id)
     end
   end
     

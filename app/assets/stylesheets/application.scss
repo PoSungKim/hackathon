@@ -4,6 +4,10 @@
 @import 'main.scss';
 @import 'login.scss';
 @import 'join.scss';
+@import 'edit.scss';
+@import 'zizuminfos.scss';
+@import 'menus.scss';
+
 
 //-- font 정리
 //나눔고딕 
@@ -15,6 +19,9 @@
 //이롭게바탕
 @import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
 
+body {
+    font-family: 'Jeju Myeongjo', serif;
+}
 //-----search
 #menuBox{
     margin: 10px;
@@ -30,21 +37,16 @@
     width: 180px;
 }
 
-.allergy-check{
-    visibility: hidden;
-}
+
 
 .experiment{
-    background-color: black;
-    color: white;
+    background-color: #e2dccf;
+    font-weight: 600;
 }
+
 .sigungu-enter{
     visibility: hidden;
  }
-
-.icon{
-    
-}
 
 .like{
     color: red;
@@ -80,10 +82,34 @@
 }
 
 .hideMenu{
-    display: none;
+    display: none; 
 }
 
 .card{
     margin: 15px;
 }
+a.fa-globe {
+  position: relative;
+  top: 3px;
+  font-size: 1em;
+  color: rgba(24, 2, 2, 0);
+  cursor: pointer;
+}
+span.fa-comment {
+  position: absolute;
+  font-size: 1em;
+  top: -9px;
+  color: rgb(41, 153, 116);
+  right: -12px;
+}
+span.num {
+  position: absolute;
+  font-size: 0.6em;
+  top: -7px;
+  color: #fff;
+  right: -7px;
+}
 
+.a-checkbox{
+    background-color: white;
+}
