@@ -37,7 +37,7 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
   def after_update_path_for(resource_or_scope)
     @profile_id = current_user.id
-    redirec_to profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
+    redirect_to profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
   end 
 end
 
