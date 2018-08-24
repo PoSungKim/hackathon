@@ -29,7 +29,7 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # if isBrand["response"]["body"]["totalCount"] == 0
   # elsif isBrand["response"]["body"]["items"]["item"]["wkplJnngStcd"] == 1
       # redirect_to new_owner_registration_path
-  end    
+  # end    
 
 end
   # GET /resource/sign_up

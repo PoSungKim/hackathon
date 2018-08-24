@@ -1,6 +1,7 @@
 class ZizuminfosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_zizuminfo, only: [:show, :edit, :update, :destroy]
+  helper_method :value2icon
 
   # GET /zizuminfos
   # GET /zizuminfos.json
@@ -63,6 +64,24 @@ class ZizuminfosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to zizuminfos_url, notice: 'Zizuminfo was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  
+  #숫자 표기 변환 method
+  def value2icon(value)
+    #교차 위험
+    if value == -2
+      return '<i class="fas fa-star allergy-star"></i>'.html_safe
+    #제공 안함
+    elsif value == -1
+      return 'ㆍ'.html_safe
+    #없음
+    elsif value == 0
+      return '<i class="fas fa-times"></i>'.html_safe
+    #있음
+    else
+      return '<i class="fas fa-circle allergy-circle"></i>'.html_safe
     end
   end
 
