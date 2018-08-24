@@ -29,8 +29,6 @@ class HomeController < ApplicationController
     @date = Date.today
     @todays = Board.where(created_at: @date.midnight .. @date.end_of_day).count
     @today_contents = Board.where(created_at: @date.midnight .. @date.end_of_day).pluck(:content)
-  
-
   end
 
   def myrt
