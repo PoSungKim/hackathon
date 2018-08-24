@@ -31,6 +31,9 @@ class Menu < ApplicationRecord
             #메뉴 이름
             a_info.menu_name = m_name
 
+            #이미지
+            a_info.image = "/subway.jpeg"
+
             #계란 / 생선 / 우유,락토스 / 땅콩 / 참깨 / 조개류 / 대두,콩 / 견과류 / 밀,글루텐 / 아황산류 / 아질산염,질산염            
             #계란 9
             a = r.css(':nth-child(2)')
@@ -171,6 +174,9 @@ class Menu < ApplicationRecord
 
             #메뉴 이름
             a_info.menu_name = m_name
+
+            #이미지
+            a_info.image = "moms.jpeg"
 
             #메밀 1
             a = r.css(':nth-child(4)').text
@@ -809,13 +815,13 @@ class Menu < ApplicationRecord
     
     #https://stackoverflow.com/questions/30746397/can-nokogiri-interpret-javascript-web-scraping
     #####################################################################
-    # if !Menu.exists?(restaurant_name: "서브웨이") 
-    #     self.Subway
-    # end
+    if !Menu.exists?(restaurant_name: "서브웨이") 
+        self.Subway
+    end
 
-    # if !Menu.exists?(restaurant_name: "맘스터치") 
-    #     self.Momstouch
-    # end
+    if !Menu.exists?(restaurant_name: "맘스터치") 
+        self.Momstouch
+    end
 
     #if !Allergy.exists?(restaurant_name: "한솥") 
         #self.Hansot

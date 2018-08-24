@@ -1,5 +1,5 @@
 <%= form_tag(menus_path, method: :get) do %>
-    <div class="ziyuk d-flex justify-content-around">
+    <div class="ziyuk d-flex">
         <div class="sido">
         <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
             <select name="sido" class="custom-sido options selectcss">
@@ -37,14 +37,14 @@
     <br>
     <div class="d-flex justify-content-between original-check">
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">유제품 및 난류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">유제품 및 난류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a9_nanryu, true, current_user.allergy.include?('난류')%> 난류<br>
                 <%= check_box_tag :a10_milk, true, current_user.allergy.include?('우유')%> 우유<br>
             </div>
         </div>
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과채류 및 곡류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과채류 및 곡류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a6_peach, true, current_user.allergy.include?('복숭아')%> 복숭아<br>
                 <%= check_box_tag :a7_tomato, true, current_user.allergy.include?('토마토')%> 토마토<br>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">육류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">육류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a11_ddakgogi, true, current_user.allergy.include?('닭고기')%> 닭고기<br>
                 <%= check_box_tag :a12_shoigogi, true, current_user.allergy.include?('쇠고기')%> 쇠고기<br>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">어패류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">어패류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check d-flex">
                 <div>
                     <%= check_box_tag :a13_saewoo, true, current_user.allergy.include?('새우')%> 새우<br>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename fruits">과류, 아황산 등</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename fruits">과류, 아황산 등</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a4_hodu, true, current_user.allergy.include?('호두') %> 호두<br>
                 <%= check_box_tag :a5_ddangkong, true, current_user.allergy.include?('땅콩')%> 땅콩<br>

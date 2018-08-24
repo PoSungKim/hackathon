@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-6" align = right>
                         <strong style="font-size: 129%;"> <%= zizum.followers_count %></strong>
-                        <%= fa_icon('heart', class: "like icon fa-lg", style: "margin-right: 5%") %>
+                          <%= fa_icon('heart', class: "like icon fa-lg", style: "margin-right: 5%") %>
                     </div>    
                   </div>
                   <div class = "row">
@@ -134,16 +134,16 @@
 
                 <div class= "col-6" align = left>
                 <button style="color:black; text-decoration: none; font-size: 115%; margin-top: 2%" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
-                    <%= i %> 번 요청에 대한 현황: <strong><%=r.status%></strong>
+                    <%= i %> : <%= r.request_type %> 요청에 대한 현황: <strong><%=r.status%></strong>
                 </button>
                 </div>
 
                 <div class= "col-6" style="font-size:90%" align = right>
-                  <%= r.created_at.to_s.split(" ").first.split("-").first%>년
-                  <%= r.created_at.to_s.split(" ").first.split("-").second%>월
-                  <%= r.created_at.to_s.split(" ").first.split("-").third%>일 |
-                  <%= r.created_at.to_s.split(" ").second.split("-").first.split(":").first%>시
-                  <%= r.created_at.to_s.split(" ").second.split("-").first.split(":").second%>분
+                  <%= r.updated_at.to_s.split(" ").first.split("-").first%>년
+                  <%= r.updated_at.to_s.split(" ").first.split("-").second%>월
+                  <%= r.updated_at.to_s.split(" ").first.split("-").third%>일 |
+                  <%= r.updated_at.to_s.split(" ").second.split("-").first.split(":").first%>시
+                  <%= r.updated_at.to_s.split(" ").second.split("-").first.split(":").second%>분
                   <br><br><%= r.restaurant_name%> | <%= r.menu_name%>
                 </div>
 

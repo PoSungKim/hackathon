@@ -2,7 +2,7 @@
 <div class = "d-flex justify-content-around my-5">
   <!--매장 전경 사진-->
   <div>
-    <%= image_tag(@zizuminfo.image, class: "zizum-image", alt: "지점 전경 사진") %>
+    <%= image_tag("subway.jpeg", style: "height: auto;", class: "zizum-image", alt: "지점 전경 사진") %>
   </div>
 
   <!--매장 정보-->
@@ -19,6 +19,17 @@
       <i class="fas fa-map-marker-alt"></i><%= @zizuminfo.sido + " " +@zizuminfo.sigungu + " " +@zizuminfo.sangse_juso %>
     </p>
     <p class = "pl-5 jeju"><i class="fas fa-phone"></i> <%= @zizuminfo.phone_number %></p>
+    <p class = "pl-5 jeju">
+      <%= fa_icon('heart') %>
+      <% @zizuminfo.followers.each do |follower|%>
+        <%= link_to follower.name, profile_path(follower.profile.id), style: "color:black; text-decoration: none" %>
+      <%end %>
+      <% if @zizuminfo.followers_count == 1 %>
+      님 께서 좋아요를 눌렀습니다.
+      <% elsif @zizuminfo.followers_count > 2 %>
+      님 등께서 좋아요를 눌렀습니다.
+      <% end %>
+    </p>
   </div>
 </div>
 
