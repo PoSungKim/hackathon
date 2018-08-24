@@ -1,118 +1,105 @@
 <p id="notice"><%= notice %></p>
+<div class = "d-flex justify-content-around my-5">
+  <!--매장 전경 사진-->
+  <div>
+    <%= image_tag(@zizuminfo.image, class: "zizum-image", alt: "지점 전경 사진") %>
+  </div>
 
-<% if @zizuminfo.followed_by?(current_user) %>
-<!-- 좋아요를 했다면 -->
-    <%# link_to (fa_icon('thumbs-up', style: 'color: blue'), like_article_path, method: :post) %>
-    <p class="card-text"><%= link_to(fa_icon('heart', class: "like icon"), zizum_back_follow_path, method: :post) %> (<%=@zizuminfo.followers_count%>)</p>
-<!-- 좋아요를 안 했다면 -->
-<% else %>
-    <%# link_to (fa_icon('thumbs-up', style: 'text-decoration: none'), like_article_path, method: :post) %>
-    <p class="card-text"><%= link_to(fa_icon('heart', class: "unlike icon"), zizum_back_follow_path, method: :post) %> (<%=@zizuminfo.followers_count%>)</p>
-<% end %>
+  <!--매장 정보-->
+  <div>
+     <p><span class = "zizum-name px-5 py-2 irop"><%= @zizuminfo.restaurant_name + " " + @zizuminfo.zizum_name%></span></p>
+    <p class = "pl-5 jeju"><i class="fas fa-map-marker-alt"></i> <%= @zizuminfo.sido + " " +@zizuminfo.sigungu + " " +@zizuminfo.sangse_juso %></p>
+    <p class = "pl-5 jeju"><i class="fas fa-phone"></i> <%= @zizuminfo.phone_number %></p>
+  </div>
+</div>
 
-<p>
-해당 게시물에 라이크를 누른 유저 리스트: 
-<% @zizuminfo.followers.each do |follower|%>
-  <%= link_to follower.name, profile_path(follower.profile.id) %>
-<%end %>
+<!--알레르기 테이블-->
+<p class = "text-right mb-0 mt-5  jeju">
+  <span class="mr-2">포함하지 않음 : <i class="fas fa-times"></i></span>
+  <span class="mr-2">교차위험 : <i class="fas fa-star"></i></span>
+  <span class="mr-2">포함 : <i class="fas fa-circle"></i></span>
+  <span class="mr-2">제공 안함 :  ㆍ </span>
+  <span>
+    <%= link_to '<button type="button" class= "fill mbutton">메뉴 추가 요청</button>'.html_safe, userrequests_new_request_url(restaurantID: @zizuminfo.restaurant.id)%>
+  </span>
 </p>
 
-<p>
-  <strong>restaurant_name:</strong>
-  <%= @zizuminfo.restaurant_name %>
-</p>
-
-<p>
-  <strong>zizum name:</strong>
-  <%= @zizuminfo.zizum_name%>
-</p>
-
-<p>
-  <strong>Sido:</strong>
-  <%= @zizuminfo.sido + " " +@zizuminfo.sigungu + " " +@zizuminfo.sangse_juso %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @zizuminfo.phone_number %>
-</p>
-
-<!--#############################################################################################-->
-<p>메뉴</p>
-<table>
+<table class = "allergy-table  jeju">
   <thead>
-    <tr>
-      <th>메뉴 ID</th>
+    <tr class = "text-center">
       <th>메뉴 이름</th>
-      <th>메밀</th>
-      <th>밀</th>
-      <th>대두</th>
-      <th>호두</th>
-      <th>땅콩</th>
-      <th>복숭아</th>
-      <th>토마토</th>
-      <th>돼지고기</th>
-      <th>난류</th>
-      <th>우유</th>
-      <th>닭고기</th>
-      <th>쇠고기</th>
-      <th>새우</th>
-      <th>고등어</th>
-      <th>홍합</th>
-      <th>전복</th>
-      <th>굴</th>
-      <th>조개류</th>
-      <th>게</th>
-      <th>오징어</th>
-      <th>아황산</th>
-      <!--colspan -3로 수정 예정-->
-      <th>수정</th>
-      <th>삭제</th>
-      <th>수정요청</th>
+      <th><span>메밀</span></th>
+      <th><span>밀</span> </th>
+      <th><span>대두</span></th>
+      <th><span>호두</span></th>
+      <th><span>땅콩</span></th>
+      <th><span>복숭아</span></th>
+      <th><span>토마토</span></th>
+      <th><span>돼지고기</span></th>
+      <th><span>난류</span></th>
+      <th><span>우유</span></th>
+      <th><span>닭고기</span></th>
+      <th><span>쇠고기</span></th>
+      <th><span>새우</span></th>
+      <th><span>고등어</span></th>
+      <th><span>홍합</span></th>
+      <th><span>전복</span></th>
+      <th><span>굴</span></th>
+      <th><span>조개류</span></th>
+      <th><span>게</span></th>
+      <th><span>오징어</span></th>
+      <th><span>아황산</span></th>
+      <% if current_user && current_user.admin?%>
+        <th> 수정/삭제 </th>
+      <% end %>
     </tr>
   </thead>
-<%# Menu.where(:restaurant_name => @zizuminfo.restaurant_name) %>
   <tbody>
-    <% Menu.where(:restaurant_name => @zizuminfo.restaurant_name).each do |menu| %>
-      <tr>
-        <td><%= menu.id%></td>
-        <td><%= menu.menu_name%></td>
-        <td><%= menu.a1_maemil%></td>
-        <td><%= menu.a2_mil%></td>
-        <td><%= menu.a3_daedu%></td>
-        <td><%= menu.a4_hodu%></td>
-        <td><%= menu.a5_ddangkong%></td>
-        <td><%= menu.a6_peach%></td>
-        <td><%= menu.a7_tomato%></td>
-        <td><%= menu.a8_piggogi%></td>
-        <td><%= menu.a9_nanryu%></td>
-        <td><%= menu.a10_milk%></td>
-        <td><%= menu.a11_ddakgogi%></td>
-        <td><%= menu.a12_shoigogi%></td>
-        <td><%= menu.a13_saewoo%></td>
-        <td><%= menu.a14_godeungeoh%></td>
-        <td><%= menu.a15_honghap%></td>
-        <td><%= menu.a16_junbok%></td>
-        <td><%= menu.a17_gul%></td>
-        <td><%= menu.a18_jogaeryu%></td>
-        <td><%= menu.a19_gye%></td>
-        <td><%= menu.a20_ohjingeoh%></td>
-        <td><%= menu.a21_ahwangsan%></td>
-        <td><%= link_to '메뉴 수정', edit_menu_path(menu) %></td>
-        <td><%= link_to '메뉴 삭제', menu, method: :delete, data: { confirm: 'Are you sure?' }%></td>
-        <td><%= link_to '수정 요청', userrequests_edit_request_url(menuID: menu.id) %></td> 
+  <% @zizuminfo.restaurant.menus.each do |menu| %>
+      <tr class = "text-center">
+        <td>
+          <%= menu.menu_name%>
+          <%= link_to userrequests_edit_request_url(menuID: menu.id) do%><i class="fab fa-telegram-plane"></i><%end%>
+
+        </td>
+        <td><%= value2icon(menu.a1_maemil)%></td>
+        <td><%= value2icon(menu.a2_mil)%></td>
+        <td><%= value2icon(menu.a3_daedu)%></td>
+        <td><%= value2icon(menu.a4_hodu)%></td>
+        <td><%= value2icon(menu.a5_ddangkong)%></td>
+        <td><%= value2icon(menu.a6_peach)%></td>
+        <td><%= value2icon(menu.a7_tomato)%></td>
+        <td><%= value2icon(menu.a8_piggogi)%></td>
+        <td><%= value2icon(menu.a9_nanryu)%></td>
+        <td><%= value2icon(menu.a10_milk)%></td>
+        <td><%= value2icon(menu.a11_ddakgogi)%></td>
+        <td><%= value2icon(menu.a12_shoigogi)%></td>
+        <td><%= value2icon(menu.a13_saewoo)%></td>
+        <td><%= value2icon(menu.a14_godeungeoh)%></td>
+        <td><%= value2icon(menu.a15_honghap)%></td>
+        <td><%= value2icon(menu.a16_junbok)%></td>
+        <td><%= value2icon(menu.a17_gul)%></td>
+        <td><%= value2icon(menu.a18_jogaeryu)%></td>
+        <td><%= value2icon(menu.a19_gye)%></td>
+        <td><%= value2icon(menu.a20_ohjingeoh)%></td>
+        <td><%= value2icon(menu.a21_ahwangsan)%></td>
+        <% if current_user && current_user.admin? %>
+          <td><%= link_to edit_menu_path(menu) do%><i class="fas fa-pen"></i><%end%>
+            <%= link_to menu, method: :delete, data: { confirm: 'Are you sure?'} do%>
+              <i class="far fa-trash-alt"></i>
+            <%end%>
+          </td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '메뉴 추가', new_menu_path %>
-<%= link_to '추가 요청', userrequests_new_request_url(restaurantID: @zizuminfo.restaurant.id)%> 
-<!--#############################################################################################-->
 
 
-<%= link_to 'Edit', edit_zizuminfo_path(@zizuminfo) %> |
-<%= link_to 'Back', zizuminfos_path %>
+<% if current_user && current_user.admin? %>
+  <%= link_to '메뉴 추가', new_menu_path %> | <%= link_to '지점정보 수정', edit_zizuminfo_path(@zizuminfo) %>
+<% end %>
 
 <%# // 네이버 지도 - 특정 주소에 마커 표시 - web
 // https://openapi.map.naver.com/openapi/v3/maps.js?clientId=YOUR_CLIENT_ID&submodules=geocoder

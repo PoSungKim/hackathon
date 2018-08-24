@@ -20,3 +20,40 @@
     -o-background-size: cover;
     background-size: cover;  
 }
+
+
+.zizum-name{
+    background-color: rgba(229,219,211,1);
+    border-radius: 6vh;
+    font-size: 1.5em;
+}
+
+.zizum-image{
+    width: 25vw;
+    height: 10vh;
+}
+//////////////allergy table//////////////////////
+.allergy-table{
+    width: 100%; 
+}
+.allergy-table thead th{
+    background-color: rgba(229,219,211,1);
+    color: rgba(110, 104, 94, 1);
+    height: 9vh;
+    white-space:nowrap;
+}
+.allergy-table tbody tr:nth-child(odd){
+    background-color: rgba(249,249,250,1);
+    height: 9vh;
+    
+}
+.allergy-table tbody tr:nth-child(even){
+    background-color: rgba(243,242,241,1);
+    height: 9vh;
+}
+
+
+
+
+
+//////////////allergy table//////////////////////
