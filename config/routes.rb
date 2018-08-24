@@ -38,6 +38,12 @@ Rails.application.routes.draw do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
 
+  get '/profiles' => 'profiles#index', as: :user_root # creates user_root_path
+  # get '/profiles/:user_id' => 'profiles#show', as: :user_root
+  namespace :user do
+    root 'profiles#show' # creates user_root_path
+  end
+
   ## for 사업자 ##
   devise_scope :owner do
     get 'owners/search' => 'owners/sessions#search' , as: 'search_path'

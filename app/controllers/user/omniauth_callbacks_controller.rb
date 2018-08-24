@@ -23,15 +23,21 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env['omniauth.auth']
     @identity = Identity.find_for_oauth(auth)
     @user = User.find(current_user.id)
+    @profile_id = current_user.id
     if @user.persisted?
       if @identity.provider == "kakao" || "facebook" || "google_oauth2" and @user.sign_in_count == 1 #소셜로 첫가입하면 editsns페이지로/맨첫수정페이지
         editsns_path
       else #로그인/일반회원가입은 프로필페이지
-        new_profile_path
+        profile_path(@profile_id)
       end  
     else
-      new_profile_path
+     home_index_path
     end
   end
+    
+  def after_update_path_for(resource_or_scope)
+    @profile_id = current_user.id
+    redirec_to profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
+  end 
 end
 
