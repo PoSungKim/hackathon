@@ -1,33 +1,35 @@
+.logindiv1 {
+    width:40%;
+    height:130%;
+}
 .loginimage{
-    left:0;
-    height:100%;
-    width:35%;
+    width:100%;
+    height:130%;
 }
 
 .logincontent{
     display:flex;
-    justify-content: left;
 }
 
 .loginform {
-    padding-left:50px;
-    padding-top:50px;
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
 .loginbutton {
     position: absolute;
-    right: 10em;
-    bottom: 1.23rem;
     background-color: white;
-    width:20%;
-    height:13%;
+    width: 5em;
+    height: 5rem;
+    font-weight: bold;
+    font-size: 2em;
+    color:#454338;
 }
 
 .snslogin {
     display:flex;
     justify-content: center;
-    right: 155px;
-    bottom: 110px;
     position: absolute;
 }
 
@@ -43,12 +45,15 @@
 
 .loginoption{
     text-align: right;
+    margin-right: 20px;
 }
 
 .loginfont{
     font-weight: bold;
     font-size: 1.3em;
+    color: #454338;
 }
+
 
 .google {
     font-size:2em;
@@ -66,4 +71,10 @@
     font-size: 2em;
     color: #FEEA00;
     margin: 4px;
+}
+
+.loginbottom {
+    display:flex;
+    justify-content: space-around;
+    position:absolute;
 }

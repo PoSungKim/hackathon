@@ -6,71 +6,68 @@
   h1 { font-weight: bold; }
 </style>
 
-
-<p id="notice"><%= notice %></p>
-
-
+<!-- <p id="notice"><%= notice %></p> -->
 
 <!-- My Page : Open-->
 <body class="jeju">
 
 <!-- <h1 class="jeju" style="text-align: left; font-weight: bold;">My Page</h1> -->
-<br> <br>
+<!--<br> <br>-->
 
-<div class="row jeju">
-  <!-- 프로필 이미지 -->
-  <div class="col-6 jeju">
-    <p align="center">
-      <br>
-      <% if @profile.user.profileimage.url != nil %>
-        <%= image_tag @profile.user.profileimage.url %> <br> 
-      <% elsif @profile.user.gender == "여" && @profile.user.ages == "10대이하"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-379-456331.png") %><br>
-      <% elsif @profile.user.gender == "여" && @profile.user.ages == "20-30대"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png") %><br>
-      <% elsif @profile.user.gender == "여" && @profile.user.ages == "40-50대"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png") %><br>
-      <% elsif @profile.user.gender == "여" && @profile.user.ages == "60대이상"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-377-456329.png") %><br>
+<div class="jeju">
+  <div class="row">
+    <!-- 프로필 이미지 -->
+    <div class="col-6">
+      <p align="center">
+        <br>
+        <% if @profile.user.profileimage.url != nil %>
+          <%= image_tag @profile.user.profileimage.url %> <br> 
+        <% elsif @profile.user.gender == "여" && @profile.user.ages == "10대이하"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-379-456331.png") %><br>
+        <% elsif @profile.user.gender == "여" && @profile.user.ages == "20-30대"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png") %><br>
+        <% elsif @profile.user.gender == "여" && @profile.user.ages == "40-50대"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png") %><br>
+        <% elsif @profile.user.gender == "여" && @profile.user.ages == "60대이상"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-377-456329.png") %><br>
 
-      <% elsif @profile.user.gender == "남" && @profile.user.ages == "10대이하"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png") %><br>
-      <% elsif @profile.user.gender == "남" && @profile.user.ages == "20-30대"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-380-456332.png") %><br>
-      <% elsif @profile.user.gender == "남" && @profile.user.ages == "40-50대"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png") %><br>
-      <% elsif @profile.user.gender == "남" && @profile.user.ages == "60대이상"%>
-        <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-376-456328.png") %><br>
-      <% end %>
-        <%= link_to '개인정보/이미지 업데이트', edit_user_registration_path %> 
-    </p>
-  </div>
+        <% elsif @profile.user.gender == "남" && @profile.user.ages == "10대이하"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png") %><br>
+        <% elsif @profile.user.gender == "남" && @profile.user.ages == "20-30대"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-380-456332.png", style: "width: 40%") %><br>
+        <% elsif @profile.user.gender == "남" && @profile.user.ages == "40-50대"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png") %><br>
+        <% elsif @profile.user.gender == "남" && @profile.user.ages == "60대이상"%>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-376-456328.png") %><br>
+        <% end %>
+      </p>
+    </div>
 
-  <!-- 개인 정보 창 -->
-  <div class="col-6 jeju">
-    <p>  <!-- user name -->
-      <strong> <%= @profile.user.name %> </strong> 님, 안녕하세요 !
-      <%# (<%= @profile.user.nickname%>
-    </p>
+    <!-- 개인 정보 창 -->
+    <div class="col-6">
+      <br><br>
+      <p style = "font-size: 250%;">  <!-- user name -->
+        <strong> <%= @profile.user.name %>님 </strong>
+        <%# (<%= @profile.user.nickname%>
+      </p>
 
-    <p>  <!-- user ages -->
-      <strong>연령 : </strong>
-      <%= @profile.user.ages %> 
-    </p>
+      <p style = "font-size: 150%;">  <!-- user ages -->
+        <strong>연령 : </strong>
+        <%= @profile.user.ages %> 
+      </p>
 
-    <p>  <!-- user allergy -->
-      <strong>주의해야 할 음식 : </strong>
-      <%= @profile.user.allergy.gsub(',','') %> 
-    </p>
+      <p style = "font-size: 110%;">  <!-- user allergy -->
+        <strong>주의해야 할 음식 : </strong>
+        <%= @profile.user.allergy.gsub(',','') %> 
+      </p>
 
-    <br>
-    <div align="right">
-      <button class="fill mbutton">  <!-- 수정 버튼 위치 2 -->
-        <%= link_to '개인정보 변경', edit_user_registration_path, :style=> "color:black; text-decoration: none;" %>
-      </button>
+      <div align="right">
+        <button class="fill mbutton">  <!-- 수정 버튼 위치 2 -->
+          <%= link_to '개인정보 변경', edit_user_registration_path, :style=> "color:black; text-decoration: none;" %>
+        </button>
+      </div>
     </div>
   </div>
-
 </div> <!-- My Page : Close -->
 
 
@@ -78,55 +75,67 @@
 <!-- user activities -->
 <hr />  
 
-<div class="container">
-  <h3 id="spreadBtn1" style="text-align:center;">라이크한 식당들 (최근 3) 클릭하면 좁아짐</h3>
-    <div id="hiddenList1">
+<div>
+  <h3 id="spreadBtn1" class= "jeju" style="text-align:center;"> - '좋아요'한 최근 식당 리스트 - </h3>
+  <hr />
+    <div id="hiddenList1" class="p-3 mb-5 rounded">
       <div class="row">
-            <% @profile.user.following_by_type('Zizuminfo').order("created_at desc").limit(3).each do |zizum| %>
-              <div class="col"> 
+            <% @profile.user.following_by_type('Zizuminfo').order("id").limit(8).each do |zizum| %>
+              <div class="col-3 jeju"> 
                 <% if zizum.followed_by?(@profile.user) %>
+                    <%= link_to(image_tag(zizum.image.url, class: "round", style: "width: 100%; height:auto"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <hr />
                   <p>
-                    <%= link_to(image_tag(zizum.image.thumb.url, class: "zizum_image", style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
-                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %> <br>
+                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id), :style=> "margin-right: 47%; color:black; text-decoration: none; font-size: 150%" %>                    
+                    <%= fa_icon('heart', class: "like icon", style: "height: 100%;") %>
                     <% if @profile.user == current_user %>
                       <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
                     <% end %>
+                     <br>
+                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id), :style=> "color:black; text-decoration: none; font-size: 110%"%> <br>
                   </p>
                 <% end %>
               </div>
             <% end %>
       </div>
     </div>
+    <hr />
 </div>
 
-<hr />
 
+<div>
+  <h3 id="spreadBtn2" class= "jeju" style="text-align:center;"> - '수정 요청' 현황 - </h3>
+  <hr />
+    <div id="hiddenList2">
+      <div class="row">
+              <div class="col"> 
+                <table>
+                  <thead>
+                    <tr>
+                        <th>요청</th>
+                        <th>식당</th>
+                        <th>메뉴이름</th>
+                        <th>전달사항</th>
+                        <th>요청일</th>
+                    </tr>
+                  </thead>
 
-<table>
-  <thead>
-    <tr>
-        <th>요청</th>
-        <th>식당</th>
-        <th>메뉴이름</th>
-        <th>전달사항</th>
-        <th>요청일</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @user_requests.each do |r| %>
-      <tr>
-        <td><%= r.request_type %></td>
-        <td><%= r.restaurant_name%></td>
-        <td><%= r.menu_name%></td>
-        <td><%= r.memo%></td>
-        <td><%= r.created_at%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  <tbody>
+                    <% @user_requests.each do |r| %>
+                      <tr>
+                        <td><%= r.request_type %></td>
+                        <td><%= r.restaurant_name%></td>
+                        <td><%= r.menu_name%></td>
+                        <td><%= r.memo%></td>
+                        <td><%= r.created_at%></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+          <hr />
+      </div>
+    </div>
+</div>
 
 
 <script>
@@ -139,6 +148,18 @@
           }else{
               // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
               $("#hiddenList1").slideDown();
+          }
+      });
+    });
+
+    $(document).ready(function(){
+      $("#spreadBtn2").click(function(){
+          if($("#hiddenList2").is(":visible")){
+            // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-right fas fa-arrow-alt-circle-down");
+              $("#hiddenList2").slideUp();
+          }else{
+              // $("#spreadBtn1").toggleClass("fas fa-arrow-alt-circle-down fas fa-arrow-alt-circle-right");
+              $("#hiddenList2").slideDown();
           }
       });
     }); 

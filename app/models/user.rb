@@ -87,6 +87,7 @@ class User < ActiveRecord::Base
     result = update_attributes(params)
     clean_up_passwords
     result
+  
   end
 
   def verify_password_and_update(params)
