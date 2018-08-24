@@ -1,6 +1,6 @@
 <%= form_tag(menus_path, method: :get) do %>
     <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %> 
-    <div class="ziyuk-r d-flex justify-content-around">
+    <div class="ziyuk-r d-flex">
         <div class="sido">
         <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
             <select name="sido" class="origin-sido options selectcss">
@@ -38,7 +38,7 @@
     <br>
     <div class="d-flex justify-content-between">
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">유제품 및 난류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">유제품 및 난류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a9_nanryu, true, checked = params[:a9_nanryu]%> 난류<br>
                 <%= check_box_tag :a10_milk, true, checked = params[:a10_milk]%> 우유<br>
@@ -46,7 +46,7 @@
         </div>
 
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과채류 및 곡류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과채류 및 곡류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a6_peach, true, checked = params[:a6_peach]%> 복숭아<br>
                 <%= check_box_tag :a7_tomato, true, checked = params[:a7_tomato]%> 토마토<br>
@@ -57,7 +57,7 @@
         </div>
 
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">육류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">육류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a11_ddakgogi, true, checked = params[:a11_ddakgogi]%> 닭고기<br>
                 <%= check_box_tag :a12_shoigogi, true, checked = params[:a12_shoigogi]%> 쇠고기<br>
@@ -66,7 +66,7 @@
         </div>
 
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">어패류</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">어패류</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check d-flex">
                 <div>
                     <%= check_box_tag :a13_saewoo, true, checked = params[:a13_saewoo]%> 새우<br>
@@ -84,7 +84,7 @@
         </div>
 
         <div>
-            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과류, 아황산 등</div><i class="fas fa-caret-down"></i></div></div>
+            <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과류, 아황산 등</div><i class="downic fas fa-caret-down"></i></div></div>
             <div class="allergy-check">
                 <%= check_box_tag :a4_hodu, true, checked = params[:a4_hodu]%> 호두<br>
                 <%= check_box_tag :a5_ddangkong, true, checked = params[:a5_ddangkong]%> 땅콩<br>

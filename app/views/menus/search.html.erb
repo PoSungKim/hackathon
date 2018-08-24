@@ -7,15 +7,12 @@
     <h1 class="title">Filter by Allergy . . .</h1>
 
 <!--- custom 검색옵션 -->
-    <button id="custom" class="mbutton fill">내 알러지정보 불러오기</button>
-    <div id="myinfo" class="getinfo">
-        <%= render partial: 'custom' %>
-    </div>
+    
     
     <%# location은 partial location2는 그냥 %>
     <div class="original-check">
         <%= form_tag(menus_path, method: :get) do %>
-            <div class="ziyuk d-flex justify-content-around">
+            <div class="ziyuk d-flex">
                 <div class="sido">
                 <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
                     <select name="sido" class="origin-sido options selectcss">
@@ -111,8 +108,15 @@
         <%end%>
     
     </div>
-</div>
     
+</div>
+<div id="myinfo" class="getinfo">
+    <%= render partial: 'custom' %>
+</div>
+<button id="custom" class="mbutton fill"><div id="ct" style="color:black; text-decoration: none;">내 알러지정보 불러오기</div></button>
+
+
+
 <%# <button id="reset" onClick="funcreset()">초기화</button> %>
 <%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
 
@@ -154,14 +158,14 @@
     });
 
     $("#custom").click(function(){
-        if( $(this).html() == "내 알러지정보 불러오기")
+        if( $(this).children("#ct").html() == "내 알러지정보 불러오기")
         {   
             $(".original-check").addClass("getinfo");
             $("#myinfo").removeClass("getinfo");
             $(".allergy-check").css('visibility','visible');
             $(".downic").removeClass("fa-caret-down");
             $(".downic").addClass("fa-caret-up");
-            $(this).html("되돌리기");
+            $(this).children("#ct").html("되돌리기");
             
             $(".custom-sido").val($(".origin-sido").val());
 
@@ -180,15 +184,14 @@
         {
             $(".original-check").removeClass("getinfo");
             $("#myinfo").addClass("getinfo");
-            $(this).html("내 알러지정보 불러오기");
+            $(this).children("#ct").html("내 알러지정보 불러오기");
             
           if($("#location").val()=="전체"){
                 $(".all").addClass("experiment");
             }
             
             else {
-
-                 $(".all").removeClass("experiment");
+                 $(".jikjup").addClass("experiment");
             }
 
             $(".origin-sido").val($(".custom-sido").val());

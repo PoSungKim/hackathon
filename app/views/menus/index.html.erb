@@ -2,7 +2,7 @@
   body { font-family: 'Jeju Myeongjo', serif; }
   h1, h4 { font-weight: bold; }
 </style>
-
+<div id="indch">
 <p id="notice"><%= notice %></p>
 <h1 class="title-r">Filter by Allergy . . .</h1>
 
@@ -10,17 +10,17 @@
 <%= render partial: "re-search"%>
 
 <%# ------------재검색 끝끝끝----------------------------------------------------------------------------- %>
-=========================================================================
-<h3><strong><%=params[:sido]%>/<%=params[:sigungu]%></strong>에 있는 해당 식당-<%=@zizums.length%>개</h3>
+<br>
+<div class="num_res"><strong><i class="fas fa-utensils"></i><%=params[:sido]%>/<%=params[:sigungu]%></strong>-<%=@zizums.length%>개 결과</div>
 
 <% if @zizums.length == 0%>
     <p><%=params[:sido]%>/<%=params[:sigungu]%>가 일치하지 않는 시군구이거나 해당 식당이 없습니다.<br>다시 검색해주세요
     <br><%= link_to '알레르기 검색', menus_search_path %><br></p>
 <% else %>
     <div class="d-flex justify-content-around">
-        <div class="shops" >
+        <div class="shops">
             <% @zizums.each do |zizum| %>
-                <div class="card" style="width: 20rem;">
+                <div class="card shop-card">
                     <div class="card-body">
                         <%# ajax로 전송할 레스토랑 이름%>
                         <h3 class="seeMenu"><%= zizum.restaurant_name%></h3>
@@ -28,7 +28,7 @@
                         <%# display:none 하고 옆으로 메뉴 띄울 것임%>
                         <div class="hideMenu">
                             <% @menus.where(:restaurant_name => zizum.restaurant_name).each do |menu|%>
-                                <strong><%=menu.menu_name%></strong><br>
+                                <strong><i class="fas fa-utensil-spoon"></i><%=menu.menu_name%></strong><br>
                                 <strong>--제공되지 않은 알러지항목:</strong>
                                 <%if menu.a1_maemil == -1 %>메밀 <%end%>
                                 <%if menu.a2_mil == -1%>밀<%end%>
@@ -74,7 +74,7 @@
                                 <%if menu.a19_gye == -2%>게<%end%>
                                 <%if menu.a20_ohjingeoh == -2%>오징어<%end%>
                                 <%if menu.a21_ahwangsan == -2%>아황산류<%end%>
-                                <p>================</p>
+                                <br><br>
                             <% end%>
                         </div>
                         <p class="card-text"><%=zizum.sigungu%>, <%=zizum.sangse_juso%></p>
@@ -106,12 +106,18 @@
         즐거운 한끼식사 걱정없식
         </div>
     </div>
+
 <%end%>
+</div>
 <%#= link_to 'New Menu', new_menu_path%>
 <script>
+
+    $(".shop-card").click(function()){
+        $(this).css('background-color',' rgba(255, 253, 253, 0.801)');
+    }
     $(".icon").click(function(){
     // var res = $(this).;
-    // alert(res);
+    // alert(res);:
         //var ziz = $(this).siblings(".zizumName").html();
         if ($(this).hasClass("like")) //follow하고 있다면
             {
