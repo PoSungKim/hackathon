@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   #----------resouces :restaurants 보다 위에 가게 해야 함! --------------------
   get 'restaurants/search' => "restaurants#search"
-  get 'menus/search' => "menus#search"
+  get 'menus/search/' => "menus#search"
   get 'menus/getMenu' => "menus#getMenu"
   # get 'allergies/index' => "allergies#index", as: 'allergies' 
   get 'menus/index' => "menus#index", as: 'menus'
@@ -36,6 +36,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registraions: 'user/registrations'}
   devise_scope :user do
     get 'editsns', :to => 'devise/registrations#editsns'
+  end
+
+  get '/profiles/new' => 'profiles#new', as: :user_root # creates user_root_path
+  # get '/profiles/:user_id' => 'profiles#show', as: :user_root
+  namespace :user do
+    root 'profiles#new' # creates user_root_path
   end
 
   ## for 사업자 ##

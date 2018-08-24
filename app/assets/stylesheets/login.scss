@@ -1,54 +1,80 @@
-.loginimage{
-    left:0;
-    height:100%;
-    width:35%;
-}
-
 .logincontent{
     display:flex;
-    justify-content: left;
+    margin-bottom:3%;
 }
 
-.loginform {
-    padding-left:50px;
-    padding-top:50px;
+.logindiv1 {
+    width:40%;
 }
 
-.loginbutton {
-    position: absolute;
-    right: 10em;
-    bottom: 1.23rem;
-    background-color: white;
-    width:20%;
-    height:13%;
+.logindiv2 {
+    width: 60%;
+    margin-top: 70px;
+    margin-left: 100px;
+    padding:10px;
 }
 
-.snslogin {
-    display:flex;
-    justify-content: center;
-    right: 155px;
-    bottom: 110px;
-    position: absolute;
+.loginimage{
+    width:100%;
+}
+
+.logindiv11 {
+    width:500px;
+}
+
+.loginbottombutton {
+    width:240px;
+    height:40px;
+    background-color:white;
+    text-align:center;
+    padding:5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+    margin-left:260px;
+}
+
+.loginform{
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #454338;
 }
 
 .logininputform {
     border:none;
     background-color: white;
     border-radius: 3em;
-    height:2.5em;
-    width:25em;
+    height:50px;
+    width:500px;
     padding: 1em;
     text-decoration: none;
 }
 
-.loginoption{
-    text-align: right;
+.loginbutton {
+    position: absolute;
+    background-color: #E2D6CF;
+    height:50px;
+    width:500px;
+    font-weight: bold;
+    font-size: 20px;;
+    color:#454338;
+    padding: 5px;
 }
 
-.loginfont{
-    font-weight: bold;
-    font-size: 1.3em;
+.logindiv12 {
+    display:flex;
+    width:500px;
+    justify-content: space-between;
 }
+
+.snslogin {
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    width:240px;
+    background-color: white;
+}
+
 
 .google {
     font-size:2em;
@@ -66,4 +92,25 @@
     font-size: 2em;
     color: #FEEA00;
     margin: 4px;
+}
+
+.logindiv13 {
+    display:flex;
+    justify-content: space-between;
+    width:500px;
+}
+
+.loginforget {
+  
+}
+
+.loginbusiness {
+    
+}
+
+.loginjustline {
+    border: 1px solid;
+    border-color : #E2D6CF;
+    width:500px;
+    margin-bottom:10px;
 }

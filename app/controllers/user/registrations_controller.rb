@@ -4,22 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   #before_action :configure_account_update_params, only: [:update]
   include Accessible
-  ## for current password문제 
-  def update
-
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    
-       if resource.update_with_password(params[resource_name])
-         set_flash_message :notice, :updated if is_navigational_format?
-         sign_in resource_name, resource, :bypass => true
-         respond_with resource, :location => after_update_path_for(resource)
-       else
-         clean_up_passwords(resource)
-         respond_with_navigational(resource){ render_with_scope :edit }
-       end
-
-    end
-
+  
   ## for editsns 
   def edit
     # render :edit
@@ -27,8 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def editsns
     # render :editsns
+    # @profile_id = Profile.where(user_id: current_user.id).pluck(:id)
   end
-
+  
   # GET /resource/sign_up
  # def new
    #   super
@@ -36,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   #def create
-  #super
+    # Profile.create!(user_id: user.id)
   #end
 
   # GET /resource/edit
@@ -63,8 +49,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
- protected
-
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -74,17 +58,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
-  def after_update_path_for(resource)
-    redirect_to new_profile_path_url
-  end
-
-  # The path used after sign up.
- def after_sign_up_path_for(resource)
-  redirect_to new_profile_path_url
-  end
-
-  # The path used after sign up for inactive accounts.
-   def after_inactive_sign_up_path_for(resource)
-    redirect_to new_profile_path_url
-   end
 end

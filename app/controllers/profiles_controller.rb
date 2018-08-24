@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    params[:id] = current_user.id
     #본인 신청내역 로딩 위해
     @user_requests = Userrequest.where(uid: current_user.id)
   end
@@ -19,9 +20,8 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @profile.user = current_user
-    @profile.user_id = current_user.id
     @profile.save!
-
+    
     redirect_to profile_path(@profile.id)
   end
 

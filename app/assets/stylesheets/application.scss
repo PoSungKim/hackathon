@@ -4,7 +4,11 @@
 @import 'main.scss';
 @import 'login.scss';
 @import 'join.scss';
+<<<<<<< HEAD
 @import 'zizuminfos.scss';
+=======
+@import 'menus.scss';
+>>>>>>> 30e9aadef888f29b24f09a29611e03aaa50f2196
 
 //-- font 정리
 //나눔고딕 
@@ -16,6 +20,7 @@
 //이롭게바탕
 @import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
 
+//-----search
 #menuBox{
     margin: 10px;
     width: 400px;
@@ -30,18 +35,16 @@
     width: 180px;
 }
 
-.allergy-check{
-    visibility:hidden;
-}
+
 
 .experiment{
-    background-color:rgb(56, 56, 56);
-    color: white;
-}
-.sigungu-enter{
-    visibility: hidden;
+    background-color: #e2dccf;
+    font-weight: 600;
 }
 
+.sigungu-enter{
+    visibility: hidden;
+ }
 
 .like{
     color: red;
@@ -77,10 +80,13 @@
 }
 
 .hideMenu{
-    display: none;
+    display: none; 
 }
 
 .card{
     margin: 15px;
 }
 
+.a-checkbox{
+    background-color: white;
+}
