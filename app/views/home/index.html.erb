@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 <br> <br>
 <body>
-    <div>
+    <div class="mainbox">
         <div class="indexcontent">
             <%= image_tag 'logo.png', class:"indexlogo" %>
         </div>
+    
         <div class="indexcontent" style="jeju">
             <button class="mainbutton"><%= link_to '식당으로 검색',  zizuminfos_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
             <button class="mainbutton"><%= link_to '알레르기 검색', menus_search_path, :style=> "color: #454338; text-decoration: none;" %></button>
         </div>
+        <br><br>
     </div>
 
     <!--크롤링 링크-->

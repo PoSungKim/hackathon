@@ -49,13 +49,7 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
   </body>
 
   <script>
-    function showHide(id) {
-    var obj = document.getElementById(id);
-      if (obj.style.display == 'none')
-       obj.style.display = 'block';
-      else
-       obj.style.display = 'none';  
-    }
+
    //Channel Plugin Scripts -->
   ;window.channelPluginSettings = {
     "pluginKey": "0c46d23e-36cc-47ea-b4ab-43e263042e5c"
@@ -106,10 +100,10 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
         $("a.transition").click(function(event){
           event.preventDefault();
           linkLocation = this.href;
-        $("body").fadeOut(2000, redirectPage);
+        $("body").fadeOut(500, redirectPage);
         });
         function redirectPage() {
-        window.location = linkLocation;
+          window.location = linkLocation;
         }
       });
     </script>
