@@ -8,20 +8,17 @@
   <!--매장 정보-->
   <div>
      <p><span class = "zizum-name px-5 py-2 irop"><%= @zizuminfo.restaurant_name + " " + @zizuminfo.zizum_name%></span></p>
-    <p class = "pl-5 jeju"><i class="fas fa-map-marker-alt"></i> <%= @zizuminfo.sido + " " +@zizuminfo.sigungu + " " +@zizuminfo.sangse_juso %></p>
+    <p class = "pl-5 jeju mt-4"><i class="fas fa-map-marker-alt"></i> <%= @zizuminfo.sido + " " +@zizuminfo.sigungu + " " +@zizuminfo.sangse_juso %></p>
     <p class = "pl-5 jeju"><i class="fas fa-phone"></i> <%= @zizuminfo.phone_number %></p>
   </div>
 </div>
 
 <!--알레르기 테이블-->
-<p class = "text-right mb-0 mt-5  jeju">
+<p class = "jeju mb-0 float-right mr-1">
   <span class="mr-2">포함하지 않음 : <i class="fas fa-times"></i></span>
-  <span class="mr-2">교차위험 : <i class="fas fa-star"></i></span>
-  <span class="mr-2">포함 : <i class="fas fa-circle"></i></span>
-  <span class="mr-2">제공 안함 :  ㆍ </span>
-  <span>
-    <%= link_to '<button type="button" class= "fill mbutton">메뉴 추가 요청</button>'.html_safe, userrequests_new_request_url(restaurantID: @zizuminfo.restaurant.id)%>
-  </span>
+  <span class="mr-2">교차위험 : <i class="fas fa-star allergy-star"></i></span>
+  <span class="mr-2">포함 : <i class="fas fa-circle allergy-circle"></i></span>
+  <span >제공 안함 :  ㆍ </span>
 </p>
 
 <table class = "allergy-table  jeju">
@@ -84,7 +81,7 @@
         <td><%= value2icon(menu.a20_ohjingeoh)%></td>
         <td><%= value2icon(menu.a21_ahwangsan)%></td>
         <% if current_user && current_user.admin? %>
-          <td><%= link_to edit_menu_path(menu) do%><i class="fas fa-pen"></i><%end%>
+          <td><%= link_to edit_menu_path(menu) do%><i class="fas fa-pen"></i><%end%> | 
             <%= link_to menu, method: :delete, data: { confirm: 'Are you sure?'} do%>
               <i class="far fa-trash-alt"></i>
             <%end%>
@@ -95,7 +92,7 @@
   </tbody>
 </table>
 
-
+<%= link_to '<button type="button" class= "fill mbutton">메뉴 추가 요청</button>'.html_safe, userrequests_new_request_url(restaurantID: @zizuminfo.restaurant.id), {style: "float: right;"}%>
 
 <% if current_user && current_user.admin? %>
   <%= link_to '메뉴 추가', new_menu_path %> | <%= link_to '지점정보 수정', edit_zizuminfo_path(@zizuminfo) %>

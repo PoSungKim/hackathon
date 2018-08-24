@@ -72,7 +72,7 @@ class ZizuminfosController < ApplicationController
   def value2icon(value)
     #교차 위험
     if value == -2
-      return '<i class="fas fa-star"></i>'.html_safe
+      return '<i class="fas fa-star allergy-star"></i>'.html_safe
     #제공 안함
     elsif value == -1
       return 'ㆍ'.html_safe
@@ -81,7 +81,7 @@ class ZizuminfosController < ApplicationController
       return '<i class="fas fa-times"></i>'.html_safe
     #있음
     else
-      return '<i class="fas fa-circle"></i>'.html_safe
+      return '<i class="fas fa-circle allergy-circle"></i>'.html_safe
     end
   end
 

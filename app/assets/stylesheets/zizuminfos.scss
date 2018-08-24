@@ -32,14 +32,17 @@
     width: 25vw;
     height: 10vh;
 }
+
 //////////////allergy table//////////////////////
 .allergy-table{
     width: 100%; 
+    vertical-align: middle;
+    font-size: 0.85em;
 }
 .allergy-table thead th{
     background-color: rgba(229,219,211,1);
     color: rgba(110, 104, 94, 1);
-    height: 9vh;
+    height: 8vh;
     white-space:nowrap;
 }
 .allergy-table tbody tr:nth-child(odd){
@@ -47,13 +50,24 @@
     height: 9vh;
     
 }
+
 .allergy-table tbody tr:nth-child(even){
     background-color: rgba(243,242,241,1);
     height: 9vh;
 }
 
+.allergy-star{
+    font-size: 0.85em;
+}
+.allergy-circle{
+    font-size: 0.85em;
+}
 
+.zizum-trash{
+    color: rgba(110, 104, 94, 1);
+}
 
-
-
+.zizum-edit{
+    color: rgba(110, 104, 94, 1);
+}
 //////////////allergy table//////////////////////
