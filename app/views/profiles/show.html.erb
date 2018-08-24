@@ -14,10 +14,10 @@
 <!-- <h1 class="jeju" style="text-align: left; font-weight: bold;">My Page</h1> -->
 <!--<br> <br>-->
 
-<div class="card jeju">
+<div class="jeju">
   <div class="row">
     <!-- 프로필 이미지 -->
-    <div class="col-6 jeju">
+    <div class="col-6">
       <p align="center">
         <br>
         <% if @profile.user.profileimage.url != nil %>
@@ -34,7 +34,7 @@
         <% elsif @profile.user.gender == "남" && @profile.user.ages == "10대이하"%>
           <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png") %><br>
         <% elsif @profile.user.gender == "남" && @profile.user.ages == "20-30대"%>
-          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-380-456332.png") %><br>
+          <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-380-456332.png", style: "width: 40%") %><br>
         <% elsif @profile.user.gender == "남" && @profile.user.ages == "40-50대"%>
           <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png") %><br>
         <% elsif @profile.user.gender == "남" && @profile.user.ages == "60대이상"%>
@@ -44,23 +44,23 @@
     </div>
 
     <!-- 개인 정보 창 -->
-    <div class="col-6 jeju">
-      <p>  <!-- user name -->
-        <strong> <%= @profile.user.name %>님 </strong> 안녕하세요 !
+    <div class="col-6">
+      <br><br>
+      <p style = "font-size: 250%;">  <!-- user name -->
+        <strong> <%= @profile.user.name %>님 </strong>
         <%# (<%= @profile.user.nickname%>
       </p>
 
-      <p>  <!-- user ages -->
+      <p style = "font-size: 150%;">  <!-- user ages -->
         <strong>연령 : </strong>
         <%= @profile.user.ages %> 
       </p>
 
-      <p>  <!-- user allergy -->
+      <p style = "font-size: 110%;">  <!-- user allergy -->
         <strong>주의해야 할 음식 : </strong>
         <%= @profile.user.allergy.gsub(',','') %> 
       </p>
 
-      <br>
       <div align="right">
         <button class="fill mbutton">  <!-- 수정 버튼 위치 2 -->
           <%= link_to '개인정보 변경', edit_user_registration_path, :style=> "color:black; text-decoration: none;" %>
@@ -76,28 +76,29 @@
 <hr />  
 
 <div>
-  <h3 id="spreadBtn1" class= "jeju" style="text-align:center;"> - '좋아요'한 식당 리스트 - </h3>
+  <h3 id="spreadBtn1" class= "jeju" style="text-align:center;"> - '좋아요'한 최근 식당 리스트 - </h3>
   <hr />
-    <div id="hiddenList1">
+    <div id="hiddenList1" class="p-3 mb-5 rounded">
       <div class="row">
-            <% @profile.user.following_by_type('Zizuminfo').order("id").limit(5).each do |zizum| %>
-              <div class="col"> 
+            <% @profile.user.following_by_type('Zizuminfo').order("id").limit(8).each do |zizum| %>
+              <div class="col-3 jeju"> 
                 <% if zizum.followed_by?(@profile.user) %>
+                    <%= link_to(image_tag(zizum.image.url, class: "round", style: "width: 100%; height:auto"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <hr />
                   <p>
-                    <%= link_to(image_tag(zizum.image.thumb.url, class: "zizum_image", style: "width: 200px; height:auto;"), zizuminfo_path(zizum.id)) unless zizum.image.blank?%> <br>
-                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id) %> <br>
-                    <%= zizum.followers_count%> x <%= fa_icon('heart', class: "like icon") %> <br>
+                    <%= link_to "#{zizum.restaurant_name}", zizuminfo_path(zizum.id), :style=> "margin-right: 47%; color:black; text-decoration: none; font-size: 150%" %>                    
+                    <%= fa_icon('heart', class: "like icon", style: "height: 100%;") %>
                     <% if @profile.user == current_user %>
                       <%= link_to fa_icon('trash'), profile_follow_destroy_path(zizum.id), data: {confirm: '라이크를 취소하시겠습니까?'} %>
                     <% end %>
+                     <br>
+                    <%= link_to "#{zizum.zizum_name}", zizuminfo_path(zizum.id), :style=> "color:black; text-decoration: none; font-size: 110%"%> <br>
                   </p>
                 <% end %>
               </div>
             <% end %>
       </div>
-          <hr />
     </div>
+    <hr />
 </div>
 
 
