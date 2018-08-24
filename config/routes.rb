@@ -38,10 +38,10 @@ Rails.application.routes.draw do
     get 'editsns', :to => 'devise/registrations#editsns'
   end
 
-  get '/profiles' => 'profiles#index', as: :user_root # creates user_root_path
+  get '/profiles/new' => 'profiles#new', as: :user_root # creates user_root_path
   # get '/profiles/:user_id' => 'profiles#show', as: :user_root
   namespace :user do
-    root 'profiles#show' # creates user_root_path
+    root 'profiles#new' # creates user_root_path
   end
 
   ## for 사업자 ##
