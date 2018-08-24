@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <br> <br>
 <body>
     <div>
@@ -16,12 +16,8 @@
 
 </body>
 
-
-
-
-
 <!--공지 팝업창 수정 필요 -->
-<div id="myModal" class="modal">
+<div id="noticeModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h5>새로운 식당이 업데이트 되었습니다.</h5>
@@ -33,6 +29,7 @@
   </div>
 </div>
 
+
 <style> 
 /* 임시 ***************/
 #no{
@@ -40,15 +37,18 @@
   margin-left:38%;
 }
 /***********************/
-.modal {
+#noticeModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     overflow: auto; /* Enable scroll if needed */
+    width:40%;
+    margin-left: 100px;
+    
 }
 
-.modal-content {
+#noticeModal.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -77,8 +77,8 @@
 
 <% if @todays != 0  %>
  <script>  
- openWin('myModal');  
-  var modal = document.getElementById('myModal');
+ openWin('noticeModal');  
+  var modal = document.getElementById('noticeModal');
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function() {
           modal.style.display = "none";   

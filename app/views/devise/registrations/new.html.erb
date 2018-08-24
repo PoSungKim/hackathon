@@ -1,6 +1,4 @@
-<div class="joincontent irop">
-  <%= image_tag 'login.jpg', class:"loginimage" %>
-  <div class="joinform">
+
 <h2>회원가입 안내</h2>
 
 <div class="default">
@@ -30,9 +28,8 @@
     <%= f.label "이름(필수)" %><br/>
     <%= f.text_field :name, class: "form-control", :required => true %>
   </div>
-</div> <!--default-->
- <hr>
-<div class="option">   
+ <!--default-->
+ <hr>  
   <div class="field">
     <h5> 성별 </h5> 
       <%= f.radio_button :gender, "남" %> 남자<br/>

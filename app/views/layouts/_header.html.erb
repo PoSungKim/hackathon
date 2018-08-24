@@ -11,16 +11,16 @@
                 <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
                 <div><%= link_to "Filtering", menus_search_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
             <% end %>
-        <div>
+        
         <!-- 마이페이지 -->
             <% if user_signed_in? %> 
                 <% if current_user.profile.nil? %> 
-                    <%= link_to "My Page", new_profile_path(@profile), class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
+                 <div>   <%= link_to "My Page", new_profile_path(@profile), class:"headerfont", :style=>"text-decoration: none; color: #454338;" %>
                 <% elsif !current_user.profile.nil? %>
-                    <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
+               <div>     <%= link_to "My Page", profile_path(current_user.profile.id), class:"headerfont", :style=>"text-decoration: none; color: #454338;"  %>
                 <% end %>
             <% elsif owner_signed_in?%>
-                <%= link_to "나의 식당관리", home_myrt_path,  class:"jeju", :style=>"text-decoration: none; color: #454338;" %>    
+            <div>    <%= link_to "나의 식당관리", home_myrt_path,  class:"jeju", :style=>"text-decoration: none; color: #454338;" %>    
             <% end %>
     
 
@@ -41,9 +41,9 @@
                     <%= render partial: "new_alarms/new_alarm", collection: current_user.new_alarms.unread_by(current_user) %><br>
                     <%= link_to '<b>모두 읽기</b>'.html_safe, new_alarms_read_all_path, {:style=>'color:black;margin-left:80%;'}%>
                 </div></div>
+            </div>  
             <% end %>   
-
-            </div>     
+   
         <!-- 로그인/로그아웃 -->
         <div>
             <% if !user_signed_in? && !owner_signed_in? %> 
