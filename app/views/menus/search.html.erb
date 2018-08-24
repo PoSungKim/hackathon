@@ -7,7 +7,11 @@
     <h1 class="title">Filter by Allergy . . .</h1>
 
 <!--- custom 검색옵션 -->
-   
+    <button id="custom" class="mbutton fill">내 알러지정보 불러오기</button>
+    <div id="myinfo" class="getinfo">
+        <%= render partial: 'custom' %>
+    </div>
+    
     <%# location은 partial location2는 그냥 %>
     <div class="original-check">
         <%= form_tag(menus_path, method: :get) do %>
@@ -33,6 +37,7 @@
                         <option value="제주특별자치시" class="sido-opt">제주특별자치시</option>
                     </select>
                 </div>
+
                 <div class="sigungu d-flex">
                     <div class="buttons">
                         <div class="jikjup enteropt">시군구 입력</div>
@@ -44,6 +49,7 @@
                     </div>
                 </div>
             </div>
+
             <br>
             <div class="d-flex justify-content-between original-check">
                 <div>
@@ -97,21 +103,16 @@
                     </div>
                 </div>
                 
-                <%= submit_tag 'Search', class: "a-submit"%>
+                <%= button_tag(type: "submit", class: "a-submit") do %>
+                    Search<i class="fas fa-search"></i>
+                <% end %>
             </div>
                 
-        <%end%>    
+        <%end%>
+    
     </div>
 </div>
- <button id="custom" class="mbutton fill">내 알러지정보 불러오기</button>
-    <div id="myinfo" class="getinfo">
-        <%= render partial: 'custom' %>
-    </div>
     
-
-
-
-
 <%# <button id="reset" onClick="funcreset()">초기화</button> %>
 <%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
 

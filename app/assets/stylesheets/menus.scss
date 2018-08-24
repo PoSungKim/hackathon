@@ -132,5 +132,16 @@ input[type='checkbox']{
 }
 
 .a-submit{
+    margin-top: 15px;
     height: 40px;
+    background-color: transparent;
+    border-style: none;
+    color: rgb(180, 158, 145);
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.fa-search{
+    transform: scale(1.5);
+    margin-left: 10px;
 }
