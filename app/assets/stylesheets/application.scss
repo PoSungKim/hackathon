@@ -5,6 +5,7 @@
 @import 'login.scss';
 @import 'join.scss';
 @import 'edit.scss';
+@import 'menus.scss';
 
 //-- font 정리
 //나눔고딕 
@@ -34,21 +35,16 @@ body {
     width: 180px;
 }
 
-.allergy-check{
-    visibility: hidden;
-}
+
 
 .experiment{
-    background-color: black;
-    color: white;
+    background-color: #e2dccf;
+    font-weight: 600;
 }
+
 .sigungu-enter{
     visibility: hidden;
  }
-
-.icon{
-    
-}
 
 .like{
     color: red;
@@ -84,7 +80,7 @@ body {
 }
 
 .hideMenu{
-    display: none;
+    display: none; 
 }
 
 .card{
@@ -112,3 +108,6 @@ span.num {
   right: -7px;
 }
 
+.a-checkbox{
+    background-color: white;
+}
