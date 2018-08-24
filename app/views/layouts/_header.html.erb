@@ -4,8 +4,13 @@
          <% end %></div>
     <div class="navbarcontent"> 
         <div><%= link_to "About", home_about_path, class:"headerfont", :style=>"text-decoration: none;  color: #454338;" %>        </div>
-        <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
-        <div><%= link_to "Filtering", menus_search_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
+            <% if current_user.nil? %>
+                <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;", data: {confirm: '서비스를 이용하시기 전에 회원가입을 먼저 해주세요 ^^'} %></div>
+                <div><%= link_to "Filtering", menus_search_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;", data: {confirm: '서비스를 이용하시기 전에 회원가입을 먼저 해주세요 ^^'} %></div>
+            <% elsif !current_user.nil? %>
+                <div><%= link_to "Restaurant", zizuminfos_search_path, class:"headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
+                <div><%= link_to "Filtering", menus_search_path, class: "headerfont", :style=>"text-decoration: none; color: #454338;" %></div>
+            <% end %>
         <div>
         <!-- 마이페이지 -->
             <% if user_signed_in? %> 
