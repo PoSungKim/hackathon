@@ -1,54 +1,81 @@
+.logindiv1 {
+    width:40%;
+    background-color:black;
+}
 .loginimage{
-    left:0;
-    height:100%;
-    width:35%;
+    width:100%;
 }
 
 .logincontent{
     display:flex;
-    justify-content: left;
+    margin-bottom:3%;
 }
 
 .loginform {
-    padding-left:50px;
-    padding-top:50px;
+    width: 60%;
+    margin-top: 70px;
+    margin-left: 70px;
+}
+
+.logininput {
+    width:405px;
+    margin-bottom: 120px;
+}
+
+.loginbottom {
+   position: absolute;
+}
+
+.logins {
+    display:flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.logintext {
+    font-weight: bold; 
+    margin-right: 14em;
 }
 
 .loginbutton {
     position: absolute;
-    right: 10em;
-    bottom: 1.23rem;
     background-color: white;
-    width:20%;
-    height:13%;
+    width: 5em;
+    height: 5rem;
+    font-weight: bold;
+    font-size: 2em;
+    color:#454338;
 }
 
 .snslogin {
     display:flex;
     justify-content: center;
-    right: 155px;
-    bottom: 110px;
     position: absolute;
+    text-align: right;
+    margin-left: 25em;
 }
 
 .logininputform {
     border:none;
     background-color: white;
     border-radius: 3em;
-    height:2.5em;
-    width:25em;
+    height:50px;
+    width:405px;
     padding: 1em;
     text-decoration: none;
 }
 
 .loginoption{
     text-align: right;
+    font-weight: bold;
 }
 
 .loginfont{
     font-weight: bold;
     font-size: 1.3em;
+    color: #454338;
 }
+
 
 .google {
     font-size:2em;
@@ -66,4 +93,10 @@
     font-size: 2em;
     color: #FEEA00;
     margin: 4px;
+}
+
+.loginline {
+    border-bottom: 1px solid;
+    border-color: white;
+    padding: 2px;
 }

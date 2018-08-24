@@ -175,7 +175,7 @@ class MenusController < ApplicationController
      link: request.referrer 
    end
  end
-  end
+end
 
   # DELETE /menus/1
   # DELETE /menus/1.json
@@ -191,7 +191,7 @@ class MenusController < ApplicationController
     for n in 0...@zizums_num
       @zizums[n].followers.each do |follower| 
         @new_alarm = NewAlarm.create! user: follower , #좋아요한 사용자
-        content:"#{@rt_name}의 메뉴가 삭제되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
+        content:"#{@rt_name.to_s.gsub('["','').gsub('"]','')}의 메뉴 #{@menu.menu_name}이/가 삭제되었습니다.", # 워딩 수정하기 " #{@restuarant_name} #{@zizum_name}""
         link: request.referrer #수정하기 해당 article path로
       end
     end

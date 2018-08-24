@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
                 gender: auth.extra.raw_info.gender,
                 # is_female: auth.extra.raw_info.gender == "female" ? false : true,              
                 profileimage: auth.info.image,
-                # remote_profileimage_url: auth.info.image.gsub('http://','https://'),
+                #remote_profileimage_url: auth.info.image.gsub('http://','https://'),
                 password: Devise.friendly_token[0,20]
               )
             end
