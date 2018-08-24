@@ -26,9 +26,10 @@ class HomeController < ApplicationController
       end  
     #@articles_num= params[:num]
     # $notice=Board.last(3).pluck(:content)
-    @date = Date.today
-    @todays = Board.where(created_at: @date.midnight .. @date.end_of_day).count
-    @today_contents = Board.where(created_at: @date.midnight .. @date.end_of_day).pluck(:content)
+    @weeksago = Date.today.weeks_ago(1) #일주일간
+    @now =Date.today
+    @todays = Board.where(created_at: @weeksago.midnight .. @now.end_of_day).count
+    @today_contents = Board.where(created_at:  @weeksago.midnight .. @now.end_of_day).pluck(:content)
   end
 
   def myrt
