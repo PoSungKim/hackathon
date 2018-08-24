@@ -21,7 +21,7 @@
       <p align="center">
         <br>
         <% if @profile.user.profileimage.url != nil %>
-          <%= image_tag @profile.user.profileimage.url, style: "width: 40%" %> <br> 
+          <%= image_tag @profile.user.profileimage.url, style: "width: 40%;", class: "img-circle" %> <br> 
         <% elsif @profile.user.gender == "여" && @profile.user.ages == "10대이하"%>
           <%= image_tag("https://cdn.iconscout.com/icon/free/png-256/avatar-379-456331.png", style: "width: 40%") %><br>
         <% elsif @profile.user.gender == "여" && @profile.user.ages == "20-30대"%>
