@@ -101,6 +101,36 @@
     <hr />
 </div>
 
+<<<<<<< HEAD
+<hr />
+
+
+<table>
+  <thead>
+    <tr>
+        <th>요청</th>
+        <th>식당</th>
+        <th>메뉴이름</th>
+        <th>전달사항</th>
+        <th>요청일</th>
+        <th>처리현황</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_requests.each do |r| %>
+      <tr>
+        <td><%= r.request_type %></td>
+        <td><%= r.restaurant_name%></td>
+        <td><%= r.menu_name%></td>
+        <td><%= r.memo%></td>
+        <td><%= r.created_at%></td>
+        <td><%= r.status%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+=======
 
 <div>
   <h3 id="spreadBtn2" class= "jeju" style="text-align:center;"> - '수정 요청' 현황 - </h3>
@@ -136,6 +166,7 @@
       </div>
     </div>
 </div>
+>>>>>>> 30e9aadef888f29b24f09a29611e03aaa50f2196
 
 
 <script>

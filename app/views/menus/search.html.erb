@@ -18,7 +18,7 @@
             <div class="ziyuk d-flex justify-content-around">
                 <div class="sido">
                 <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
-                    <select name="sido" class="origin-sido options">
+                    <select name="sido" class="origin-sido options selectcss">
                         <option value="서울특별시" class="sido-opt">서울특별시</option>
                         <option value="부산광역시" class="sido-opt">부산광역시</option>
                         <option value="대구광역시" class="sido-opt">대구광역시</option> 
@@ -37,6 +37,7 @@
                         <option value="제주특별자치시" class="sido-opt">제주특별자치시</option>
                     </select>
                 </div>
+
                 <div class="sigungu d-flex">
                     <div class="buttons">
                         <div class="jikjup enteropt">시군구 입력</div>
@@ -48,17 +49,18 @@
                     </div>
                 </div>
             </div>
+
             <br>
             <div class="d-flex justify-content-between original-check">
                 <div>
-                    <div class="a-type"><button type="button" class="btn btn-outline-secondary">유제품 및 난류 <i class="fas fa-caret-down"></i></button></div>
+                    <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">유제품 및 난류</div><i class="downic fas fa-caret-down"></i></div></div>
                     <div class="allergy-check">
                         <%= check_box_tag :a9_nanryu, checked = true%> 난류<br>
                         <%= check_box_tag :a10_milk, checked = true%> 우유<br>
                     </div>
                 </div>
                 <div>
-                    <div class="a-type"><button type="button" class="btn btn-outline-secondary">과채류 및 곡류  <i class="fas fa-caret-down"></i></button></div>
+                    <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">과채류 및 곡류</div><i class="downic fas fa-caret-down"></i></div></div>
                     <div class="allergy-check">
                         <%= check_box_tag :a6_peach, checked = true%> 복숭아<br>
                         <%= check_box_tag :a7_tomato, checked = true%> 토마토<br>
@@ -68,7 +70,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="a-type"><button type="button" class="btn btn-outline-secondary">육류  <i class="fas fa-caret-down"></i></button></div>
+                    <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">육류</div><i class="downic fas fa-caret-down"></i></div></div>
                     <div class="allergy-check">
                         <%= check_box_tag :a11_ddakgogi, checked = true%> 닭고기<br>
                         <%= check_box_tag :a12_shoigogi, checked = true%> 쇠고기<br>
@@ -76,20 +78,24 @@
                     </div>
                 </div>
                 <div>
-                    <div class="a-type"><button type="button" class="btn btn-outline-secondary">어패류  <i class="fas fa-caret-down"></i></button></div>
-                    <div class="allergy-check">
-                        <%= check_box_tag :a13_saewoo, checked = true%> 새우<br>
-                        <%= check_box_tag :a14_godeungeoh, checked = true%> 고등어<br>
-                        <%= check_box_tag :a15_honghap, checked = true%> 홍합<br>
-                        <%= check_box_tag :a16_junbok, checked = true%> 전복<br>
-                        <%= check_box_tag :a17_gul, checked = true%> 굴<br>
-                        <%= check_box_tag :a18_jogaeryu, checked = true%> 조개류<br>
-                        <%= check_box_tag :a19_gye, checked = true%> 게<br>
-                        <%= check_box_tag :a20_ohjingeoh, checked = true%> 오징어<br>
+                    <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename">어패류</div><i class="downic fas fa-caret-down"></i></div></div>
+                    <div class="allergy-check d-flex">
+                        <div>
+                            <%= check_box_tag :a13_saewoo, checked = true%> 새우<br>
+                            <%= check_box_tag :a14_godeungeoh, checked = true%> 고등어<br>
+                            <%= check_box_tag :a15_honghap, checked = true%> 홍합<br>
+                            <%= check_box_tag :a16_junbok, checked = true%> 전복<br>
+                        </div>
+                        <div class="fish2">
+                            <%= check_box_tag :a17_gul, checked = true%> 굴<br>
+                            <%= check_box_tag :a18_jogaeryu, checked = true%> 조개류<br>
+                            <%= check_box_tag :a19_gye, checked = true%> 게<br>
+                            <%= check_box_tag :a20_ohjingeoh, checked = true%> 오징어<br>
+                        </div>
                     </div>
                 </div>
                 <div>
-                    <div class="a-type"><button type="button" class="btn btn-outline-secondary">과류, 아황산 및 기타  <i class="fas fa-caret-down"></i></button></div>
+                    <div class="a-type"><div class="d-flex typebox justify-content-around"><div class="typename fruits">과류, 아황산 등</div><i class="downic fas fa-caret-down"></i></div></div>
                     <div class="allergy-check">
                         <%= check_box_tag :a4_hodu, checked = true%> 호두<br>
                         <%= check_box_tag :a5_ddangkong, checked = true%> 땅콩<br>
@@ -97,17 +103,16 @@
                     </div>
                 </div>
                 
-                <%= submit_tag 'Search'%>
+                <button type="submit" class="a-submit">
+                 Search<i class="fas fa-search"></i>
+                 </button>
             </div>
                 
-        <%end%>    
+        <%end%>
+    
     </div>
 </div>
-
-
-
-
-
+    
 <%# <button id="reset" onClick="funcreset()">초기화</button> %>
 <%# <p id="myinfo" style="display:none;">로그인해주세요</p> %>
 
@@ -154,8 +159,8 @@
             $(".original-check").addClass("getinfo");
             $("#myinfo").removeClass("getinfo");
             $(".allergy-check").css('visibility','visible');
-            $("i").removeClass("fa-caret-down");
-            $("i").addClass("fa-caret-up");
+            $(".downic").removeClass("fa-caret-down");
+            $(".downic").addClass("fa-caret-up");
             $(this).html("되돌리기");
             
             $(".custom-sido").val($(".origin-sido").val());
@@ -179,7 +184,6 @@
             
           if($("#location").val()=="전체"){
                 $(".all").addClass("experiment");
-               
             }
             
             else {
@@ -198,14 +202,14 @@
         if ( $(this).next(".allergy-check").css('visibility') == 'hidden' ){
             //내릴 때. 
             $(this).next(".allergy-check").css('visibility','visible');
-            $(this).children(".btn").children("i").removeClass("fa-caret-down");
-            $(this).children(".btn").children("i").addClass("fa-caret-up");
+            $(this).children(".typebox").children(".downic").removeClass("fa-caret-down");
+            $(this).children(".typebox").children(".downic").addClass("fa-caret-up");
         }
         else{
             //올릴 때.
             $(this).next(".allergy-check").css('visibility','hidden');
-             $(this).children(".btn").children("i").removeClass("fa-caret-up");
-             $(this).children(".btn").children("i").addClass("fa-caret-down");
+             $(this).children(".typebox").children(".downic").removeClass("fa-caret-up");
+             $(this).children(".typebox").children(".downic").addClass("fa-caret-down");
             
         }
     });

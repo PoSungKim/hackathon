@@ -4,6 +4,7 @@
 @import 'main.scss';
 @import 'login.scss';
 @import 'join.scss';
+@import 'zizuminfos.scss';
 @import 'menus.scss';
 
 //-- font 정리
@@ -31,9 +32,7 @@
     width: 180px;
 }
 
-.allergy-check{
-    visibility: hidden;
-}
+
 
 .experiment{
     background-color: #e2dccf;
@@ -85,3 +84,6 @@
     margin: 15px;
 }
 
+.a-checkbox{
+    background-color: white;
+}
