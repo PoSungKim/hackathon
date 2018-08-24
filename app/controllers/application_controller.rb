@@ -14,12 +14,16 @@ class ApplicationController < ActionController::Base
     # devise_current_user || current_owner
   # end
   def after_sign_in_path_for(resource)
-    @profile_id = current_user.id
-    return profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
-  end
+   # if Profile.exists?(user_id: current_user.id)
+      return profile_path(current_user.id)
+    #  puts "있다"
+    #else
+   #return new_profile_path #userid와 profileid가 무조건같아야한다.
+  #end
+end
   
   def after_update_path_for(resource)
     @profile_id = current_user.id
-    return profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
+    redirect_to profile_path(@profile_id) #userid와 profileid가 무조건같아야한다.
   end 
 end
