@@ -2,15 +2,12 @@
   body { font-family: 'Jeju Myeongjo', serif; }
   h1, h4 { font-weight: bold; }
 </style>
+
 <p id="notice"><%= notice %></p>
-<h1>Restaurants</h1>
-<p>각각 음식점 이름 누르면 옆에 메뉴 뜸.</p>
-<%# ------------재검색----------------------------------------------------------------------------- %>
-<h3>재검색하기(알레르기 있다면 체크)->재검색 부분 css 통해 수정 필요.</h3> 
+<h1 class="title-r">Filter by Allergy . . .</h1>
+
 <%# 재검색 부분 partial %>
 <%= render partial: "re-search"%>
-
-
 
 <%# ------------재검색 끝끝끝----------------------------------------------------------------------------- %>
 =========================================================================
@@ -136,6 +133,7 @@
         // console.log(data);
         // }
     });
+
     $(".card-body").click(function() {
         $("#menuBox").html($(this).children(".seeMenu").siblings('.hideMenu').html());
     // var res_nameIn = $(this).children(".seeMenu").html();
@@ -154,9 +152,8 @@
 
     //-------------처음으로 index 페이지 넘어왔을 때 상태------------- 
     $(function(){
-        document.getElementById("location").value='<%=params[:sigungu]%>';
         $(".allergy-check").css('visibility','visible');
-
+        document.getElementById("location").value='<%=params[:sigungu]%>';
         if('<%=params[:sigungu]%>' == "전체")
             $(".all").addClass("experiment");
         else{
@@ -170,21 +167,23 @@
     }).css('display','none');
 
     //--------------search할 때의 필터링 js 와 같음.------------------
-    $('.a-type').click(function() {
-    //toggle class 가 안먹음.
+     $('.a-type').click(function() {
+        //toggle class 가 안먹음.
         if ( $(this).next(".allergy-check").css('visibility') == 'hidden' ){
-        //내릴 때. 
+            //내릴 때. 
             $(this).next(".allergy-check").css('visibility','visible');
-            $(this).children(".btn").children("i").removeClass("fa-caret-down");
-            $(this).children(".btn").children("i").addClass("fa-caret-up");
+            $(this).children(".typebox").children(".downic").removeClass("fa-caret-down");
+            $(this).children(".typebox").children(".downic").addClass("fa-caret-up");
         }
         else{
-        //올릴 때.
+            //올릴 때.
             $(this).next(".allergy-check").css('visibility','hidden');
-            $(this).children(".btn").children("i").removeClass("fa-caret-up");
-            $(this).children(".btn").children("i").addClass("fa-caret-down");
+             $(this).children(".typebox").children(".downic").removeClass("fa-caret-up");
+             $(this).children(".typebox").children(".downic").addClass("fa-caret-down");
+            
         }
     });
+
 
     
     //experiment는 눌렸다는 것 임시로 표시하기 위해서.
@@ -199,7 +198,7 @@
         }
         else
             $(".sigungu-enter").css('visibility','hidden');
-            document.getElementById("location").value="";
+            $("#location").val("");
     });
 
     $(".all").click(function(){
@@ -211,6 +210,6 @@
             $(".sigungu-enter").css('visibility','hidden');
         }
         $(this).toggleClass("experiment");
-        document.getElementById("location").value="전체";
+        $("#location").val("전체");
     });
 </script>

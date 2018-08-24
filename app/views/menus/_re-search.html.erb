@@ -1,6 +1,6 @@
 <%= form_tag(menus_path, method: :get) do %>
     <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %> 
-    <div class="ziyuk d-flex justify-content-around">
+    <div class="ziyuk-r d-flex justify-content-around">
         <div class="sido">
         <%#= select :sido, options_for_select([["서울특별시", "서울특별시"], ["부산광역시","부산광역시"], ["대구광역시","대구광역시"],["60대이상","60대이상"]]) %>  
             <select name="sido" class="origin-sido options selectcss">
@@ -31,7 +31,7 @@
             </div>
             <div class="enter">
             <%# 직접 입력할 경우 아래와 같은 field 뜨게%>
-                <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter options", :id => "location2", :placeholder => "시군구 직접 입력"%>
+                <%= text_field_tag :sigungu, params[:sigungu], :class => "sigungu-enter options", :id => "location", :placeholder => "시군구 직접 입력"%>
             </div>
         </div>
     </div>
