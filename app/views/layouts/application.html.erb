@@ -106,7 +106,7 @@ window.open("popup2.html","name2","width=400, height=520, top=0,left=310");
         $("a.transition").click(function(event){
           event.preventDefault();
           linkLocation = this.href;
-        $("body").fadeOut(2000, redirectPage);
+        $("body").fadeOut(500, redirectPage);
         });
         function redirectPage() {
         window.location = linkLocation;
