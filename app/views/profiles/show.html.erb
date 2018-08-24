@@ -115,7 +115,6 @@
 
 <div class= "jeju">
   <h3 id="spreadBtn2" style="text-align:center;"> <i id="spreadBtn1" class="fas fa-question-circle"></i> <strong>'수정 요청'</strong> 현황 <strong>확인</strong> <i id="spreadBtn1" class="fas fa-question-circle"></i> </h3>
-  
   <hr />
 
     <div id="hiddenList2">
@@ -126,35 +125,43 @@
       
       <div class="accordion" id="accordionExample">
 
-        <div class="card">
+        <div class="card shadow">
 
           <div class="card-header" id="heading<%= i %>">
             <h5 class="mb-0">
-              <button style="color:black; text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
-                <%= i %> 번 요청
+              <button style="color:black; text-decoration: none; font-size: 115%;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
+                <div class= "row">
+                <div class= "col-6" align = left>
+                  <%= i %> 번 요청에 대한 현황: <strong><%=r.status%></strong>
+                </div>
+                <div class= "col-6" align = right>
+                    날짜 : <%= r.created_at.to_s.split(" ").first.split("-").first%>년
+                    <%= r.created_at.to_s.split(" ").first.split("-").second%>월
+                    <%= r.created_at.to_s.split(" ").first.split("-").third%>일
+                </div>
               </button>
             </h5>
           </div>
 
           <div id="collapse<%= i %>" class="collapse show" aria-labelledby="heading<%= i %>" data-parent="#accordionExample">
             <div class="card-body">
-              요청 내역: 식당 : <%= r.restaurant_name%> 변경 메뉴 : <%= r.menu_name%> <%= r.memo%> 날짜:<%= r.created_at.to_s.split(" ").first.split("-").first%>년
-              <%= r.created_at.to_s.split(" ").first.split("-").second%>월
-              <%= r.created_at.to_s.split(" ").first.split("-").third%>일
-              현재 관리자가 현황을 확인하고 있으며, 보통 1~2 주의 기간을 걸쳐 확인 및 수정 절차가 완료됩니다.<br>
-              이번 요청의 내용은 다음과 같습니다. <br><br>
+              <p>식당 : <%= r.restaurant_name%> </p>
+              <p>변경 메뉴 : <%= r.menu_name%> </p>
+              <% if !r.memo.nil? %>
+                <p>메모 내용 : <%= r.memo%> </p>
+              <% else %>
+              <% end %>
             </div>
           </div>
       
         </div>
+
       </div>
-  </div>
-</div>
-  <%= r.request_type %> 
+
       <% end %>
-        <hr />
+
     </div>
-</div>
+  </div>
 
 <script>
 
